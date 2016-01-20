@@ -1,4 +1,4 @@
-package com.miracle.ctrl;
+package com.cmiracle.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

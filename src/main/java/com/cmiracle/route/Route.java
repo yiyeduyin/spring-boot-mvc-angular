@@ -1,4 +1,4 @@
-package com.miracle.route;
+package com.cmiracle.route;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,17 @@ public class Route{
 		return "user/userIndex";
 	}
 	
-	@RequestMapping("/adminIndex")
+	@RequestMapping("/login")
+	public String adminLogin() {
+		return "admin/adminIndex";
+	}
+	
+	@RequestMapping("/logout")
+	public String adminLogout() {
+		return "admin/adminIndex";
+	}
+	
+	@RequestMapping("/admin/index")
 	public String adminIndex() {
 		return "admin/adminIndex";
 	}
