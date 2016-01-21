@@ -11,17 +11,5 @@ angular.module('app', [ 'ngRoute' ])
   });
 
 angular.module('app').controller('home', function($rootScope, $scope, $http, $location) {
-	$scope.logout = function() {
-	  $http.post('logout', {}).success(function() {
-	    
-	  }).error(function(data) {
-		  
-	  });
-	}
-});
-
-angular.module('app').controller('navigation',function($rootScope, $scope, $http, $location) {
 	
-
-  
 });
