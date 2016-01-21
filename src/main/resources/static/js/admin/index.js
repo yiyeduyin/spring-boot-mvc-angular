@@ -1,4 +1,4 @@
-angular.module('hello', [ 'ngRoute' ])
+angular.module('app', [ 'ngRoute' ])
   .config(function($routeProvider, $httpProvider) {
 
 	$routeProvider.when('/', {
@@ -13,15 +13,16 @@ angular.module('hello', [ 'ngRoute' ])
 
   });
 
-angular.module('hello').controller('home', function($scope, $http) {
-//    $http.get('/resource/').success(function(data) {
-//      $scope.greeting = data;
-//    })
-    
-    console.log(222);
-  });
+angular.module('app').controller('home', function($rootScope, $scope, $http, $location) {
+	$scope.logout = function() {
+	  $http.post('logout', {}).success(function() {
+	    $location.path("/");
+	  }).error(function(data) {
+	  });
+	}
+});
 
-angular.module('hello').controller('navigation',function($rootScope, $scope, $http, $location) {
+angular.module('app').controller('navigation',function($rootScope, $scope, $http, $location) {
 	  var authenticate = function(credentials, callback) {
 
 		var headers = credentials ? {authorization : "Basic "
