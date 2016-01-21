@@ -8,18 +8,7 @@ public class Route{
 
 	@RequestMapping("/")
 	public String index() {
-		System.out.println("hello spring-boot");
 		return "index";
-	}
-	
-	@RequestMapping("/index2")
-	public String index2() {
-		return "index2";
-	}
-	
-	@RequestMapping("/user")
-	public String userIndex() {
-		return "user/userIndex";
 	}
 	
 	@RequestMapping("/login")
@@ -32,7 +21,7 @@ public class Route{
 		return "admin/adminIndex";
 	}
 	
-	@RequestMapping("/admin/index")
+	@RequestMapping("/admin")
 	public String adminIndex() {
 		return "admin/adminIndex";
 	}

@@ -9,11 +9,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.cmiracle.domain.AdminUser;
 import com.cmiracle.repository.AdminUserRepository;
 
-public class UserDetailServiceImpl implements UserDetailsService{
+@Service
+public class AdminUserDetailService implements UserDetailsService{
 	
 	@Autowired
 	private AdminUserRepository adminUserRepository;
@@ -33,7 +35,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
         List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
         
         if (role != null && role.trim().length() > 0) {  
-            if (role.equals("admin")) {  
+            if (role.equals("ADMIN")) {  
             	authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));  
             }  
         }  
