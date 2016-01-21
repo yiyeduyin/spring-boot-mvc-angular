@@ -9,7 +9,7 @@ public class AdminRoute{
 	
 	private final String adminPageRoutePrefix = "admin/";
 
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String index() {
 		return adminPageRoutePrefix + "index";
 	}

@@ -1,7 +1,6 @@
 package com.cmiracle.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +47,4 @@ public class AdminUser implements Serializable {
 	 */
 	@Column(name = "enabled", nullable = false)
 	public Boolean enabled;
-	
-	@Column(name = "created", nullable = false)
-	public Date created;
 }

@@ -22,11 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-	        .antMatchers("/admin/**").hasRole("ADMIN")
-	        .antMatchers("/**").permitAll().and()
-	        .formLogin().loginPage("/login").and()
-	        .logout().deleteCookies("remove").invalidateHttpSession(false)
-            .logoutUrl("/logout").logoutSuccessUrl("/");
+	        .antMatchers("/admin/**").hasRole("ADMIN") //拦截后台请求
+	        .antMatchers("/**").permitAll().and() //不拦截
+	        .formLogin().loginPage("/login").defaultSuccessUrl("/admin").and() //登录成功后跳转到后台首页
+	        .logout().deleteCookies("remove").invalidateHttpSession(false).and()
+            .httpBasic();
     }
 
     @Override
