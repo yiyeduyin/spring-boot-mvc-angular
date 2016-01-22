@@ -2,15 +2,18 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link type="text/css" rel="stylesheet" href="assets/css/index.css" />
+<link type="text/css" rel="stylesheet" href="user/style/index.css" />
 <!-- <script type="text/javascript" src="script/jquery/jquery-2.1.1.js"></script>
  -->
 <!--  <script type="text/javascript" src="script/fontjs/index.js"></script>
  -->
+<script src="assets/js/angular-bootstrap.js" type="text/javascript"></script>
+<script src="user/js/index.js" type="text/javascript"></script>
+
 <title>信詠塑胶工业股份有限公司</title>
 </head>
 
-<body>
+<body ng-app="frontApp" ng-controller="index">
 	<div id="head">
 		<div class="day">
 			<p class="lang_change">
@@ -50,7 +53,7 @@
 	<div id="right">
 		<p class="company_title">公司简介</p>
 		<div class="intro">
-			<img alt="公司" src="assets/image/intro.jpg" />
+			<img alt="公司" src="user/image/intro.jpg" />
 			<p>信咏塑胶工业有限公司（信咏塑胶电子工业）是一家专业从事塑胶、酚醛模具和R/D制造
 				业的公司。我们致力于bobbin开发和生产已20多年,赢得了200多客户的评估和支持。我们通
 				过了ISO9001(NO.5773)和ISO14001(NO.ENV318)的认证,并真正将ISO14001标准落实
@@ -67,7 +70,7 @@
 		<div class="voice">资质荣誉</div>
 		<div class="relation">在线留言</div>
 		<div class="address">
-			<img src="assets/image/banner4.jpg" height="55" />
+			<img src="user/image/banner4.jpg" height="55" />
 			<ul>
 				<li>信詠塑胶工业股份有限公司</li>
 				<li>电话：0512-63457130</li>
@@ -84,13 +87,13 @@
 		<div class="np_pro">
 			<div class="pro_first">
 				<div class="pro_img">
-					<img src="assets/image/hotpro1.jpg" />
+					<img src="user/image/hotpro1.jpg" />
 				</div>
 				<div class="pro_intro">BOBBIN</div>
 			</div>
 			<div class="pro_first">
 				<div class="pro_img">
-					<img src="assets/image/hotpro1.jpg" />
+					<img src="user/image/hotpro1.jpg" />
 				</div>
 				<div class="pro_intro">BOBBIN</div>
 			</div>

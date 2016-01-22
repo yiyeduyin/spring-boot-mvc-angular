@@ -26,7 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .antMatchers("/**").permitAll().and() //不拦截
 	        .formLogin().loginPage("/login").defaultSuccessUrl("/admin").and() //登录成功后跳转到后台首页
 	        .logout().deleteCookies("remove").invalidateHttpSession(false).and()
-            .httpBasic();
+            .httpBasic().and()
+			.csrf().disable();
     }
 
     @Override
