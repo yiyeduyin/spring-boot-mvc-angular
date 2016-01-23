@@ -1,5 +1,7 @@
 package com.cmiracle.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,29 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cmiracle.comment.DTO;
 import com.cmiracle.comment.MediaType;
-import com.cmiracle.domain.ProductType;
-import com.cmiracle.service.ProductTypeService;
-import com.cmiracle.util.Util;
+import com.cmiracle.domain.Message;
+import com.cmiracle.service.MessageService;
 
 @RestController
-@RequestMapping(value = "/admin/rest/productType")
-public class ProductTypeCtrl {
-	
+@RequestMapping(value = "/admin/rest/message")
+public class MessageCtrl {
+
 	@Autowired
-	private ProductTypeService productTypeService;
-	
+	private MessageService messageService;
+
 	/**
 	 * 创建
+	 * 
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8)
 	@ResponseBody
-	public String add(@RequestBody ProductType productType) {
+	public String add(@RequestBody Message message) {
 		DTO dto = DTO.newDTO();
 		try {
-			productType.status = 1;
-			productTypeService.save(productType);
+			message.status = 1;
+			message.created = new Date();
+			messageService.save(message);
 			return dto.toJson();
 		} catch (Exception e) {
 			dto.errMsg = "error";
@@ -41,10 +44,10 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
-	
+
 	/**
 	 * 查找
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -52,8 +55,8 @@ public class ProductTypeCtrl {
 	public @ResponseBody String findById(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
-			ProductType productType = productTypeService.get(id);
-			dto.data = productType;
+			Message message = messageService.get(id);
+			dto.data = message;
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,35 +65,10 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
-	/**
-	 * 更新
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8)
-	@ResponseBody
-	public String update(@PathVariable("id") Long id,
-			@RequestBody ProductType newProductType) {
-		DTO dto = DTO.newDTO();
-		try {
-			ProductType oldProductType =  productTypeService.get(id);
-			
-			if(Util.isNotNull(newProductType.name)){
-				oldProductType.name = newProductType.name;
-			}
-			productTypeService.update(oldProductType);
-			return dto.toJson();
-		} catch (Exception e) {
-			e.printStackTrace();
-			dto.errMsg = "error";
-			dto.errCode = -1;
-			return dto.toJson();
-		}
-	}
-	
+
 	/**
 	 * 删除
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -99,7 +77,7 @@ public class ProductTypeCtrl {
 	public String changeStatus(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
-			productTypeService.delete(id);
+			messageService.delete(id);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,9 +86,10 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
+
 	/**
 	 * 分页查询
+	 * 
 	 * @param page
 	 * @param size
 	 * @param status
@@ -118,14 +97,18 @@ public class ProductTypeCtrl {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8)
-	public @ResponseBody String list(
-			@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
+	public @ResponseBody String list(@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
-			@RequestParam(value = "status",required = false) final Integer status,			
-			@RequestParam(value = "typeName",required = false) final String typeName) {
+			@RequestParam(value = "type", required = false) final Integer type,
+			@RequestParam(value = "status", required = false) final Integer status,
+			@RequestParam(value = "username", required = false) final String username,
+			@RequestParam(value = "mobile", required = false) final String mobile,
+			@RequestParam(value = "address", required = false) final String address,
+			@RequestParam(value = "email", required = false) final String email,
+			@RequestParam(value = "content", required = false) final String content) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productTypeService.findList(page, size, typeName, status);
+			dto.data = messageService.findList(page, size, username, mobile, address, email, content, type, status);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,7 +117,5 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
-	
 
 }

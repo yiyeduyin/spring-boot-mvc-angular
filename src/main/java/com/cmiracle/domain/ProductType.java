@@ -28,19 +28,17 @@ public class ProductType implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	public Long id;
-	
+
 	/**
 	 * 名称
 	 */
 	@Column(name = "name", nullable = false)
 	public String name;
-	
+
 	/**
 	 * 状态 0 不显示， 1 显示
 	 */
 	@Column(name = "status", nullable = true)
 	public Integer status;
-	
-	
 
 }
