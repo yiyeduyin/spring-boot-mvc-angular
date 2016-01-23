@@ -68,16 +68,16 @@ public class Product implements Serializable{
 	public Float realPrice;
 	
 	/**
-	 * 状态
+	 * 状态 0 不显示，1 显示
 	 */
-	@Column(name = "product_status", nullable = true)
-	public Integer productStatus;
+	@Column(name = "status", nullable = true)
+	public Integer status;
 	
 	/**
 	 * 库存
 	 */
-	@Column(name = "product_stock", nullable = true)
-	public Integer productStock;
+	@Column(name = "stock", nullable = true)
+	public Integer stock;
 	
 	/**
 	 * 是否新产品 1 是，0否
@@ -85,12 +85,66 @@ public class Product implements Serializable{
 	@Column(name = "isNew", nullable = false)
 	public Integer isNew;
 	
+	
 	/**
-	 * 生产日期
+	 * 
 	 */
-	@JSONField(format="yyyy-MM-dd HH:mm:ss")
-	@Column(name = "productionDate", nullable = true)
-	public Date productionDate;
+	@Column(name = "drawing", nullable = true)
+	public String drawing;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "coretype", nullable = true)
+	public String coretype;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "row", nullable = true)
+	public String row;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "pitch", nullable = true)
+	public String pitch;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "pins", nullable = true)
+	public String pins;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "style", nullable = true)
+	public String style;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "ml", nullable = true)
+	public String ml;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "sec", nullable = true)
+	public String sec;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "drawingPath", nullable = true)
+	public String drawingPath;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "headDrawingPath", nullable = true)
+	public String headDrawingPath;
 	
 	/**
 	 * 创建日期
@@ -98,4 +152,14 @@ public class Product implements Serializable{
 	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	@Column(name = "created", nullable = true)
 	public Date created;
+	
+//	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+//	@JoinColumn(name="productTypeId",referencedColumnName="id" ,nullable=false)
+//	public ProductType productType;
+	
+	/**
+	 * 类型ID
+	 */
+	@Column(name = "productTypeId", nullable = false)
+	public Long productTypeId;
 }

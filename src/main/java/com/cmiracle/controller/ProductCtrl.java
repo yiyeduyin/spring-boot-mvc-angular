@@ -31,7 +31,7 @@ public class ProductCtrl {
 		DTO dto = DTO.newDTO();
 		try {
 			product.created = new Date();
-			product.productStatus = 1;
+			product.status = 1;
 			productService.save(product);
 			return dto.toJson();
 		} catch (Exception e) {
