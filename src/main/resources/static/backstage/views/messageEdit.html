@@ -1,0 +1,84 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+        </script>
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="#/admin">留言管理</a>
+            </li>
+            <li class="active">留言详情</li>
+        </ul>
+        <!-- /.breadcrumb -->
+        <div class="nav-search" id="nav-search">
+            
+        </div>
+        <!-- /.nav-search -->
+    </div>
+    <div class="page-content">
+        
+        <!-- /.ace-settings-container -->
+        <div class="page-header">
+            <h1>
+                <small ng-switch="message.type">
+                    <span>主题：</span>
+                    <span ng-switch-when="0" >简单的留言</span>
+                    <span ng-switch-when="1" >对网站的意见</span>
+                    <span ng-switch-when="2" >对公司的建议</span>
+                    <span ng-switch-when="3" >具有合作意向</span>
+                    <span ng-switch-when="4" >产品投诉</span>
+                    <span ng-switch-when="5" >服务投诉</span>
+                    <span ng-switch-when="6" >其它</span>
+
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    &nbsp;联系人：{{message.username || '无'}}
+
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    &nbsp;电话: {{message.mobile || '无'}}
+
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    &nbsp;邮箱: {{message.email || '无'}}
+
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    &nbsp;时间：{{message.created | date:'yyyy-MM-dd hh:mm:ss'}}
+
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    &nbsp;地址：{{message.address || '无'}}
+                </small>
+            </h1>
+        </div>
+        <!-- /.page-header -->
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="row">
+                    <div class="col-xs-32 col-sm-16 widget-container-col">
+                        <div class="widget-box">
+                            <div class="widget-header">
+                                <h5 class="widget-title">内容：</h5>
+                               
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <p class="alert alert-success">
+                                        {{message.content}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- /.span -->
+                </div>
+                <!-- /.row -->
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.page-content -->
+</div>

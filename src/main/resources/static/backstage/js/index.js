@@ -20,6 +20,10 @@ angular.module('app', ['ngRoute']).config(function($routeProvider, $httpProvider
          templateUrl: 'backstage/views/messageList.html',
          controller: 'MessageListCtrl'
     })
+    .when('/message/edit/:id', {
+         templateUrl: 'backstage/views/messageEdit.html',
+         controller: 'MessageEditCtrl'
+    })
     .when('/test', {
         templateUrl: 'backstage/views/test.html',
         controller: 'test'

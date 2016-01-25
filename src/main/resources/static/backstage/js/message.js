@@ -1,6 +1,6 @@
 // 商品类型列表
 angular.module('app').controller('MessageListCtrl', function($rootScope, $scope, $http, $location) {
-
+    $scope.lastPageNo = 1;
     $scope.pageNo = 1;
     $scope.pageSize = 10;
     $scope.status = "";
@@ -31,9 +31,13 @@ angular.module('app').controller('MessageListCtrl', function($rootScope, $scope,
             if (res.errcode == 0) {
                 $scope.messageList = res.data.content;
                 $scope.total = res.data.totalElements;
+                $scope.lastPageNo = parseInt($scope.total / $scope.pageSize);
+                if (($scope.total % $scope.pageSize) > 0) {
+                    $scope.lastPageNo += 1;
+                }
                 angular.forEach($scope.messageList, function(message, i) {
-                    if(message.content.length > 20){
-                        message.content = message.content.slice(0,20) + "..."; 
+                    if (message.content.length > 20) {
+                        message.content = message.content.slice(0, 20) + "...";
                     }
                 });
             }
@@ -50,42 +54,28 @@ angular.module('app').controller('MessageListCtrl', function($rootScope, $scope,
         });
     }
 
+    $scope.goToEdit = function(id) {
+        $location.path("/message/edit/" + id);
+    }
+
+    $scope.changePageNo = function(pageNo) {
+        $scope.pageNo = pageNo;
+        $scope.findList();
+    }
 });
 
 // 商品类型编辑
-angular.module('app').controller('MessageCtrlEdit', function($rootScope, $scope, $http, $routeParams, $location) {
+angular.module('app').controller('MessageEditCtrl', function($rootScope, $scope, $http, $routeParams, $location) {
     var id = $routeParams.id;
-    $scope.name = "";
-
-    $scope.init = function(argument) {
+    $scope.message = {};
+    $scope.init = function() {
         if (id) {
-            $http.get('/admin/rest/productType/' + id, {}).success(function(res) {
+            $http.get('/admin/rest/message/' + id, {}).success(function(res) {
                 if (res.errcode == 0) {
-                    $scope.name = res.data.name;
+                    $scope.message = res.data;
                 }
             });
         }
     }
-
-
-    $scope.submit = function(argument) {
-        if (id) { //更新
-            $http.put('/admin/rest/productType/' + id, {
-                name: $scope.name
-            }).success(function(res) {
-                if (res.errcode == 0) {
-                    $location.path("productType/list");
-                }
-            });
-        } else { //创建
-            $http.post('/admin/rest/productType', {
-                name: $scope.name
-            }).success(function(res) {
-                if (res.errcode == 0) {
-                    $location.path("productType/list");
-                }
-            });
-        }
-    }
-
+    $scope.init();
 });

@@ -1,6 +1,6 @@
 // 商品类型列表
 angular.module('app').controller('ProductTypeListCtrl', function($rootScope, $scope, $http, $location) {
-
+    $scope.lastPageNo = 1;
     $scope.pageNo = 1;
     $scope.pageSize = 10;
     $scope.status = "";
@@ -21,6 +21,10 @@ angular.module('app').controller('ProductTypeListCtrl', function($rootScope, $sc
             if (res.errcode == 0) {
                 $scope.productTypeList = res.data.content;
                 $scope.total = res.data.totalElements;
+                $scope.lastPageNo = parseInt($scope.total  / $scope.pageSize);
+                if(($scope.total  % $scope.pageSize) > 0){
+                    $scope.lastPageNo+=1;
+                }
             }
         });
     }
@@ -50,8 +54,10 @@ angular.module('app').controller('ProductTypeListCtrl', function($rootScope, $sc
         $location.path("/productType/edit/" + id);
     }
 
-
-
+    $scope.changePageNo = function(pageNo) {
+        $scope.pageNo = pageNo;
+        $scope.findList();
+    }
 });
 
 // 商品类型编辑
