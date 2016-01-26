@@ -24,6 +24,18 @@ angular.module('app', ['ngRoute']).config(function($routeProvider, $httpProvider
          templateUrl: 'backstage/views/messageEdit.html',
          controller: 'MessageEditCtrl'
     })
+    .when('/product/list', {
+         templateUrl: 'backstage/views/productList.html',
+         controller: 'ProductListCtrl'
+    })
+    .when('/product/add', {
+         templateUrl: 'backstage/views/productEdit.html',
+         controller: 'ProductEditCtrl'
+    })
+    .when('/product/edit/:id', {
+         templateUrl: 'backstage/views/productEdit.html',
+         controller: 'ProductEditCtrl'
+    })
     .when('/test', {
         templateUrl: 'backstage/views/test.html',
         controller: 'test'
