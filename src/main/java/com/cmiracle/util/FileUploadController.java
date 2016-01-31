@@ -32,6 +32,7 @@ public class FileUploadController {
 	public @ResponseBody String singleUpload(
 			@RequestParam("file") MultipartFile file) {
 		try {
+			createdFolderIfNotExists(fileUploadPath);
 			String fileName = file.getOriginalFilename();
 			String url = fileUploadPath + fileName;
 			file.transferTo(new File(url));
@@ -65,6 +66,19 @@ public class FileUploadController {
 			}
 		} catch (IOException ex) {
 			throw new RuntimeException("IOError writing file to output stream");
+		}
+	}
+	
+	/**
+	 * 如果目标路径不存在则创建
+	 * 
+	 * @param path
+	 */
+	private void createdFolderIfNotExists(String path) {
+		File file = new File(path);
+		// 如果文件夹不存在则创建
+		if (!file.exists() && !file.isDirectory()) {
+			file.mkdir();
 		}
 	}
 
