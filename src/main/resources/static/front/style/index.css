@@ -186,11 +186,10 @@ body {
 	width: 788px;
 	height: 348px;
 	margin-top: 6px;
-	margin-left: 2px;
+	margin-left: 6px;
 }
-
-#right .company_title {
-	width: 770px;
+#right .company_title,.products_list,.engineerings_title,.certificates_title,.about_title {
+	width: 786px;
 	height: 34px;
 	font-size: 18px;
 	font-weight: bold;
@@ -201,7 +200,7 @@ body {
 }
 
 #right .intro {
-	width: 768px;
+	width: 784px;
 	height: 302px;
 	border: 1px solid #E3E3E3;
 	border-radius: 0px 0px 4px 4px;
@@ -210,13 +209,33 @@ body {
 	-o-border-radius: 0px 0px 4px 4px;
 	border: 1px solid #E3E3E3;
 }
-
+#right .profile_intro,.engineerings_intro,.certificates_intro,.about_intro{
+	width: 784px;
+	height: 672px;
+	border: 1px solid #E3E3E3;
+	border-radius: 0px 0px 4px 4px;
+	-moz-border-radius: 0px 0px 4px 4px;
+	-webkit-border-radius: 0px 0px 4px 4px;
+	-o-border-radius: 0px 0px 4px 4px;
+	border: 1px solid #E3E3E3;
+}
 #right .intro img {
 	float: left;
 	margin: 18px 12px 0px 10px;
 }
 
 #right .intro p {
+	font-size: 14px;
+	color: #666;
+	line-height: 28px;
+	padding: 8px 12px 8px 10px;
+}
+#right .profile_intro img {
+	float: left;
+	margin: 18px 12px 0px 10px;
+}
+
+#right .profile_intro p {
 	font-size: 14px;
 	color: #666;
 	line-height: 28px;
@@ -290,15 +309,15 @@ body {
 	float: left;
 	width: 778px;
 	height: 366px;
-	margin-left: 3px;
+	margin-left: 8px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-o-border-radius: 4px;
 }
 
-#con .np_head {
-	width: 762px;
+.np_head {
+	width: 786px;
 	height: 40px;
 	font-size: 18px;
 	font-weight: bold;
@@ -308,20 +327,20 @@ body {
 	border-bottom: 3px solid #4D95E8;
 }
 
-#con .pro_title, .pro_more {
+.pro_title, .pro_more,.products_title, .products_more {
 	display: inline-block;
 	float: left;
 	font-size: 18px;
 	color: #666;
 }
 
-#con .pro_more {
+.pro_more,.products_more{
 	float: left;
-	margin-left: 540px;
+	margin-left: 580px;
 	font-size: 14px;
 }
 
-#con .pro_first, .pro_last {
+.pro_first, .pro_last,.products_first, .products_last {
 	margin: 6px 12px 6px 8px;
 	float: left;
 	width: 172px;
@@ -331,15 +350,14 @@ body {
 	box-shadow: 2px 2px 5px 1px #E0E7EF;
 }
 
-#con .pro_last {
+.pro_last,.products_last {
 	margin-right: 0px;
 }
-
-#con .np_pro .pro_img {
+.np_pro .pro_img,.np_products .products_img {
 	padding: 5px 5px 1px 22px;
 }
 
-#con .np_pro .pro_intro {
+.np_pro .pro_intro,.np_products .products_intro  {
 	height: 30px;
 	color: #fff;
 	background: #62AAFA;
