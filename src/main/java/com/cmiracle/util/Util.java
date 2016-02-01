@@ -10,4 +10,8 @@ public class Util {
 		return s == null? false:true;
 	}
 
+	public static boolean isNotNull(Long s){
+		return s == null? false:true;
+	}
+
 }

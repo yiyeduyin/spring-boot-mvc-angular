@@ -21,9 +21,9 @@ angular.module('app').controller('ProductListCtrl', function($rootScope, $scope,
             if (res.errcode == 0) {
                 $scope.productList = res.data.content;
                 $scope.total = res.data.totalElements;
-                $scope.lastPageNo = parseInt($scope.total  / $scope.pageSize);
-                if(($scope.total  % $scope.pageSize) > 0){
-                    $scope.lastPageNo+=1;
+                $scope.lastPageNo = parseInt($scope.total / $scope.pageSize);
+                if (($scope.total % $scope.pageSize) > 0) {
+                    $scope.lastPageNo += 1;
                 }
             }
         });
@@ -63,14 +63,18 @@ angular.module('app').controller('ProductListCtrl', function($rootScope, $scope,
 });
 
 // 商品类型编辑
-angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope, $http, $routeParams, $location) {
+angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope, $http, $routeParams, $location, Upload) {
     var id = $routeParams.id;
-    $scope.product = {};
+    $scope.product = {
+        isNew: 0
+    };
 
     $scope.productTypeList = [];
 
+    $scope.upload_image_message = "";
+    $scope.upload_file_message = "";
 
-    $scope.getProductType = function () {
+    $scope.getProductType = function() {
         $http.get('/admin/rest/productType/list', {
             params: {
                 pageNo: 1,
@@ -96,21 +100,60 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
     $scope.init();
 
 
+    // upload later on form submit or something similar
+    $scope.uploadIcon = function() {
+        if ($scope.icon) {
+            Upload.upload({
+                url: '/admin/rest/fileUpload',
+                data: {
+                    file: $scope.icon
+                }
+            }).then(function(res) {
+                console.log(res.data);
+                $scope.product.icon = res.data.data;
+                $scope.upload_image_message = "上传成功";
+            }, function(resp) {
+                $scope.upload_image_message = "上传失败";
+            }, function(evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                $scope.upload_image_message = "上传中 " + progressPercentage + '%';
+            });
+        }
+    };
+
+    $scope.uploadFile = function() {
+        if ($scope.file) {
+            Upload.upload({
+                url: '/admin/rest/fileUpload',
+                data: {
+                    file: $scope.file
+                }
+            }).then(function(res) {
+                $scope.product.fileName = res.data;
+                $scope.upload_file_message = "上传成功";
+            }, function(res) {
+                $scope.upload_file_message = "上传失败";
+            }, function(evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                $scope.upload_file_message = "上传中 " + progressPercentage + '%';
+            });
+        }
+    };
+
+
     $scope.submit = function() {
         if (id) { //更新
-            $http.put('/admin/rest/productType/' + id, {
-                name: $scope.name
-            }).success(function(res) {
+            console.log($scope.product);
+            $scope.product.created = null;
+            $http.put('/admin/rest/product/' + id, $scope.product).success(function(res) {
                 if (res.errcode == 0) {
-                    $location.path("productType/list");
+                    $location.path("product/list");
                 }
             });
         } else { //创建
-            $http.post('/admin/rest/productType', {
-                name: $scope.name
-            }).success(function(res) {
+            $http.post('/admin/rest/product', $scope.product).success(function(res) {
                 if (res.errcode == 0) {
-                    $location.path("productType/list");
+                    $location.path("product/list");
                 }
             });
         }

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cmiracle.comment.DTO;
+
 @RestController
 public class FileUploadController {
 
@@ -31,15 +33,19 @@ public class FileUploadController {
 	@RequestMapping(value = "/admin/rest/fileUpload", method = RequestMethod.POST)
 	public @ResponseBody String singleUpload(
 			@RequestParam("file") MultipartFile file) {
+		DTO dto = DTO.newDTO();
 		try {
 			createdFolderIfNotExists(fileUploadPath);
 			String fileName = file.getOriginalFilename();
 			String url = fileUploadPath + fileName;
 			file.transferTo(new File(url));
-			return fileName;
+			dto.data = fileName;
+			return dto.toJson();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "";
+			dto.errMsg = "error";
+			dto.errCode = -1;
+			return dto.toJson();
 		}
 
 	}
