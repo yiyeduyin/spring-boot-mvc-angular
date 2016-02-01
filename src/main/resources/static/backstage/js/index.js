@@ -36,8 +36,12 @@ angular.module('app', ['ngRoute']).config(function($routeProvider, $httpProvider
          templateUrl: 'backstage/views/productEdit.html',
          controller: 'ProductEditCtrl'
     })
+    .when('/admin/edit', {
+         templateUrl: 'backstage/views/adminEdit.html',
+         controller: 'AdminEditCtrl'
+    })
     .when('/test', {
-        templateUrl: 'backstage/views/test.html',
+        templateUrl: 'backstage/views/list_template.html',
         controller: 'test'
     }).otherwise('/');
 
@@ -66,3 +70,9 @@ angular.module('app').controller('home',function($rootScope, $scope, $http, $loc
 
 
 });
+
+angular.module('app').controller('test',function($rootScope, $scope, $http, $location) {
+
+
+});
+
