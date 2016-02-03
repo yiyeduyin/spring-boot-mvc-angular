@@ -36,9 +36,9 @@ public class AdminCtrl {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/{id}/username", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8)
+	@RequestMapping(value = "/{adminName}/username", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8)
 	@ResponseBody
-	public String updateUsername(@PathVariable("id") Long id,
+	public String updateUsername(@PathVariable("adminName") String adminName,
 			@RequestBody JSONObject content) {
 		DTO dto = DTO.newDTO();
 		try {
@@ -51,7 +51,7 @@ public class AdminCtrl {
 				return dto.toJson();
 			}
 			
-			AdminUser oldAdminUser = adminUserService.get(id);
+			AdminUser oldAdminUser = adminUserService.findByUsername(username);
 			
 			if(!oldAdminUser.role.equals("ADMIN")){
 				dto.errMsg = "对不起，您当前操作没有权限";
