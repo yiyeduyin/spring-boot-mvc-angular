@@ -82,6 +82,24 @@ public class ProductCtrl {
 			if(Util.isNotNull(newProduct.name)){
 				oldProduct.name = newProduct.name;
 			}
+			if(Util.isNotNull(newProduct.productTypeId)){
+				oldProduct.productTypeId = newProduct.productTypeId;
+			}
+			if(Util.isNotNull(newProduct.isNew)){
+				oldProduct.isNew = newProduct.isNew;
+			}
+			if(Util.isNotNull(newProduct.description)){
+				oldProduct.description = newProduct.description;
+			}
+			if(Util.isNotNull(newProduct.spec)){
+				oldProduct.spec = newProduct.spec;
+			}
+			if(Util.isNotNull(newProduct.fileName)){
+				oldProduct.fileName = newProduct.fileName;
+			}
+			if(Util.isNotNull(newProduct.icon)){
+				oldProduct.icon = newProduct.icon;
+			}
 			productService.update(oldProduct);
 			return dto.toJson();
 		} catch (Exception e) {

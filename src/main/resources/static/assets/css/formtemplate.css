@@ -1,0 +1,423 @@
+
+/*Abel 的测试*/
+.formtemplate{
+    padding: 0 ;
+    /*width: 100%;*/
+}
+.formtemplate .rightview{
+    /*border: 4px solid rgb(67, 179, 219);*/
+    float: left;
+    width: calc(100% - 232px);
+}
+.formtemplate .right01{
+    float: left;
+    width: 100%;
+}
+.formtemplate .basicinfo{
+    width: 80%;
+    margin-top: 50px ;
+    margin-left: 50px;
+    font-size: 18px;
+
+}
+.formtemplate .basiccontent{
+    width: 100%;
+    /*min-height: 200px;*/
+    margin-top: 30px;
+}
+
+.formtemplate .common{
+    list-style-type:none;
+    margin-bottom: 12px;
+    display: block;
+    min-height: 35px;
+    overflow: hidden;
+}
+
+.formtemplate .common .leftview{
+    float: left;
+    width: 220px;
+    text-align: right;
+    height: 100%;
+    line-height: 35px;
+    margin-right: 12px;
+}
+.formtemplate .common span{
+    font-size: 14px;
+}
+
+.formtemplate .common .text{
+    width: 33.33333%;
+    height: 35px;
+}
+/*G add*/
+.formtemplate .textarea{
+    width: 33.33333%; padding: 4px;
+}
+.formtemplate select{
+    height: 35px;
+    margin-right: 10px;
+}
+.formtemplate .rightview_select select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("xiala.png") no-repeat scroll 120px center transparent;
+    line-height: 21px !important;
+    color: #b8b8b8;
+    background-color: #fff;
+    vertical-align: top;
+}
+.formtemplate .danxuan{
+    margin-top: 10px;
+    /*margin-left: 15px;*/
+    font-size: 16px;
+    width: 25px;
+    height: 16px;
+
+}
+.ys .danxuan{
+    vertical-align: inherit;
+}
+.formtemplate label {
+    vertical-align:middle;
+    line-height: 16px;
+    margin-bottom: 10px;
+    margin-right: 25px;
+}
+.formtemplate .upimg .upload{
+    /*border:1px solid #D0C8C8;*/
+    float: left;
+    margin-top: 0 !important;
+    width: 60px !important;
+}
+.formtemplate .upimg .upload:before{
+    content: '';
+    position: absolute;
+    /*top: 100px;*/
+    /*left: 232px;*/
+    width: 60px;
+    height: 60px;
+    background: url("./images/ico_upload_picture.png");
+    background-size: 60px 60px;
+}
+.formtemplate .uploadimg{
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 60px;
+    /*margin-top: -20px;*/
+    opacity: 0;
+}
+.formtemplate .showupload{
+    /*min-height: 50px;*/
+    overflow: hidden;
+}
+.formtemplate .showupload .putimg{
+    float: left;
+    width: 340px;
+    /*min-height: 100%;*/
+}
+.formtemplate .showupload .show{
+    border:1px solid #D0C8C8;
+    width: 340px;
+    height: 230px;
+    float: left;
+    margin-bottom: 10px;
+}
+.formtemplate .show .showimgtop{
+    /*margin: 10px;*/
+    width: 100%;
+    height: 180px;
+    border-bottom:1px solid #D0C8C8;
+}
+.formtemplate .show .showimgtop .showimg{
+    margin: 10px;
+    width: 318px;
+    height: 170px;
+}
+.formtemplate .showupload .showimg img{
+    width: 100%;
+    height: 100%;
+}
+.formtemplate .show .detimg{
+    height: 30px;
+}
+.formtemplate .detimg span{
+    margin-left: 10px;
+    margin-top: 2%;
+}
+.formtemplate .detimg img{
+    float: right;
+    margin-right: 40px;
+}
+.formtemplate textarea{
+    width: 33.33333%;
+    height: 100px;
+    resize: none;
+}
+.formtemplate .otherinfo{
+    margin-top: 70px !important;
+}
+.formtemplate .basiccontent .common .all{
+    height: 35px;
+    width:calc(100% - 232px);
+    position: relative;
+}
+.formtemplate .showinput{
+    position: absolute;
+    top:-92px;
+    left:232px;
+    width: 33.33333%;
+    height: 80px;
+    border: 1px solid #D0C8C8;
+    font-size: 16px;
+    text-align: left;
+    padding: 2px 5px;
+    /*z-index: 100px;*/
+    background-color: #f4f5f7;
+    border-radius: 6px;
+    font-family: #565c6a;
+}
+.formtemplate .cont{
+    width: 100%;
+    height: 75px;
+    overflow: hidden;
+}
+.formtemplate .showinput s{
+    position:absolute;
+    top:78px;
+    left:20px;
+    display:block;
+    height:0;
+    width:0;
+    font-size: 0;
+    line-height: 0;
+    border-color:#D0C8C8 transparent transparent transparent;
+    border-style:solid dashed dashed dashed;
+    border-width:10px;
+}
+.formtemplate .showinput i{position:absolute;
+    top:-11px;
+    *top:-9px;
+    left:-10px;
+    display:block;
+    height:0;
+    width:0;
+    font-size: 0;
+    line-height: 0;
+    border-color:#f4f5f7 transparent transparent  transparent;
+    border-style:solid dashed dashed dashed;
+    border-width:10px;
+}
+
+.save{
+    width: calc(100% - 232px);
+    margin-top: 90px;
+    height: 40px;
+    margin-left: 232px;
+    /*text-align: center;*/
+
+}
+.contextarea{
+    display: block;
+    height: 100px !important;
+}
+.mybtn{
+   /* width: 92px;
+    height: 38px;
+    background-color: #94c638;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    border: none;*/
+    margin-right: 40px;
+    /*margin-left: 232px;*/
+}
+
+.mybtn-top{
+    margin-top: 90px;
+}
+
+.formtemplate .errorinfo{
+    color: #d12723;
+    font-size: 14px;
+}
+.formtemplate .showupload .show .detimg .updetimg{
+    width: 16px;
+    height: 16px;
+    /*border: 1px solid #D0C8C8 ;*/
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.formtemplate .showupload .show .detimg .det{
+    background: url("./images/ico.png");
+    background-position: -40px -40px;
+}
+.formtemplate .showupload .show .detimg .uploadagain{
+    background: url("./images/ico.png");
+    background-position: -140px -40px;
+}
+.formtemplate .showupload .show .detimg .det:hover{
+    background: url("./images/ico.png");
+    background-position: -40px -60px;
+}
+.formtemplate .showupload .show .detimg .uploadagain:hover{
+    background: url("./images/ico.png");
+    background-position: -140px -60px;
+}
+
+.formtemplate .showupload .show .detimg .move{
+    background: url("./images/ico.png");
+    background-position: -80px -40px;
+}
+.formtemplate .showupload .show .detimg .move:hover{
+    background: url("./images/ico.png");
+    background-position: -80px -60px;
+}
+
+.formtemplate .mustinput{
+    color: #f94710;
+    font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.formtemplate .resultalert{
+    background-color: #0f1d40;
+    min-width: 186px;
+    height: 92px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    color: #dbe1ef;
+    font-size: 18px;
+    text-align: center;
+    line-height:80px ;
+    position: fixed;
+    left: 40%;
+    bottom: 50%;
+    opacity:0.8;
+    padding: 0 6px 0 6px;
+    z-index: 99999;
+}
+
+.formtemplate .resultalert.active{
+    display: none;
+}
+
+
+
+
+
+/*下面是业务表单*/
+.parameterform{
+    padding: 0;
+}
+.parameterform .myparameter{
+    /*width: 450px;*/
+    min-height:90px;
+    /*margin-left: 200px;*/
+    margin-top: 70px;
+}
+.myparameter .myparametercontent{
+    /*width: 700px;*/
+    height:90px;
+    margin-bottom: 20px;
+}
+.myparameter .myparametercontent-left{
+    width: 220px;
+    height:90px;
+    float: left;
+    text-align: right;
+    margin-right: 12px;
+    /*border: 1px solid #a069c3;*/
+}
+.myparameter .myparametercontent-middle{
+    width: 550px;
+    height:90px;
+    float: left;
+    background-color: #d0d8e0;
+}
+.myparameter .myparametercontent-right{
+    width: 30px;
+    height:90px;
+    float: left;
+    border: 1px solid #d0d8e0;
+}
+.myparametercontent-middle .pamcontent{
+    margin-top: 12px;
+    height: 27px;
+
+}
+.myparametercontent-middle .pamcontent .pamcontent-left{
+    width: 85px;
+    text-align: right;
+    margin-right: 5px;
+    margin-top: 3px;
+    float: left;
+}
+.myparametercontent-middle .pamcontent .pamcontent-right{
+    width: 405px;
+    float: left;
+}
+.myparametercontent-middle .pamcontent .pamcontent-right input{
+    width: 430px;
+    height: 27px;
+    border: none;
+    margin-left: 5px;
+
+}
+.myparameter .myparametercontent-right li{
+    display: block;
+    margin: 7px;
+    width: 16px;
+    height:16px;
+    float: left;
+}
+.myparameter .myparametercontent-right .delete{
+    background: url("./images/ico.png");
+    background-position: -40px -40px;
+}
+.myparameter .myparametercontent-right .delete:hover{
+    background: url("./images/ico.png");
+    background-position: -40px -60px;
+}
+
+.myparameter .myparametercontent-right .add{
+    background: url("./images/ico.png");
+    background-position: -160px -40px;
+}
+.myparameter .myparametercontent-right .add:hover{
+    background: url("./images/ico.png");
+    background-position: -160px -60px;
+}
+.myparameter .myparametercontent-right .move{
+    background: url("./images/ico.png");
+    background-position: -80px -40px;
+}
+.myparameter .myparametercontent-right .move:hover{
+    background: url("./images/ico.png");
+    background-position: -80px -60px;
+}
+
+.rightview .tooltip-inner{
+    text-align: left;
+}
+
+.label_area{
+
+}
+
+.label_area .tag_span{
+    margin: 0px 10px 10px 5px;
+}
+
+.breadcrumb>li>a{
+    color: #626365;
+}
+.breadcrumb>li, .breadcrumb>li.active{
+    color: #626365;
+}
+.breadcrumb>li+li:before{
+    color: #626365;
+}

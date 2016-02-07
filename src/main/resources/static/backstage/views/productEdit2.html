@@ -27,6 +27,7 @@
         <!-- /.nav-search -->
     </div>
     <div class="page-content">
+        
         <!-- /.ace-settings-container -->
         <div class="page-header">
             <!-- <h1>
@@ -45,7 +46,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称 </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" ng-model="product.name" />
+                            <input type="text" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -57,59 +58,39 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 新产品 </label>
-                        <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="product.isNew" >
-                                <option value="0">否</option>
-                                <option value="1">是</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 描述 </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="描述" class="col-xs-10 col-sm-5" ng-model="product.description" />
+                            <input type="text" id="form-field-1" placeholder="描述" class="col-xs-10 col-sm-5" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 规格 </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="规格" class="col-xs-10 col-sm-5" ng-model="product.spec" />
+                            <input type="text" id="form-field-1" placeholder="规格" class="col-xs-10 col-sm-5" />
                         </div>
                     </div>
+
+                    <!-- <div class="widget-main"> -->
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 图标 </label>
                         <div class="col-sm-9">
-                            <input type="file" ngf-select ng-model="icon" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" style="margin-top:6px" />
+                            <input type="file" id="image" style="margin-top:6px" />
                         </div>
                     </div>
-                    <div class="form-group">
-                        </label>
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
-                        <div class="col-sm-9">
-                            <input type="button" id="image" value="上传图标" class="col-xs-10 col-sm-2" ng-click="uploadIcon()" />
-                            <span>{{upload_image_message}}</span>
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 文件 </label>
                         <div class="col-sm-9">
-                            <input type="file" ngf-select ng-model="file" name="file" ngf-max-size="20MB" style="margin-top:6px" />
+                            <input type="file" id="file" style="margin-top:6px" />
                         </div>
                     </div>
-                    <div class="form-group">
-                        </label>
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
-                        <div class="col-sm-9">
-                            <input type="button" id="image" value="上传文件" class="col-xs-10 col-sm-2" ng-click="uploadFile()" />
-                            <span>{{upload_file_message}}</span>
-                        </div>
-                    </div>
+
                     <div class="space-4"></div>
+                    
                     <div class="clearfix form-actions">
                         <div class="col-md-offset-3 col-md-9">
-                            <button class="btn btn-info" type="button" ng-click="submit()">
-                                <i class="ace-icon fa fa-check bigger-110"></i> 提交
+                            <button class="btn btn-info" type="button">
+                                <i class="ace-icon fa fa-check bigger-110"></i> Submit
                             </button>
                             &nbsp; &nbsp; &nbsp;
                             <button class="btn" type="reset">
@@ -118,7 +99,9 @@
                         </div>
                     </div>
                     <div class="hr hr-24"></div>
+                    
                 </form>
+                
                 <!-- PAGE CONTENT ENDS -->
             </div>
             <!-- /.col -->

@@ -1,0 +1,39 @@
+<div id="myCommonToastModel" style="position:fixed; bottom:20%;height:50px;width:100%;text-align:center;z-index:9999;display:none">
+	<span style="background-color:#000;padding:10px 40px;color:#FFF;opacity: 0.7;font-size:18px;font-weight:bold" id="myCommonToastModelText">hello world</span>
+</div>
+<div class="formtemplate">
+	<div id="resultalert" class="resultalert" ng-class="active" style="display: none;"></div>
+</div>
+<script>
+	(function(){
+		window.GlobalToast = {
+			show : function(msg, timeout){
+				if(msg !== null && msg !== undefined && msg !== ""){
+					$("#myCommonToastModelText").html(msg);
+				} else {
+					return false;
+				}
+				timeout = timeout || 3000;
+				$('#myCommonToastModel').show();
+				setTimeout(function(){
+					$('#myCommonToastModel').hide();
+				},timeout);
+			},
+			tips : function(msg, timeout,callback){
+				if(msg !== null && msg !== undefined && msg !== ""){
+					$("#resultalert").html(msg);
+				} else {
+					return false;
+				}
+				timeout = timeout || 3000;
+				$('#resultalert').show();
+				setTimeout(function(){
+					$('#resultalert').hide();
+					if(callback){
+						callback();
+					}
+				},timeout);
+			}
+		};
+	})();
+</script>

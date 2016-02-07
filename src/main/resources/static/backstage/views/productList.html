@@ -49,12 +49,17 @@
                             <tbody>
                                 <tr ng-repeat="one in productList">
                                     <td>{{one.name}}</td>
-                                    <td>{{one.name}}</td>
-                                    <td>{{one.name}}</td>
-                                    <td>{{one.name}}</td>
-                                    <td>{{one.name}}</td>
-                                    <td>{{one.name}}</td>
-                                    <td>{{one.name}}</td>
+                                    <td>{{one.description}}</td>
+                                    <td>{{one.spec}}</td>
+                                    <td>
+                                        <img ng-src="{{'/rest/file/'+one.icon}}" style="width:30px;height:30px;">
+                                    </td>
+                                    <td ng-switch="{{one.isNew}}">
+                                        <span ng-switch-when="0">否</span>
+                                        <span ng-switch-when="1">是</span>
+                                    </td>
+                                    <td>{{one.created | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                                    <td>{{one.productType.name}}</td>
                                     <td ng-switch="one.status">
                                         <span ng-switch-when="0" class="label label-danger">禁用</span>
                                         <span ng-switch-when="1" class="label label-success">启用</span>
