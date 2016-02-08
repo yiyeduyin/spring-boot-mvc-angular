@@ -1,0 +1,21 @@
+.formtemplate .resultalert{
+    background-color: #0f1d40;
+    min-width: 186px;
+    height: 92px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    color: #dbe1ef;
+    font-size: 18px;
+    text-align: center;
+    line-height:80px ;
+    position: fixed;
+    left: 40%;
+    bottom: 50%;
+    opacity:0.8;
+    padding: 0 6px 0 6px;
+    z-index: 99999;
+}
+
+.formtemplate .resultalert.active{
+    display: none;
+}

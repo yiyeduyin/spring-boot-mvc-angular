@@ -13,5 +13,9 @@ public class Util {
 	public static boolean isNotNull(Long s){
 		return s == null? false:true;
 	}
+	
+	public static boolean isNotNull(CharSequence s){
+		return (s == null || s.length() < 1) ? false : true;
+	}
 
 }

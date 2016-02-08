@@ -3,7 +3,6 @@ package com.cmiracle.controller.admin;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +15,7 @@ import com.cmiracle.comment.DTO;
 import com.cmiracle.comment.MediaType;
 import com.cmiracle.domain.AdminUser;
 import com.cmiracle.service.AdminUserService;
+import com.cmiracle.util.PasswordEncodeUtil;
 import com.cmiracle.util.Util;
 
 @RestController
@@ -24,6 +24,9 @@ public class AdminCtrl {
 	
 	@Autowired
 	private AdminUserService adminUserService;
+	
+	@Autowired
+	private PasswordEncodeUtil passwordEncodeUtil;
 
 	@RequestMapping("/adminUser")
 	@ResponseBody
@@ -32,7 +35,7 @@ public class AdminCtrl {
 	}
 	
 	/**
-	 * 更新
+	 * 更新用户名
 	 * @param id
 	 * @return
 	 */
@@ -51,17 +54,16 @@ public class AdminCtrl {
 				return dto.toJson();
 			}
 			
-			AdminUser oldAdminUser = adminUserService.findByUsername(username);
+			AdminUser oldAdminUser = adminUserService.findByUsername(adminName);
 			
-			if(!oldAdminUser.role.equals("ADMIN")){
+			if(oldAdminUser == null || !oldAdminUser.role.equals("ADMIN")){
 				dto.errMsg = "对不起，您当前操作没有权限";
 				dto.errCode = 2;
 				return dto.toJson();
 			}
 			
 			//校验原密码
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String oldHashedPassword = passwordEncoder.encode(password);
+			String oldHashedPassword = passwordEncodeUtil.encode(password);
 			if(!oldHashedPassword.equals(oldAdminUser.password)){
 				dto.errMsg = "对不起，密码错误";
 				dto.errCode = 3;
@@ -83,9 +85,9 @@ public class AdminCtrl {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/{id}/password", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8)
+	@RequestMapping(value = "/{adminName}/password", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8)
 	@ResponseBody
-	public String updatePassword(@PathVariable("id") Long id,
+	public String updatePassword(@PathVariable("adminName") String adminName,
 			@RequestBody JSONObject content) {
 		DTO dto = DTO.newDTO();
 		try {
@@ -98,7 +100,7 @@ public class AdminCtrl {
 				return dto.toJson();
 			}
 			
-			AdminUser oldAdminUser = adminUserService.get(id);
+			AdminUser oldAdminUser = adminUserService.findByUsername(adminName);
 			
 			if(!oldAdminUser.role.equals("ADMIN")){
 				dto.errMsg = "对不起，您当前操作没有权限";
@@ -107,16 +109,15 @@ public class AdminCtrl {
 			}
 			
 			//校验原密码
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String oldHashedPassword = passwordEncoder.encode(oldPassword);
+			String oldHashedPassword = passwordEncodeUtil.encode(oldPassword);
 			if(!oldHashedPassword.equals(oldAdminUser.password)){
 				dto.errMsg = "对不起，密码错误";
 				dto.errCode = 3;
 				return dto.toJson();
 			}
 			//加密密码
-			String newHashedPassword = passwordEncoder.encode(newPassword);
-			oldAdminUser.username = newHashedPassword;
+			String newHashedPassword = passwordEncodeUtil.encode(newPassword);
+			oldAdminUser.password = newHashedPassword;
 			adminUserService.update(oldAdminUser);
 			return dto.toJson();
 		} catch (Exception e) {
