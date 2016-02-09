@@ -59,9 +59,9 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 新产品 </label>
                         <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="product.isNew" >
-                                <option value="0">否</option>
-                                <option value="1">是</option>
+                            <select class="col-xs-10 col-sm-5" id="form-field-select-1">
+                                <option ng-model="product.isNew" ng-value="0">否</option>
+                                <option ng-model="product.isNew" ng-value="1">是</option>
                             </select>
                         </div>
                     </div>
@@ -79,16 +79,23 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 图标 </label>
-                        <div class="col-sm-9">
-                            <input type="file" ngf-select ng-model="icon" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" style="margin-top:6px" />
+                        <div class="col-sm-9" ng-show="!product.icon">
+                            <label class="ace-file-input ace-file-multiple">
+                                <input type="file" ngf-select ng-model="icon" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ng-change="uploadIcon()" id="id-input-file-3">
+                                <span class="ace-file-container" style="width:140px;height:115px;" data-title="上传图标">
+                                    <span class="ace-file-name">
+                                    <i class=" ace-icon ace-icon fa fa-picture-o"></i>
+                                    </span>
+                                </span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        </label>
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
-                        <div class="col-sm-9">
-                            <input type="button" id="image" value="上传图标" class="col-xs-10 col-sm-2" ng-click="uploadIcon()" />
-                            <span>{{upload_image_message}}</span>
+
+                        <div class="col-sm-9" ng-show="product.icon">
+                            <div ng-if="product.icon"><img ng-src="{{'/rest/file/'+product.icon}}" style="width:300px;height:300px;">
+                            </div>
+                            <button class="btn btn-app btn-danger btn-sm" style="width: 300px" ng-click="removeIcon()">
+                                <i class="ace-icon fa fa-trash-o bigger-30"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="form-group">
@@ -112,8 +119,8 @@
                                 <i class="ace-icon fa fa-check bigger-110"></i> 提交
                             </button>
                             &nbsp; &nbsp; &nbsp;
-                            <button class="btn" type="reset">
-                                <i class="ace-icon fa fa-undo bigger-110"></i> Reset
+                            <button class="btn" type="reset" ng-click="goBack()">
+                                <i class="ace-icon fa fa-reply bigger-110"></i> 返回
                             </button>
                         </div>
                     </div>

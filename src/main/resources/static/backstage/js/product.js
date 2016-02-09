@@ -32,9 +32,26 @@ angular.module('app').controller('ProductListCtrl', function($rootScope, $scope,
 
     //删除
     $scope.delete = function(id) {
-        $http.delete('/admin/rest/product/' + id, {}).success(function(res) {
-            if (res.errcode == 0) {
-                $scope.findList();
+        bootbox.dialog({
+            message: "确认删除该纪录吗？",
+            title: "操作提示",
+            buttons: {
+                cancel: {
+                    label: "取消",
+                    className: "btn",
+                    callback: function() {}
+                },
+                ok: {
+                    label: "确定",
+                    className: "btn-primary",
+                    callback: function() {
+                        $http.delete('/admin/rest/product/' + id, {}).success(function(res) {
+                            if (res.errcode == 0) {
+                                $scope.findList();
+                            }
+                        });
+                    }
+                }
             }
         });
     }
@@ -78,7 +95,8 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
         $http.get('/admin/rest/productType/list', {
             params: {
                 pageNo: 1,
-                pageSize: 9999
+                pageSize: 9999,
+                status: 1
             }
         }).success(function(res) {
             if (res.errcode == 0) {
@@ -93,11 +111,17 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
             $http.get('/admin/rest/product/' + id, {}).success(function(res) {
                 if (res.errcode == 0) {
                     $scope.product = res.data;
+                    $scope.product.productTypeId = $scope.product.productType.id
                 }
             });
         }
     }
     $scope.init();
+
+    //跳转到编辑页
+    $scope.goBack = function() {
+        $location.path("/product/list");
+    }
 
 
     // upload later on form submit or something similar
@@ -109,7 +133,6 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
                     file: $scope.icon
                 }
             }).then(function(res) {
-                console.log(res.data);
                 $scope.product.icon = res.data.data;
                 $scope.upload_image_message = "上传成功";
             }, function(resp) {
@@ -121,6 +144,10 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
         }
     };
 
+    $scope.removeIcon = function () {
+        $scope.product.icon = "";
+    }
+
     $scope.uploadFile = function() {
         if ($scope.file) {
             Upload.upload({
@@ -129,7 +156,7 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
                     file: $scope.file
                 }
             }).then(function(res) {
-                $scope.product.fileName = res.data;
+                $scope.product.fileName = res.data.data;
                 $scope.upload_file_message = "上传成功";
             }, function(res) {
                 $scope.upload_file_message = "上传失败";
@@ -143,7 +170,6 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
 
     $scope.submit = function() {
         if (id) { //更新
-            console.log($scope.product);
             $scope.product.created = null;
             $http.put('/admin/rest/product/' + id, $scope.product).success(function(res) {
                 if (res.errcode == 0) {

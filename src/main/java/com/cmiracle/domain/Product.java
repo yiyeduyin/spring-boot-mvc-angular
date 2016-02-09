@@ -5,10 +5,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -86,10 +93,15 @@ public class Product implements Serializable {
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "created", nullable = true)
 	public Date created;
-
+	
 	/**
-	 * 类型ID
+	 * 类型
 	 */
-	@Column(name = "productTypeId", nullable = false)
+	@OneToOne(fetch= FetchType.EAGER,optional=true)
+    @JoinColumn(name = "productTypeId", nullable = false)
+    @NotFound(action=NotFoundAction.IGNORE)
+    public ProductType productType;
+	
+	@Transient
 	public Long productTypeId;
 }

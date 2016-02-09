@@ -15,6 +15,7 @@ import com.cmiracle.comment.DTO;
 import com.cmiracle.comment.MediaType;
 import com.cmiracle.domain.Product;
 import com.cmiracle.service.ProductService;
+import com.cmiracle.service.ProductTypeService;
 import com.cmiracle.util.Util;
 
 @RestController
@@ -23,6 +24,9 @@ public class ProductCtrl {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private ProductTypeService producttypeService;
 	
 	/**
 	 * 创建
@@ -34,6 +38,12 @@ public class ProductCtrl {
 	public String created(@RequestBody Product product) {
 		DTO dto = DTO.newDTO();
 		try {
+			if(!Util.isNotNull(product.productTypeId)){
+				dto.errMsg = "产品类型为空";
+				dto.errCode = 1;
+				return dto.toJson();
+			}
+			product.productType = producttypeService.get(product.productTypeId);
 			product.created = new Date();
 			product.status = 1;
 			productService.save(product);
@@ -83,7 +93,7 @@ public class ProductCtrl {
 				oldProduct.name = newProduct.name;
 			}
 			if(Util.isNotNull(newProduct.productTypeId)){
-				oldProduct.productTypeId = newProduct.productTypeId;
+				oldProduct.productType = producttypeService.get(newProduct.productTypeId);
 			}
 			if(Util.isNotNull(newProduct.isNew)){
 				oldProduct.isNew = newProduct.isNew;
@@ -99,6 +109,9 @@ public class ProductCtrl {
 			}
 			if(Util.isNotNull(newProduct.icon)){
 				oldProduct.icon = newProduct.icon;
+			}
+			if(Util.isNotNull(newProduct.status)){
+				oldProduct.status = newProduct.status;
 			}
 			productService.update(oldProduct);
 			return dto.toJson();

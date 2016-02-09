@@ -21,9 +21,9 @@ angular.module('app').controller('ProductTypeListCtrl', function($rootScope, $sc
             if (res.errcode == 0) {
                 $scope.productTypeList = res.data.content;
                 $scope.total = res.data.totalElements;
-                $scope.lastPageNo = parseInt($scope.total  / $scope.pageSize);
-                if(($scope.total  % $scope.pageSize) > 0){
-                    $scope.lastPageNo+=1;
+                $scope.lastPageNo = parseInt($scope.total / $scope.pageSize);
+                if (($scope.total % $scope.pageSize) > 0) {
+                    $scope.lastPageNo += 1;
                 }
             }
         });
@@ -32,9 +32,26 @@ angular.module('app').controller('ProductTypeListCtrl', function($rootScope, $sc
 
     //删除
     $scope.delete = function(id) {
-        $http.delete('/admin/rest/productType/' + id, {}).success(function(res) {
-            if (res.errcode == 0) {
-                $scope.findList();
+        bootbox.dialog({
+            message: "确认删除该纪录吗？",
+            title: "操作提示",
+            buttons: {
+                cancel: {
+                    label: "取消",
+                    className: "btn",
+                    callback: function() {}
+                },
+                ok: {
+                    label: "确定",
+                    className: "btn-primary",
+                    callback: function() {
+                        $http.delete('/admin/rest/productType/' + id, {}).success(function(res) {
+                            if (res.errcode == 0) {
+                                $scope.findList();
+                            }
+                        });
+                    }
+                }
             }
         });
     }
@@ -75,6 +92,11 @@ angular.module('app').controller('ProductTypeEditCtrl', function($rootScope, $sc
         }
     }
     $scope.init();
+
+    //跳转到编辑页
+    $scope.goBack = function(id) {
+        $location.path("/productType/list");
+    }
 
 
     $scope.submit = function() {
