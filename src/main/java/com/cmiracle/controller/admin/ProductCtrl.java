@@ -104,15 +104,11 @@ public class ProductCtrl {
 			if(Util.isNotNull(newProduct.spec)){
 				oldProduct.spec = newProduct.spec;
 			}
-			if(Util.isNotNull(newProduct.fileName)){
-				oldProduct.fileName = newProduct.fileName;
-			}
-			if(Util.isNotNull(newProduct.icon)){
-				oldProduct.icon = newProduct.icon;
-			}
 			if(Util.isNotNull(newProduct.status)){
 				oldProduct.status = newProduct.status;
 			}
+			oldProduct.icon = newProduct.icon;
+			oldProduct.fileName = newProduct.fileName;
 			productService.update(oldProduct);
 			return dto.toJson();
 		} catch (Exception e) {

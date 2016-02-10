@@ -148,6 +148,10 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
         $scope.product.icon = "";
     }
 
+    $scope.removeFile = function () {
+        $scope.product.fileName = "";
+    }
+
     $scope.uploadFile = function() {
         if ($scope.file) {
             Upload.upload({

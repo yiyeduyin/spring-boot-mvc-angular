@@ -16,14 +16,14 @@
             <li class="active">列表</li>
         </ul>
         <!-- /.breadcrumb -->
-        <div class="nav-search" id="nav-search">
+        <!-- <div class="nav-search" id="nav-search">
             <form class="form-search" ng-submit="findList()">
                 <span class="input-icon">
                     <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" ng-model="name" />
                     <i class="ace-icon fa fa-search nav-search-icon"></i>
                 </span>
             </form>
-        </div>
+        </div> -->
         <!-- /.nav-search -->
     </div>
     <div class="page-content">
@@ -54,7 +54,7 @@
                                     <td>{{one.description}}</td>
                                     <td>{{one.spec}}</td>
                                     <td>
-                                        <img ng-src="{{'/rest/file/'+one.icon}}" style="width:30px;height:30px;">
+                                        <img ng-src="{{'/rest/file/'+one.icon}}" style="width:30px;height:30px;" ng-if="one.icon">
                                     </td>
                                     <td ng-switch="{{one.isNew}}">
                                         <span ng-switch-when="0">否</span>

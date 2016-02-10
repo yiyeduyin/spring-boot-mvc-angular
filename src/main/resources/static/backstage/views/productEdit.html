@@ -94,22 +94,30 @@
                             <div ng-if="product.icon"><img ng-src="{{'/rest/file/'+product.icon}}" style="width:300px;height:300px;">
                             </div>
                             <button class="btn btn-app btn-danger btn-sm" style="width: 300px" ng-click="removeIcon()">
-                                <i class="ace-icon fa fa-trash-o bigger-30"></i>
+                                <i class="ace-icon fa fa-trash-o bigger-10"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-if="!product.fileName">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 文件 </label>
                         <div class="col-sm-9">
                             <input type="file" ngf-select ng-model="file" name="file" ngf-max-size="20MB" style="margin-top:6px" />
                         </div>
-                    </div>
-                    <div class="form-group">
-                        </label>
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
-                        <div class="col-sm-9">
+
+                        <div class="col-sm-9" style="margin-top:10px">
                             <input type="button" id="image" value="上传文件" class="col-xs-10 col-sm-2" ng-click="uploadFile()" />
                             <span>{{upload_file_message}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="product.fileName">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 文件 </label>
+                        <div class="col-sm-9" style="margin-top:3px">
+                            <span>{{product.fileName}}</span>
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn-danger" ng-click="removeFile()" >
+                                <!-- 删除文件 -->
+                                <i class="ace-icon fa fa-trash-o"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="space-4"></div>
