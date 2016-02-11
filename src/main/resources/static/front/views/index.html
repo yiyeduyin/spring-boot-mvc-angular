@@ -3,54 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <link type="text/css" rel="stylesheet" href="front/style/index.css" />
-<!-- <script type="text/javascript" src="script/jquery/jquery-2.1.1.js"></script>
- -->
-<!--  <script type="text/javascript" src="script/fontjs/index.js"></script>
- -->
-<script src="assets/js/angular-bootstrap.js" type="text/javascript"></script>
+<script src="assets/js/angular/angular.min.js"></script>
 <script src="front/js/index.js" type="text/javascript"></script>
 
 <title>信詠塑胶工业股份有限公司</title>
 </head>
 
 <body ng-app="frontApp" ng-controller="index">
-	<div id="head">
-		<div class="day">
-			<p class="lang_change">
-				<a href="#">中文</a> &nbsp;| &nbsp;<a href="#">English</a>
-			</p>
-		</div>
-	</div>
-	<div id="nav">
-		<ul>
-			<li><a href="/" class="first">首页</a></li>
-			<li><a href="/profile">公司简介</a></li>
-			<li><a href="/products">产品展示</a></li>
-			<li><a href="/engineerings">工程技术</a></li>
-			<li><a href="/certificates">资质荣誉</a></li>
-			<li><a href="/about" class="last">联系我们</a></li>
-
-			<li><input type="text" class="search" />
-				<p class="search_icon">Search</p></li>
-		</ul>
-	</div>
-	<div id="left">
-		<div class="list">
-			<ul id="leftnavtype">
-				<li class="list_title">产品类别</li>
-				<!--     <li><a href="#">>&nbsp;&nbsp;BOBBIN</a></li>
-      <li id="base"><a href="#">>&nbsp;&nbsp;BASE</a></li>
-      <li><a href="#">>&nbsp;&nbsp;CASE</a></li>
-      <li><a href="#">>&nbsp;&nbsp;SMD BOBBIN</a></li>
-      <li><a href="#">>&nbsp;&nbsp;SMD BASE</a></li>
-      <li><a href="#">>&nbsp;&nbsp;SMD CASE</a></li>
-      <li><a href="#">>&nbsp;&nbsp;COILFORMER</a></li>
-      <li><a href="#">>&nbsp;&nbsp;ADAPTOR</a></li>
-      <li><a href="#">>&nbsp;&nbsp;PARTITION</a></li> -->
-				<!--    <li><a href="#" class="list_last">>&nbsp;&nbsp;WHEELAXLE</a></li> -->
-			</ul>
-		</div>
-	</div>
+	<div ng-include src="'front/views/include/top.html'"></div>
+	<div ng-include src="'front/views/include/productType.html'"></div>
 	<div id="right">
 		<p class="company_title">公司简介</p>
 		<div class="intro">
@@ -67,19 +28,7 @@
 				种不同的塑料制品,我们为来自各行各业的客户提供最好的产品。</p>
 		</div>
 	</div>
-	<div id="contact">
-		<div class="voice">资质荣誉</div>
-		<div class="relation">在线留言</div>
-		<div class="address">
-			<img src="front/images/banner4.jpg" height="55" />
-			<ul>
-				<li>信詠塑胶工业股份有限公司</li>
-				<li>电话：0512-63457130</li>
-				<li>传真：0512-63457132</li>
-				<li>Email:jenqjye@jenqjye.com</li>
-			</ul>
-		</div>
-	</div>
+	<div ng-include src="'front/views/include/contact.html'"></div>
 	<div id="con">
 		<div class="np_head">
 			<p class="pro_title">热销新品</p>
@@ -106,7 +55,6 @@
 		<div class="pro_first"></div>
 		<div class="pro_last"></div>
 	</div>
-
-	<div id="bottom">&copy;信詠塑胶工业股份有限公司</div>
+	<div ng-include src="'front/views/include/foot.html'"></div>
 </body>
 </html>
