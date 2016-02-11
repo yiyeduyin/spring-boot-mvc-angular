@@ -4,10 +4,17 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 /**
  * 商品类型
@@ -40,5 +47,22 @@ public class ProductType implements Serializable {
 	 */
 	@Column(name = "status", nullable = true)
 	public Integer status;
+	
+	/**
+	 * 类型 0 父类型， 1 子类型
+	 */
+	@Column(name = "type", nullable = true)
+	public Integer type;
+	
+	/**
+	 * 类型
+	 */
+	@OneToOne(fetch= FetchType.EAGER,optional=true)
+    @JoinColumn(name = "parentProductTypeId", nullable = true)
+    @NotFound(action=NotFoundAction.IGNORE)
+    public ProductType parentProductType;
+	
+	@Transient
+	public Long parentProductTypeId;
 
 }

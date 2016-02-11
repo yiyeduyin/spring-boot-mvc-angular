@@ -32,6 +32,9 @@ public class ProductTypeCtrl {
 	public String add(@RequestBody ProductType productType) {
 		DTO dto = DTO.newDTO();
 		try {
+			if(Util.isNotNull(productType.parentProductTypeId)){
+				productType.parentProductType = productTypeService.get(productType.parentProductTypeId);
+			}
 			productType.status = 1;
 			productTypeService.save(productType);
 			return dto.toJson();
@@ -52,6 +55,7 @@ public class ProductTypeCtrl {
 	public @ResponseBody String findById(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
+			
 			ProductType productType = productTypeService.get(id);
 			dto.data = productType;
 			return dto.toJson();
@@ -81,6 +85,9 @@ public class ProductTypeCtrl {
 			}
 			if(Util.isNotNull(newProductType.status)){
 				oldProductType.status = newProductType.status;
+			}
+			if(Util.isNotNull(newProductType.parentProductTypeId)){
+				oldProductType.parentProductType = productTypeService.get(newProductType.parentProductTypeId);
 			}
 			productTypeService.update(oldProductType);
 			return dto.toJson();
@@ -124,11 +131,13 @@ public class ProductTypeCtrl {
 	public @ResponseBody String list(
 			@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
-			@RequestParam(value = "status",required = false) final Integer status,			
-			@RequestParam(value = "name",required = false) final String name) {
+			@RequestParam(value = "status",required = false) final Integer status,
+			@RequestParam(value = "type",required = false) final Integer type,	
+			@RequestParam(value = "name",required = false) final String name,
+			@RequestParam(value = "parentProductTypeId",required = false) final Integer parentProductTypeId) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productTypeService.findList(page, size, name, status);
+			dto.data = productTypeService.findList(page, size, name, status, type, parentProductTypeId);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

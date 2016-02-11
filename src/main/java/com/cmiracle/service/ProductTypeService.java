@@ -5,5 +5,5 @@ import com.cmiracle.domain.ProductType;
 
 public interface ProductTypeService extends BaseService<ProductType, Long> {
 	
-	public CommonPage<ProductType> findList(Integer page, Integer size, String name, Integer status);
+	public CommonPage<ProductType> findList(Integer page, Integer size, String name, Integer status, Integer type, Integer parentProductTypeId);
 }

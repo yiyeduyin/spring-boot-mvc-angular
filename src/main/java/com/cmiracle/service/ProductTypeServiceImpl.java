@@ -29,11 +29,12 @@ public class ProductTypeServiceImpl extends AbstractBaseServiceImpl<ProductType,
 	private ProductTypeRepository productTypeRepository;
 
 	@Override
-	public CommonPage<ProductType> findList(Integer page, Integer size, String name, Integer status) {
+	public CommonPage<ProductType> findList(Integer page, Integer size, String name, Integer status, Integer type,
+			Integer parentProductTypeId) {
 		// 分页
 		page = page - 1 >= 0 ? page - 1 : 0;
 		List<Order> sortList = new ArrayList<Order>();
-		//排序
+		// 排序
 		sortList.add(new Sort.Order(Direction.DESC, "id"));
 		Sort sort = new Sort(sortList);
 		PageRequest pageRequest = new PageRequest(page, size, sort);
@@ -48,10 +49,18 @@ public class ProductTypeServiceImpl extends AbstractBaseServiceImpl<ProductType,
 				if (Util.isNotNull(name)) {
 					predicateList.add(cb.like(root.<String> get("name"), "%" + name + "%"));
 				}
-				
+
 				if (Util.isNotNull(status)) {
-					predicateList.add(cb.equal(
-							root.<Integer> get("status"), status));
+					predicateList.add(cb.equal(root.<Integer> get("status"), status));
+				}
+
+				if (Util.isNotNull(type)) {
+					predicateList.add(cb.equal(root.<Integer> get("type"), type));
+				}
+
+				if (Util.isNotNull(parentProductTypeId)) {
+					predicateList
+							.add(cb.equal(root.<ProductType> get("parentProductType").get("id"), parentProductTypeId));
 				}
 
 				Predicate[] predicates = new Predicate[predicateList.size()];

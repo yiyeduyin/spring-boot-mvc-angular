@@ -5,6 +5,7 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/home.html',
             controller: 'home'
         })
+        //产品类型
         .when('/productType/list', {
             templateUrl: 'backstage/views/productTypeList.html',
             controller: 'ProductTypeListCtrl'
@@ -17,6 +18,20 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/productTypeEdit.html',
             controller: 'ProductTypeEditCtrl'
         })
+        //产品子类型
+        .when('/subProductType/list/:pid', {
+            templateUrl: 'backstage/views/subProductTypeList.html',
+            controller: 'SubProductTypeListCtrl'
+        })
+        .when('/subProductType/:pid/add', {
+            templateUrl: 'backstage/views/subProductTypeEdit.html',
+            controller: 'SubProductTypeEditCtrl'
+        })
+        .when('/subProductType/:pid/edit/:id', {
+            templateUrl: 'backstage/views/subProductTypeEdit.html',
+            controller: 'SubProductTypeEditCtrl'
+        })
+        //消息
         .when('/message/list', {
             templateUrl: 'backstage/views/messageList.html',
             controller: 'MessageListCtrl'
@@ -25,6 +40,7 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/messageEdit.html',
             controller: 'MessageEditCtrl'
         })
+        //产品
         .when('/product/list', {
             templateUrl: 'backstage/views/productList.html',
             controller: 'ProductListCtrl'
@@ -37,6 +53,7 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/productEdit.html',
             controller: 'ProductEditCtrl'
         })
+        //管理员
         .when('/admin/edit', {
             templateUrl: 'backstage/views/adminEdit.html',
             controller: 'AdminEditCtrl'

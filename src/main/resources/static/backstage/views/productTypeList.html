@@ -11,7 +11,7 @@
                 <a href="#/admin">Home</a>
             </li>
             <li>
-                <a href="#">产品类型管理</a>
+                <a href="#/productType/list">产品类型管理</a>
             </li>
             <li class="active">列表</li>
         </ul>
@@ -49,6 +49,10 @@
                                     </td>
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
+                                            <button class="btn btn-xs btn-info" ng-click="goToSubList(one.id)">
+                                                <i class="ace-icon fa fa-list bigger-120"></i>
+                                                子类型
+                                            </button>
                                             <button class="btn btn-xs btn-info" ng-click="goToEdit(one.id)">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                                 编辑

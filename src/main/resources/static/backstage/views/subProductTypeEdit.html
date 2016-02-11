@@ -11,9 +11,9 @@
                 <a href="#/admin">Home</a>
             </li>
             <li>
-                <a href="#">产品类型管理</a>
+                <a href="#/productType/list">产品类型管理</a>
             </li>
-            <li class="active">产品编辑</li>
+            <li class="active">子产品类型编辑</li>
         </ul>
         <!-- /.breadcrumb -->
         <div class="nav-search" id="nav-search">
@@ -29,6 +29,15 @@
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
                 <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 父类型 </label>
+                        <div class="col-sm-9">
+                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="productType.parentProductTypeId" ng-options="type.id as type.name for type in productTypeList">
+                                <option value="">请选择产品类型</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称： </label>
                         <div class="col-sm-9">
