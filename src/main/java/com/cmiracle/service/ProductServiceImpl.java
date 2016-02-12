@@ -29,7 +29,7 @@ public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long> i
 	private ProductRepository productRepository;
 
 	@Override
-	public CommonPage<Product> findList(Integer page, Integer size, String typeName, Integer status) {
+	public CommonPage<Product> findList(Integer page, Integer size, String name, Integer isNew, Integer status) {
 		// 分页
 		page = page - 1 >= 0 ? page - 1 : 0;
 		List<Order> sortList = new ArrayList<Order>();
@@ -45,13 +45,18 @@ public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long> i
 				Predicate predicate = cb.conjunction();
 				List<Predicate> predicateList = new ArrayList<Predicate>();
 
-				if (Util.isNotNull(typeName)) {
-					predicateList.add(cb.like(root.<String> get("typeName"), "%" + typeName + "%"));
+				if (Util.isNotNull(name)) {
+					predicateList.add(cb.like(root.<String> get("name"), "%" + name + "%"));
 				}
 				
 				if (Util.isNotNull(status)) {
 					predicateList.add(cb.equal(
 							root.<Integer> get("status"), status));
+				}
+				
+				if (Util.isNotNull(isNew)) {
+					predicateList.add(cb.equal(
+							root.<Integer> get("isNew"), isNew));
 				}
 
 				Predicate[] predicates = new Predicate[predicateList.size()];

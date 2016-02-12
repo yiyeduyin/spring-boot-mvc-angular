@@ -44,6 +44,9 @@ public class ProductCtrl {
 				return dto.toJson();
 			}
 			product.productType = producttypeService.get(product.productTypeId);
+			if(Util.isNotNull(product.subProductTypeId)){
+				product.subProductType = producttypeService.get(product.subProductTypeId);
+			}
 			product.created = new Date();
 			product.status = 1;
 			productService.save(product);
@@ -94,6 +97,9 @@ public class ProductCtrl {
 			}
 			if(Util.isNotNull(newProduct.productTypeId)){
 				oldProduct.productType = producttypeService.get(newProduct.productTypeId);
+			}
+			if(Util.isNotNull(newProduct.subProductTypeId)){
+				oldProduct.subProductType = producttypeService.get(newProduct.subProductTypeId);
 			}
 			if(Util.isNotNull(newProduct.isNew)){
 				oldProduct.isNew = newProduct.isNew;
@@ -152,10 +158,11 @@ public class ProductCtrl {
 			@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
 			@RequestParam(value = "status",required = false) final Integer status,			
-			@RequestParam(value = "typeName",required = false) final String typeName) {
+			@RequestParam(value = "name",required = false) final String name,
+			@RequestParam(value = "isNew", required = false) Integer isNew) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productService.findList(page, size, typeName, status);
+			dto.data = productService.findList(page, size, name, isNew, status);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

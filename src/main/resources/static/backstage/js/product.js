@@ -83,10 +83,11 @@ angular.module('app').controller('ProductListCtrl', function($rootScope, $scope,
 angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope, $http, $routeParams, $location, Upload) {
     var id = $routeParams.id;
     $scope.product = {
-        isNew: 0
+        isNew: "0"
     };
 
     $scope.productTypeList = [];
+    $scope.subProductTypeList = [];
 
     $scope.upload_image_message = "";
     $scope.upload_file_message = "";
@@ -96,7 +97,8 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
             params: {
                 pageNo: 1,
                 pageSize: 9999,
-                status: 1
+                status: 1,
+                type: 0
             }
         }).success(function(res) {
             if (res.errcode == 0) {
@@ -111,12 +113,43 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
             $http.get('/admin/rest/product/' + id, {}).success(function(res) {
                 if (res.errcode == 0) {
                     $scope.product = res.data;
-                    $scope.product.productTypeId = $scope.product.productType.id
+                    $scope.product.isNew = $scope.product.isNew + "";
+                    if($scope.product.productType){
+                        $scope.product.productTypeId = $scope.product.productType.id;
+                    }
+                    if($scope.product.subProductType){
+                        $scope.product.subProductTypeId = $scope.product.subProductType.id;
+                    }
+                    $scope.selectSubType();
                 }
             });
         }
     }
     $scope.init();
+
+
+    $scope.selectSubType = function(change_flag) {
+        if(change_flag){
+            $scope.product.subProductTypeId = "";
+        }
+        
+        if ($scope.product.productTypeId) {
+            $http.get('/admin/rest/productType/list', {
+                params: {
+                    pageNo: 1,
+                    pageSize: 9999,
+                    status: 1,
+                    type: 1,
+                    parentProductTypeId: $scope.product.productTypeId
+                }
+            }).success(function(res) {
+                if (res.errcode == 0) {
+                    $scope.subProductTypeList = res.data.content;
+                }
+            });
+        }
+    }
+    
 
     //跳转到编辑页
     $scope.goBack = function() {
@@ -144,11 +177,11 @@ angular.module('app').controller('ProductEditCtrl', function($rootScope, $scope,
         }
     };
 
-    $scope.removeIcon = function () {
+    $scope.removeIcon = function() {
         $scope.product.icon = "";
     }
 
-    $scope.removeFile = function () {
+    $scope.removeFile = function() {
         $scope.product.fileName = "";
     }
 

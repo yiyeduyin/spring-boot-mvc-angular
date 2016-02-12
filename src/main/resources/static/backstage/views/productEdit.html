@@ -40,17 +40,28 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 产品类型 </label>
                         <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="product.productTypeId" ng-options="type.id as type.name for type in productTypeList">
+                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="product.productTypeId" ng-options="type.id as type.name for type in productTypeList" ng-change="selectSubType(1)">
                                 <option value="">请选择产品类型</option>
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-group" ng-if="subProductTypeList.length > 0">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 子产品类型 </label>
+                        <div class="col-sm-9">
+                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="product.subProductTypeId" ng-options="type.id as type.name for type in subProductTypeList">
+                                <option value="">请选择产品类型</option>
+                            </select>
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 新产品 </label>
                         <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-select-1">
-                                <option ng-model="product.isNew" ng-value="0">否</option>
-                                <option ng-model="product.isNew" ng-value="1">是</option>
+                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="product.isNew">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
                             </select>
                         </div>
                     </div>
@@ -70,7 +81,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 图标 </label>
                         <div class="col-sm-9" ng-show="!product.icon">
                             <label class="ace-file-input ace-file-multiple">
-                                <input type="file" ngf-select ng-model="icon" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ng-change="uploadIcon()" id="id-input-file-3">
+                                <input type="file" ngf-select ng-model="icon" name="icon" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ng-change="uploadIcon()" id="id-input-file-3">
                                 <span class="ace-file-container" style="width:140px;height:115px;" data-title="上传图标">
                                     <span class="ace-file-name">
                                     <i class=" ace-icon ace-icon fa fa-picture-o"></i>
@@ -87,7 +98,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="form-group" ng-if="!product.fileName">
+                    <div class="form-group" ng-show="!product.fileName">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 文件 </label>
                         <div class="col-sm-9">
                             <input type="file" ngf-select ng-model="file" name="file" ngf-max-size="20MB" style="margin-top:6px" />
@@ -98,7 +109,7 @@
                             <span>{{upload_file_message}}</span>
                         </div>
                     </div>
-                    <div class="form-group" ng-if="product.fileName">
+                    <div class="form-group" ng-show="product.fileName">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 文件 </label>
                         <div class="col-sm-9" style="margin-top:3px">
                             <span>{{product.fileName}}</span>

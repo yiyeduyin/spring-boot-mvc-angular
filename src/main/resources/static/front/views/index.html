@@ -32,28 +32,29 @@
 	<div id="con">
 		<div class="np_head">
 			<p class="pro_title">热销新品</p>
-			<p class="pro_more">More>></p>
+			<!-- <p class="pro_more">More>></p> -->
 		</div>
 		<div class="np_pro">
-			<div class="pro_first">
+			<div class="pro_first" ng-repeat="one in productList" ng-click="openProductFile(one.fileName)"> 
+				<div class="pro_img">
+					<img ng-src="{{'/rest/file/'+one.icon}}" style="width:128px;height:105px;" ng-if="one.icon" />
+					<img src="" style="width:128px;height:105px;" ng-if="!one.icon" />
+				</div>
+				<div class="pro_intro">{{one.name}}</div>
+			</div>
+			<!-- <div class="pro_first">
 				<div class="pro_img">
 					<img src="front/images/hotpro1.jpg" />
 				</div>
 				<div class="pro_intro">BOBBIN</div>
-			</div>
-			<div class="pro_first">
-				<div class="pro_img">
-					<img src="front/images/hotpro1.jpg" />
-				</div>
-				<div class="pro_intro">BOBBIN</div>
-			</div>
+			</div> -->
 		</div>
+		<!-- <div class="pro_first"></div>
 		<div class="pro_first"></div>
 		<div class="pro_first"></div>
 		<div class="pro_first"></div>
 		<div class="pro_first"></div>
-		<div class="pro_first"></div>
-		<div class="pro_last"></div>
+		<div class="pro_last"></div> -->
 	</div>
 	<div ng-include src="'front/views/include/foot.html'"></div>
 </body>

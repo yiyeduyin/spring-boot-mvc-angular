@@ -348,6 +348,7 @@ body {
 	background: #fff;
 	border: 1px solid #ccc;
 	box-shadow: 2px 2px 5px 1px #E0E7EF;
+	cursor:pointer;
 }
 
 .pro_last,.products_last {

@@ -53,10 +53,11 @@ public class VisitorProductCtrl {
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8)
 	public @ResponseBody String list(@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
-			@RequestParam(value = "typeName", required = false) final String typeName) {
+			@RequestParam(value = "name", required = false) final String name,
+			@RequestParam(value = "isNew", required = false) Integer isNew) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productService.findList(page, size, typeName, 1);
+			dto.data = productService.findList(page, size, name, isNew, 1);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

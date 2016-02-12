@@ -102,6 +102,17 @@ public class Product implements Serializable {
     @NotFound(action=NotFoundAction.IGNORE)
     public ProductType productType;
 	
+	/**
+	 * 子类型
+	 */
+	@OneToOne(fetch= FetchType.EAGER,optional=true)
+    @JoinColumn(name = "subProductTypeId", nullable = true)
+    @NotFound(action=NotFoundAction.IGNORE)
+    public ProductType subProductType;
+	
 	@Transient
 	public Long productTypeId;
+	
+	@Transient
+	public Long subProductTypeId;
 }
