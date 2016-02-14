@@ -91,28 +91,7 @@ public class ProductCtrl {
 		DTO dto = DTO.newDTO();
 		try {
 			Product oldProduct =  productService.get(id);
-			
-			if(Util.isNotNull(newProduct.name)){
-				oldProduct.name = newProduct.name;
-			}
-			if(Util.isNotNull(newProduct.productTypeId)){
-				oldProduct.productType = producttypeService.get(newProduct.productTypeId);
-			}
-			if(Util.isNotNull(newProduct.subProductTypeId)){
-				oldProduct.subProductType = producttypeService.get(newProduct.subProductTypeId);
-			}
-			if(Util.isNotNull(newProduct.isNew)){
-				oldProduct.isNew = newProduct.isNew;
-			}
-			if(Util.isNotNull(newProduct.description)){
-				oldProduct.description = newProduct.description;
-			}
-			if(Util.isNotNull(newProduct.spec)){
-				oldProduct.spec = newProduct.spec;
-			}
-			if(Util.isNotNull(newProduct.status)){
-				oldProduct.status = newProduct.status;
-			}
+			update(newProduct, oldProduct);
 			oldProduct.icon = newProduct.icon;
 			oldProduct.fileName = newProduct.fileName;
 			productService.update(oldProduct);
@@ -122,6 +101,55 @@ public class ProductCtrl {
 			dto.errMsg = "error";
 			dto.errCode = -1;
 			return dto.toJson();
+		}
+	}
+
+
+	private void update(Product newProduct, Product oldProduct) {
+		if(Util.isNotNull(newProduct.name)){
+			oldProduct.name = newProduct.name;
+		}
+		if(Util.isNotNull(newProduct.productTypeId)){
+			oldProduct.productType = producttypeService.get(newProduct.productTypeId);
+		}
+		if(Util.isNotNull(newProduct.subProductTypeId)){
+			oldProduct.subProductType = producttypeService.get(newProduct.subProductTypeId);
+		}
+		if(Util.isNotNull(newProduct.isNew)){
+			oldProduct.isNew = newProduct.isNew;
+		}
+		if(Util.isNotNull(newProduct.description)){
+			oldProduct.description = newProduct.description;
+		}
+		if(Util.isNotNull(newProduct.spec)){
+			oldProduct.spec = newProduct.spec;
+		}
+		if(Util.isNotNull(newProduct.status)){
+			oldProduct.status = newProduct.status;
+		}
+		if(Util.isNotNull(newProduct.drawingNo)){
+			oldProduct.drawingNo = newProduct.drawingNo;
+		}
+		if(Util.isNotNull(newProduct.coreType)){
+			oldProduct.coreType = newProduct.coreType;
+		}
+		if(Util.isNotNull(newProduct.row)){
+			oldProduct.row = newProduct.row;
+		}
+		if(Util.isNotNull(newProduct.pitch)){
+			oldProduct.pitch = newProduct.pitch;
+		}
+		if(Util.isNotNull(newProduct.pins)){
+			oldProduct.pins = newProduct.pins;
+		}
+		if(Util.isNotNull(newProduct.style)){
+			oldProduct.style = newProduct.style;
+		}
+		if(Util.isNotNull(newProduct.ml)){
+			oldProduct.ml = newProduct.ml;
+		}
+		if(Util.isNotNull(newProduct.sec)){
+			oldProduct.sec = newProduct.sec;
 		}
 	}
 	

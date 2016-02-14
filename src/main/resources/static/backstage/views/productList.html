@@ -35,27 +35,43 @@
                         <table id="simple-table" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th>图标</th>
                                     <th>名称</th>
                                     <th>类型</th>
                                     <th>描述</th>
-                                    <th>规格</th>
-                                    <th>图标</th>
-                                    <th>是否新产品</th>
+                                    <!-- <th>规格</th> -->
+                                    <th>Drawing No</th>
+                                    <th>Core Type</th>
+                                    <th>Row</th>
+                                    <th>Pitch</th>
+                                    <th>Pins</th>
+                                    <th>Style</th>
+                                    <th>M'L</th>
+                                    <th>Sec</th>
+                                    <th>新产品</th>
                                     <th>日期</th>
                                     <th>文件</th>
                                     <th>状态</th>
-                                    <th>操作</th>
+                                    <th style="width: 50px">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="one in productList">
-                                    <td>{{one.name}}</td>
-                                    <td>{{one.productType.name}}</td>
-                                    <td>{{one.description}}</td>
-                                    <td>{{one.spec}}</td>
                                     <td>
                                         <img ng-src="{{'/rest/file/'+one.icon}}" style="width:30px;height:30px;" ng-if="one.icon">
                                     </td>
+                                    <td>{{one.name}}</td>
+                                    <td>{{one.productType.name}}</td>
+                                    <td>{{one.description}}</td>
+                                    <!-- <td>{{one.spec}}</td> -->
+                                    <td>{{one.drawingNo}}</td>
+                                    <td>{{one.coreType}}</td>
+                                    <td>{{one.row}}</td>
+                                    <td>{{one.pitch}}</td>
+                                    <td>{{one.pins}}</td>
+                                    <td>{{one.style}}</td>
+                                    <td>{{one.ml}}</td>
+                                    <td>{{one.sec}}</td>
                                     <td ng-switch="{{one.isNew}}">
                                         <span ng-switch-when="0">否</span>
                                         <span ng-switch-when="1">是</span>

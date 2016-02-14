@@ -110,6 +110,54 @@ public class Product implements Serializable {
     @NotFound(action=NotFoundAction.IGNORE)
     public ProductType subProductType;
 	
+	/**
+	 * Drawing No
+	 */
+	@Column(name = "drawingNo", nullable = true)
+	public String drawingNo;
+	
+	/**
+	 * coreType
+	 */
+	@Column(name = "coreType", nullable = true)
+	public String coreType;
+	
+	/**
+	 * Row
+	 */
+	@Column(name = "row", nullable = true)
+	public String row;
+	
+	/**
+	 * Pitch
+	 */
+	@Column(name = "pitch", nullable = true)
+	public String pitch;
+	
+	/**
+	 * Pins
+	 */
+	@Column(name = "pins", nullable = true)
+	public String pins;
+	
+	/**
+	 * Style
+	 */
+	@Column(name = "style", nullable = true)
+	public String style;
+	
+	/**
+	 * ml
+	 */
+	@Column(name = "ml", nullable = true)
+	public String ml;
+	
+	/**
+	 * Sec
+	 */
+	@Column(name = "sec", nullable = true)
+	public String sec;
+	
 	@Transient
 	public Long productTypeId;
 	
