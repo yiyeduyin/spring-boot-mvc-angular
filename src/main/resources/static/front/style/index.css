@@ -117,10 +117,12 @@ body {
 	background: #FCE404;
 	cursor: pointer;
 }
-#nav .search_icon:hover{	
+
+#nav .search_icon:hover {
 	border-left: 1px solid #EAD300;
 	background: #EAD300;
 }
+
 #left {
 	float: left;
 	width: 208px;
@@ -188,7 +190,9 @@ body {
 	margin-top: 6px;
 	margin-left: 6px;
 }
-#right .company_title,.products_list,.engineerings_title,.certificates_title,.about_title {
+
+#right .company_title, .products_list, .engineerings_title,
+	.certificates_title, .about_title {
 	width: 786px;
 	height: 34px;
 	font-size: 18px;
@@ -209,7 +213,9 @@ body {
 	-o-border-radius: 0px 0px 4px 4px;
 	border: 1px solid #E3E3E3;
 }
-#right .profile_intro,.engineerings_intro,.certificates_intro,.about_intro{
+
+#right .profile_intro, .engineerings_intro, .certificates_intro,
+	.about_intro {
 	width: 784px;
 	height: 672px;
 	border: 1px solid #E3E3E3;
@@ -217,8 +223,8 @@ body {
 	-moz-border-radius: 0px 0px 4px 4px;
 	-webkit-border-radius: 0px 0px 4px 4px;
 	-o-border-radius: 0px 0px 4px 4px;
-	border: 1px solid #E3E3E3;
 }
+
 #right .intro img {
 	float: left;
 	margin: 18px 12px 0px 10px;
@@ -230,6 +236,7 @@ body {
 	line-height: 28px;
 	padding: 8px 12px 8px 10px;
 }
+
 #right .profile_intro img {
 	float: left;
 	margin: 18px 12px 0px 10px;
@@ -240,6 +247,101 @@ body {
 	color: #666;
 	line-height: 28px;
 	padding: 8px 12px 8px 10px;
+}
+
+#right .products_detail {
+	height: 642px;
+}
+
+#right .product_kind, #right .product_s_kind {
+	padding-top: 10px;
+}
+
+#right .product_kind table th, #right .product_kind table tr td, #right .product_s_kind table th,
+	#right .product_s_kind table tr td {
+	height: 32px;
+	text-align: center;
+}
+
+#right .product_kind table th, #right .product_s_kind table th {
+	width: 600px;
+	background: #006699;
+	border: 0px;
+	border-bottom: 2px solid #fff;
+	font-weight: bolder;
+	color: #fff;
+}
+
+#right .product_kind_tr {
+	color: #fff;
+	font-weight: bolder;
+	background: #0098E1;
+}
+
+#right .product_kind table tr td {
+	width: 100px;
+	border: 1px solid #fff;
+	background: #39BCFC;
+	border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	-o-border-radius: 16px;
+}
+
+#right .product_s_kind table tr td {
+	width: 100px;
+	border: 1px solid #fff;
+	background: #39BCFC;
+}
+
+#right .page {
+	float: left;
+	width: 788px;
+	height: 30px;
+}
+
+#right .page ul {
+	padding-left: 200px;
+	align: center;
+}
+
+#right .page ul li {
+	text-align: center;
+	display: inline;
+	float: left;
+	font-size: 12px;
+	color: #666;
+	padding: 4px;
+}
+
+#right .page ul li a {
+	text-decoration: none;
+	font-size: 12px;
+	color: #666;
+}
+
+#right .page ul li a:hover {
+	color: #0098E1;
+}
+#right .page_text{
+	margin:0px 3px 0px 3px;
+	width: 42px;
+	border: 1px solid #666;
+	outline: medium;
+}
+#right .page_search {
+	margin-top:-3px;
+	width: 38px;
+	height: 23px;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
+	border: 1px solid #666;
+	border-radius: 6px; 
+	-moz-border-radius : 6px; 
+	-webkit-border-radius :6px; 
+	-o-border-radius : 6px;
+	cursor: pointer;
 }
 
 #contact {
@@ -327,20 +429,20 @@ body {
 	border-bottom: 3px solid #4D95E8;
 }
 
-.pro_title, .pro_more,.products_title, .products_more {
+.pro_title, .pro_more, .products_title, .products_more {
 	display: inline-block;
 	float: left;
 	font-size: 18px;
 	color: #666;
 }
 
-.pro_more,.products_more{
+.pro_more, .products_more {
 	float: left;
 	margin-left: 580px;
 	font-size: 14px;
 }
 
-.pro_first, .pro_last,.products_first, .products_last {
+.pro_first, .pro_last, .products_first, .products_last {
 	margin: 6px 12px 6px 8px;
 	float: left;
 	width: 172px;
@@ -348,17 +450,18 @@ body {
 	background: #fff;
 	border: 1px solid #ccc;
 	box-shadow: 2px 2px 5px 1px #E0E7EF;
-	cursor:pointer;
+	cursor: pointer;
 }
 
-.pro_last,.products_last {
+.pro_last, .products_last {
 	margin-right: 0px;
 }
-.np_pro .pro_img,.np_products .products_img {
+
+.np_pro .pro_img, .np_products .products_img {
 	padding: 5px 5px 1px 22px;
 }
 
-.np_pro .pro_intro,.np_products .products_intro  {
+.np_pro .pro_intro, .np_products .products_intro {
 	height: 30px;
 	color: #fff;
 	background: #62AAFA;

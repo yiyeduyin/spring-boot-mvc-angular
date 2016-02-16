@@ -51,7 +51,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/engineerings").setViewName(frontPageRoutePrefix + "engineerings");
         registry.addViewController("/certificates").setViewName(frontPageRoutePrefix + "certificates");
         registry.addViewController("/about").setViewName(frontPageRoutePrefix + "about");
-        
+        registry.addViewController("/products_f").setViewName(frontPageRoutePrefix + "products_f");
+        registry.addViewController("/products_s").setViewName(frontPageRoutePrefix + "products_s");
     }
 	
 	

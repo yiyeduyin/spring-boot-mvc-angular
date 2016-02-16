@@ -15,16 +15,7 @@
 	<div id="right">
 		<p class="products_list">产品展示</p>
 
-		<!-- 产品子类型 -->
-		<div class="np_products"  ng-if="productTypeList.length > 0">
-			<div class="products_first" ng-repeat="one in productTypeList">
-				<!-- <div class="products_img">
-					<img ng-src="{{'/rest/file/'+one.icon}}" style="width:128px;height:105px;" ng-if="one.icon" />
-					<img src=""  style="width:128px;height:90px;" ng-if="!one.icon" />
-				</div> -->
-				<div class="products_intro">{{one.name}}</div>
-			</div>
-		</div>
+	
 
 		<!-- 产品展示 -->
 		<div class="np_products" ng-if="productTypeList.length == 0">
@@ -36,8 +27,21 @@
 				<div class="products_intro">{{one.name}}</div>
 			</div>
 		</div>
+		<div class="product_kind">
+			<table border="0" cellspacing="0">
+				<th colspan="6"></th>
+				<tr >
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
 	</div>
-
+	
 	<div ng-include src="'front/views/include/contact.html'"></div>
 	<div ng-include src="'front/views/include/foot.html'"></div>
 </body>
