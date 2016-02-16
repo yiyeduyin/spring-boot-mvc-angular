@@ -35,9 +35,10 @@ public class FileUploadController {
 	public @ResponseBody String singleUpload(@RequestParam("file") MultipartFile file) {
 		DTO dto = DTO.newDTO();
 		try {
-			createdFolderIfNotExists(fileUploadPath);
+			String uploadPath = getfileUploadPath();
+			createdFolderIfNotExists(uploadPath);
 			String fileName = file.getOriginalFilename();
-			String url = fileUploadPath + fileName;
+			String url = uploadPath + fileName;
 			file.transferTo(new File(url));
 			dto.data = fileName;
 			return dto.toJson();
@@ -66,7 +67,7 @@ public class FileUploadController {
 			String completeName = fileName + "." + suffix;
 			setFileType(suffix, response, completeName);
 			
-			File file = new File(fileUploadPath + completeName);
+			File file = new File(getfileUploadPath() + completeName);
 			if (file != null) {
 				// get your file as InputStream
 				InputStream is = new FileInputStream(file);
@@ -96,6 +97,10 @@ public class FileUploadController {
 			// 2.设置文件头，下载的文件名
 			response.setHeader("Content-Disposition", "attachment;fileName=" + completeName);
 		}
+	}
+	
+	private String getfileUploadPath(){
+		return System.getProperty("user.dir") + fileUploadPath;
 	}
 
 	/**
