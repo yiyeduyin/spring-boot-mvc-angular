@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -57,7 +57,7 @@ public class ProductType implements Serializable {
 	/**
 	 * 类型
 	 */
-	@OneToOne(fetch= FetchType.EAGER,optional=true)
+	@ManyToOne(fetch= FetchType.EAGER ,optional=true)
     @JoinColumn(name = "parentProductTypeId", nullable = true)
     @NotFound(action=NotFoundAction.IGNORE)
     public ProductType parentProductType;

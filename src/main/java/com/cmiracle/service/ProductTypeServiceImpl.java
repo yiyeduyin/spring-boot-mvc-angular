@@ -78,4 +78,9 @@ public class ProductTypeServiceImpl extends AbstractBaseServiceImpl<ProductType,
 		return commonPage;
 	}
 
+	@Override
+	public List<ProductType> findByParentProductType(Long pid) {
+		return productTypeRepository.findByParentProductType(pid);
+	}
+
 }

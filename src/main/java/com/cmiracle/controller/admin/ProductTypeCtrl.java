@@ -1,5 +1,7 @@
 package com.cmiracle.controller.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cmiracle.comment.DTO;
 import com.cmiracle.comment.MediaType;
+import com.cmiracle.domain.Product;
 import com.cmiracle.domain.ProductType;
+import com.cmiracle.service.ProductService;
 import com.cmiracle.service.ProductTypeService;
 import com.cmiracle.util.Util;
 
@@ -21,6 +25,9 @@ public class ProductTypeCtrl {
 	
 	@Autowired
 	private ProductTypeService productTypeService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	/**
 	 * 创建
@@ -55,7 +62,6 @@ public class ProductTypeCtrl {
 	public @ResponseBody String findById(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
-			
 			ProductType productType = productTypeService.get(id);
 			dto.data = productType;
 			return dto.toJson();
@@ -109,6 +115,14 @@ public class ProductTypeCtrl {
 	public String changeStatus(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
+			List<Product> products = productService.findByProductType(id);
+			products.forEach(t -> {
+				productService.delete(t.id);
+			});
+			List<ProductType> list = productTypeService.findByParentProductType(id);
+			list.forEach(t -> {
+				productTypeService.delete(t.id);
+			});
 			productTypeService.delete(id);
 			return dto.toJson();
 		} catch (Exception e) {
