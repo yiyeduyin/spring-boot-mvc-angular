@@ -286,19 +286,19 @@ body {
 	height: 642px;
 }
 
-#right .product_kind, #right .product_s_kind {
+#right .product_kind, #right .product_detail_kind {
 	padding-top: 10px;
 }
 
-#right .product_kind table th, #right .product_kind table tr td, #right .product_s_kind table th,
-	#right .product_s_kind table tr td {
+#right .product_kind table th, #right .product_kind table tr td, #right .product_detail_kind table th,
+	#right .product_detail_kind table tr td {
 	height: 32px;
 	text-align: center;
 }
 
-#right .product_kind table th, #right .product_s_kind table th {
-	width: 600px;
-	background: #006699;
+#right .product_kind table th, #right .product_detail_kind table th {
+	width: 752px;
+	background: #2072BC;
 	border: 0px;
 	border-bottom: 2px solid #fff;
 	font-weight: bolder;
@@ -314,19 +314,31 @@ body {
 #right .product_kind table tr td {
 	width: 100px;
 	border: 1px solid #fff;
-	background: #39BCFC;
+	background: #6AD1FF;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
 	border-radius: 16px;
 	-moz-border-radius: 16px;
 	-webkit-border-radius: 16px;
 	-o-border-radius: 16px;
 }
 
-#right .product_s_kind table tr td {
-	width: 100px;
+#right .product_kind table tr td:hover {
+	background: #00AAFF;
+}
+
+#right .product_detail_kind table tr td {
 	border: 1px solid #fff;
 	background: #39BCFC;
 }
+#right .product_infor:hover{
+	text-decoration:underline;
 
+}
+#right .product_file{
+	cursor:pointer;
+}
 #right .page {
 	float: left;
 	width: 788px;
@@ -407,26 +419,30 @@ body {
 	width: 436px;
 }
 /*联系我们*/
-#right .about_ul{
-	float:left;
-	width:420px;
+#right .about_ul {
+	float: left;
+	width: 420px;
 }
-#right .about_intro ul{
-	width:350px;
-	margin:30px 0px 30px 28px;
+
+#right .about_intro ul {
+	width: 350px;
+	margin: 30px 0px 30px 28px;
 }
-#right .about_intro ul li{
-	list-style-type:none;
-	font-size:14px;
-	height:26px;
-	color:#333;
+
+#right .about_intro ul li {
+	list-style-type: none;
+	font-size: 14px;
+	height: 26px;
+	color: #333;
 }
-#right .about_intro img{
-	margin:30px 0px 0px 58px;
-	float:left;
-	width:250px;
-	height:200px;
+
+#right .about_intro img {
+	margin: 30px 0px 0px 58px;
+	float: left;
+	width: 250px;
+	height: 200px;
 }
+
 #contact {
 	float: left;
 	display: inline;
