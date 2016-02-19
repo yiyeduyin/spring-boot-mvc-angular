@@ -11,14 +11,19 @@
 
 <body ng-app="frontApp" ng-controller="engineerings">
 	<div ng-include src="'front/views/include/top.html'"></div>
-	<div ng-include src="'front/views/include/productType.html'"></div>
-	<div id="right">
-		<p class="engineerings_title">工程技术</p>
-		<div class="engineerings_intro">
-		
+	<div id="engineerings-left">
+		<div class="engineerings-list">
+			<ul id="leftnavtype">
+				<li class="list_title">工程技术</li>
+				<li><a href="">In House Molding Design</a></li>
+			</ul>
 		</div>
 	</div>
-	<div ng-include src="'front/views/include/contact.html'"></div>
+	<div id="right">
+		<p class="engineerings_title">In House Molding Design</p>
+		<div class="engineerings_intro"><img src="front/images/eng01.jpg"></div>
+	</div>
+
 	<div ng-include src="'front/views/include/foot.html'"></div>
 </body>
 </html>

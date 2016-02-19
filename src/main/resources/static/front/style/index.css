@@ -135,17 +135,31 @@ body {
 	-o-border-radius: 10px;
 }
 
-#left ul li {
+#engineerings-left {
+	float: left;
+	width: 208px;
+	height: 782px;
+	border: 1px solid #DCDCDC;
+	margin-top: 6px;
+	margin-bottom: 3px;
+	border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	-o-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+}
+
+#left ul li, #engineerings-left ul li {
 	display: inline;
 	float: left;
 	text-decoration: none;
 }
 
-#left ul li a {
+#left .list ul li a {
 	display: inline-block;
 	width: 192px;
 	height: 30px;
-	margin-left: 10px;
+	margin-left: 8px;
 	text-decoration: none;
 	line-height: 30px;
 	color: #4387D2;
@@ -154,7 +168,7 @@ body {
 	text-indent: 30px;
 }
 
-#left .list_title {
+#left .list_title, #engineerings-left .list_title {
 	height: 33px;
 	width: 192px;
 	font-size: 16px;
@@ -162,7 +176,7 @@ body {
 	line-height: 33px;
 	color: #2072BC;
 	text-indent: 32px;
-	margin-left: 10px;
+	margin-left: 8px;
 	border-bottom: 4px solid #2072BC;
 	border-radius: 8px 8px 0px 0px;
 	-moz-border-radius: 8px 8px 0px 0px;
@@ -170,13 +184,27 @@ body {
 	-o-border-radius: 8px 8px 0px 0px;
 }
 
-#left ul li a:hover {
+#left ul li a:hover, #engineerings-left .engineerings-list ul li a:hover
+	{
 	color: #FFF;
 	background: #4D95E8;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-o-border-radius: 10px;
+}
+
+#engineerings-left .engineerings-list ul li a {
+	display: inline-block;
+	width: 192px;
+	height: 30px;
+	margin-left: 8px;
+	text-decoration: none;
+	line-height: 30px;
+	color: #4387D2;
+	font-size: 14px;
+	border-bottom: 1px dashed #CBCBCB;
+	text-indent: 18px;
 }
 
 #left ul li a.list_last {
@@ -190,7 +218,7 @@ body {
 	margin-top: 6px;
 	margin-left: 6px;
 }
-
+/*右部分标题*/
 #right .company_title, .products_list, .engineerings_title,
 	.certificates_title, .about_title {
 	width: 786px;
@@ -225,6 +253,11 @@ body {
 	-o-border-radius: 0px 0px 4px 4px;
 }
 
+#right .engineerings_intro {
+	height: 744px;
+	text-align: center;
+}
+
 #right .intro img {
 	float: left;
 	margin: 18px 12px 0px 10px;
@@ -236,7 +269,7 @@ body {
 	line-height: 28px;
 	padding: 8px 12px 8px 10px;
 }
-
+/*公司简介*/
 #right .profile_intro img {
 	float: left;
 	margin: 18px 12px 0px 10px;
@@ -248,7 +281,7 @@ body {
 	line-height: 28px;
 	padding: 8px 12px 8px 10px;
 }
-
+/*产品展示*/
 #right .products_detail {
 	height: 642px;
 }
@@ -323,28 +356,77 @@ body {
 #right .page ul li a:hover {
 	color: #0098E1;
 }
-#right .page_text{
-	margin:0px 3px 0px 3px;
+
+#right .page_text {
+	margin: 0px 3px 0px 3px;
 	width: 42px;
 	border: 1px solid #666;
 	outline: medium;
 }
+
 #right .page_search {
-	margin-top:-3px;
+	margin-top: -3px;
 	width: 38px;
 	height: 23px;
 	font-size: 12px;
 	line-height: 20px;
 	text-align: center;
 	border: 1px solid #666;
-	border-radius: 6px; 
-	-moz-border-radius : 6px; 
-	-webkit-border-radius :6px; 
-	-o-border-radius : 6px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-o-border-radius: 6px;
 	cursor: pointer;
 }
 
+#right .certificates_first, .certificates_second {
+	float: left;
+	width: 336px;
+	height: 568px;
+	margin: 50px 8px 40px 32px;
+	text-align: center;
+	font-weight: bolder;
+	color: #333;
+}
 
+#right .certificates_first img, .certificates_second img {
+	width: 336px;
+	height: 532px;
+	border: 2px solid #ccc;
+	box-shadow: 2px 2px 5px 2px #E0E7EF;
+}
+
+#right .certificates_name {
+	margin: 15px;
+}
+/*工程技术*/
+#right .engineerings_intro img {
+	margin-top: 28px;
+	width: 436px;
+	height: 672px;
+	width: 436px;
+}
+/*联系我们*/
+#right .about_ul{
+	float:left;
+	width:420px;
+}
+#right .about_intro ul{
+	width:350px;
+	margin:30px 0px 30px 28px;
+}
+#right .about_intro ul li{
+	list-style-type:none;
+	font-size:14px;
+	height:26px;
+	color:#333;
+}
+#right .about_intro img{
+	margin:30px 0px 0px 58px;
+	float:left;
+	width:250px;
+	height:200px;
+}
 #contact {
 	float: left;
 	display: inline;
@@ -382,9 +464,9 @@ body {
 #contact .address ul {
 	margin-top: -4px;
 	height: 148px;
-	border-left: 1px solid #26B0DF;
-	border-right: 1px solid #26B0DF;
-	border-bottom: 1px solid #26B0DF;
+	border-left: 1px solid #DCDCDC;
+	border-right: 1px solid #DCDCDC;
+	border-bottom: 1px solid #DCDCDC;
 	border-radius: 0px 0px 10px 10px;
 	-moz-border-radius: 0px 0px 10px 10px;
 	-webkit-border-radius: 0px 0px 10px 10px;
