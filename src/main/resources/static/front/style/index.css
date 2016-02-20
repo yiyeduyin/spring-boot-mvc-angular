@@ -126,7 +126,6 @@ body {
 #left {
 	float: left;
 	width: 208px;
-	height: 346px;
 	border: 1px solid #DCDCDC;
 	margin-top: 6px;
 	border-radius: 10px;
@@ -134,7 +133,9 @@ body {
 	-webkit-border-radius: 10px;
 	-o-border-radius: 10px;
 }
-
+#left .list{
+	height:382px;
+}
 #engineerings-left {
 	float: left;
 	width: 208px;
@@ -214,13 +215,12 @@ body {
 #right {
 	float: left;
 	width: 788px;
-	height: 348px;
 	margin-top: 6px;
 	margin-left: 6px;
 }
 /*右部分标题*/
 #right .company_title, .products_list, .engineerings_title,
-	.certificates_title, .about_title {
+	.certificates_title, .about_title, .message_title {
 	width: 786px;
 	height: 34px;
 	font-size: 18px;
@@ -242,19 +242,20 @@ body {
 	border: 1px solid #E3E3E3;
 }
 
-#right .profile_intro, .engineerings_intro, .certificates_intro,
-	.about_intro {
+#right .profile_intro,
+	.about_intro,.message_intro {
 	width: 784px;
-	height: 672px;
+	height: 706px;
 	border: 1px solid #E3E3E3;
 	border-radius: 0px 0px 4px 4px;
 	-moz-border-radius: 0px 0px 4px 4px;
 	-webkit-border-radius: 0px 0px 4px 4px;
 	-o-border-radius: 0px 0px 4px 4px;
 }
-
+#right .certificates_intro{
+	width: 784px;
+}
 #right .engineerings_intro {
-	height: 744px;
 	text-align: center;
 }
 
@@ -391,7 +392,7 @@ body {
 	cursor: pointer;
 }
 
-#right .certificates_first, .certificates_second {
+#right .certificates_img{
 	float: left;
 	width: 336px;
 	height: 568px;
@@ -401,7 +402,7 @@ body {
 	color: #333;
 }
 
-#right .certificates_first img, .certificates_second img {
+#right .certificates_img img {
 	width: 336px;
 	height: 532px;
 	border: 2px solid #ccc;
@@ -442,7 +443,39 @@ body {
 	width: 250px;
 	height: 200px;
 }
-
+/*在线留言*/
+#right .message_form{
+	width:720px;
+	height:600px;
+	margin:30px 0px 0px 30px;
+}
+#right .message_form p{
+	display:inline;
+}
+#right .message_form input{
+	width:250px;
+	height:24px;
+	margin:4px 0px 4px 6px;
+}
+#right .message_form .message_p{
+	float:left;
+	display:inline-block;
+	width:84px;
+    height:84px;
+    line-height:30px;
+}
+#right .message_form  .message_submit{
+	width:100px;
+	height:30px;
+	margin:20px 0px 0px 90px;
+	cursor:pointer;
+}
+#right .message_form textarea{
+	width:620px;
+	height:124px;
+	margin:6px 0px 4px 6px;
+	resize:none;
+}
 #contact {
 	float: left;
 	display: inline;
@@ -469,6 +502,14 @@ body {
 	background-image: url(../images/banner.jpg);
 }
 
+#contact .voice a, .relation a{
+	color:#fff;
+	text-decoration: none;
+	cursor:pointer;
+}
+#contact .voice a:hover, .relation a:hover{
+	text-decoration: underline;
+}
 #contact .address {
 	width: 210px;
 	margin-top: 5px;
