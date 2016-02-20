@@ -11,18 +11,20 @@
                 <a href="#/admin">Home</a>
             </li>
             <li>
-                <a href="#">产品类型管理</a>
+                <a href="#">资质管理</a>
             </li>
-            <li class="active">产品编辑</li>
+            <li class="active">资质编辑</li>
         </ul>
         <!-- /.breadcrumb -->
         <div class="nav-search" id="nav-search">
+           
         </div>
         <!-- /.nav-search -->
     </div>
     <div class="page-content">
         <!-- /.ace-settings-container -->
         <div class="page-header">
+           
         </div>
         <!-- /.page-header -->
         <div class="row">
@@ -30,15 +32,21 @@
                 <!-- PAGE CONTENT BEGINS -->
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称： </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 名称 </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" ng-model="productType.name" />
+                            <input type="text" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" ng-model="certificates.name" />
                         </div>
                     </div>
-
+                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 序号 </label>
+                        <div class="col-sm-9">
+                            <input type="number" id="form-field-1" placeholder="序号" class="col-xs-10 col-sm-5" ng-model="certificates.orderd" />
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 图标 </label>
-                        <div class="col-sm-9" ng-show="!productType.icon">
+                        <div class="col-sm-9" ng-show="!certificates.picture">
                             <label class="ace-file-input ace-file-multiple">
                                 <input type="file" ngf-select ng-model="icon" name="icon" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ng-change="uploadIcon()" id="id-input-file-3">
                                 <span class="ace-file-container" style="width:140px;height:115px;" data-title="上传图标">
@@ -49,8 +57,8 @@
                             </label>
                         </div>
 
-                        <div class="col-sm-9" ng-show="productType.icon">
-                            <div ng-if="productType.icon"><img ng-src="{{'/rest/file/'+productType.icon}}" style="width:300px;height:300px;">
+                        <div class="col-sm-9" ng-show="certificates.picture">
+                            <div ng-if="certificates.picture"><img ng-src="{{'/rest/file/'+certificates.picture}}" style="width:300px;height:300px;">
                             </div>
                             <button class="btn btn-app btn-danger btn-sm" style="width: 300px" ng-click="removeIcon()">
                                 <i class="ace-icon fa fa-trash-o bigger-10"></i>
@@ -58,9 +66,10 @@
                         </div>
                     </div>
                     
+                    <div class="space-4"></div>
                     <div class="clearfix form-actions">
                         <div class="col-md-offset-3 col-md-9">
-                            <button class="btn btn-info" type="button" ng-click="submit()" ng-disabled="!productType.name">
+                            <button class="btn btn-info" type="button" ng-click="submit()">
                                 <i class="ace-icon fa fa-check bigger-110"></i> 提交
                             </button>
                             &nbsp; &nbsp; &nbsp;
@@ -70,9 +79,7 @@
                         </div>
                     </div>
                     <div class="hr hr-24"></div>
-                    
                 </form>
-                
                 <!-- PAGE CONTENT ENDS -->
             </div>
             <!-- /.col -->

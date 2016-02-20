@@ -54,10 +54,12 @@ public class VisitorProductCtrl {
 	public @ResponseBody String list(@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
 			@RequestParam(value = "name", required = false) final String name,
+			@RequestParam(value = "productType", required = false) Integer productType,
+			@RequestParam(value = "subProductType", required = false) Integer subProductType,
 			@RequestParam(value = "isNew", required = false) Integer isNew) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productService.findList(page, size, name, isNew, 1);
+			dto.data = productService.findList(page, size, productType, subProductType, name, isNew, 1);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

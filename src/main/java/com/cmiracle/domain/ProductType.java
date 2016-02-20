@@ -49,6 +49,12 @@ public class ProductType implements Serializable {
 	public Integer status;
 	
 	/**
+	 * 图标
+	 */
+	@Column(name = "icon", nullable = true)
+	public String icon;
+	
+	/**
 	 * 类型 0 父类型， 1 子类型
 	 */
 	@Column(name = "type", nullable = true)

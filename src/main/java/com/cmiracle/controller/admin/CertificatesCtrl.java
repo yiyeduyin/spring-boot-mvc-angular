@@ -1,7 +1,5 @@
 package com.cmiracle.controller.admin;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,37 +11,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cmiracle.comment.DTO;
 import com.cmiracle.comment.MediaType;
-import com.cmiracle.domain.Product;
-import com.cmiracle.domain.ProductType;
-import com.cmiracle.service.ProductService;
-import com.cmiracle.service.ProductTypeService;
+import com.cmiracle.domain.Certificates;
+import com.cmiracle.service.CertificatesService;
 import com.cmiracle.util.Util;
 
 @RestController
-@RequestMapping(value = "/admin/rest/productType")
-public class ProductTypeCtrl {
-	
+@RequestMapping(value = "/admin/rest/certificates")
+public class CertificatesCtrl {
+
 	@Autowired
-	private ProductTypeService productTypeService;
-	
-	@Autowired
-	private ProductService productService;
-	
+	private CertificatesService certificatesService;
+
 	/**
 	 * 创建
+	 * 
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8)
 	@ResponseBody
-	public String add(@RequestBody ProductType productType) {
+	public String add(@RequestBody Certificates certificates) {
 		DTO dto = DTO.newDTO();
 		try {
-			if(Util.isNotNull(productType.parentProductTypeId)){
-				productType.parentProductType = productTypeService.get(productType.parentProductTypeId);
-			}
-			productType.status = 1;
-			productTypeService.save(productType);
+			certificatesService.save(certificates);
 			return dto.toJson();
 		} catch (Exception e) {
 			dto.errMsg = "error";
@@ -51,10 +41,10 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
-	
+
 	/**
 	 * 查找
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -62,8 +52,7 @@ public class ProductTypeCtrl {
 	public @ResponseBody String findById(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
-			ProductType productType = productTypeService.get(id);
-			dto.data = productType;
+			dto.data = certificatesService.get(id);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,24 +70,19 @@ public class ProductTypeCtrl {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8)
 	@ResponseBody
 	public String update(@PathVariable("id") Long id,
-			@RequestBody ProductType newProductType) {
+			@RequestBody Certificates newCertificates) {
 		DTO dto = DTO.newDTO();
 		try {
-			ProductType oldProductType =  productTypeService.get(id);
+			Certificates oldCertificates =  certificatesService.get(id);
 			
-			if(Util.isNotNull(newProductType.name)){
-				oldProductType.name = newProductType.name;
+			if(Util.isNotNull(newCertificates.name)){
+				oldCertificates.name = newCertificates.name;
 			}
-			if(Util.isNotNull(newProductType.status)){
-				oldProductType.status = newProductType.status;
+			if(Util.isNotNull(newCertificates.orderd)){
+				oldCertificates.orderd = newCertificates.orderd;
 			}
-			if(Util.isNotNull(newProductType.parentProductTypeId)){
-				oldProductType.parentProductType = productTypeService.get(newProductType.parentProductTypeId);
-			}
-			
-			oldProductType.icon = newProductType.icon;
-			
-			productTypeService.update(oldProductType);
+			oldCertificates.picture = newCertificates.picture;
+			certificatesService.update(oldCertificates);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,9 +91,10 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
+
 	/**
 	 * 删除
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -118,15 +103,7 @@ public class ProductTypeCtrl {
 	public String changeStatus(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
-			List<Product> products = productService.findByProductType(id);
-			products.forEach(t -> {
-				productService.delete(t.id);
-			});
-			List<ProductType> list = productTypeService.findByParentProductType(id);
-			list.forEach(t -> {
-				productTypeService.delete(t.id);
-			});
-			productTypeService.delete(id);
+			certificatesService.delete(id);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -135,9 +112,10 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
+
 	/**
 	 * 分页查询
+	 * 
 	 * @param page
 	 * @param size
 	 * @param status
@@ -145,16 +123,12 @@ public class ProductTypeCtrl {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8)
-	public @ResponseBody String list(
-			@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
+	public @ResponseBody String list(@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
-			@RequestParam(value = "status",required = false) final Integer status,
-			@RequestParam(value = "type",required = false) final Integer type,	
-			@RequestParam(value = "name",required = false) final String name,
-			@RequestParam(value = "parentProductTypeId",required = false) final Integer parentProductTypeId) {
+			@RequestParam(value = "name", required = false) final String name) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productTypeService.findList(page, size, name, status, type, parentProductTypeId);
+			dto.data = certificatesService.findList(page, size, name);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,7 +137,4 @@ public class ProductTypeCtrl {
 			return dto.toJson();
 		}
 	}
-	
-	
-
 }

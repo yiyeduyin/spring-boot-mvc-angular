@@ -15,7 +15,7 @@
 	<div id="right">
 		<p class="certificates_title">资质荣誉</p>
 		<div class="certificates_intro">
-			<div class="certificates_img">
+			<!-- <div class="certificates_img">
 				<img src="front/images/ISO9001.jpg" />
 				<div class="certificates_name">ISO9001</div>
 				
@@ -27,6 +27,11 @@
 			<div class="certificates_img">
 				<img src="front/images/ISO14001.jpg" />
 				<div class="certificates_name">ISO14001</div>
+			</div> -->
+
+			<div class="certificates_img" ng-repeat="one in certificatesList">
+				<img ng-src="{{'/rest/file/'+one.picture}}" />
+				<div class="certificates_name">{{one.name}}</div>
 			</div>
 
 		</div>

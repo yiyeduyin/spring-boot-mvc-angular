@@ -9,30 +9,21 @@
 <title>信詠塑胶工业股份有限公司</title>
 </head>
 
-<body ng-app="frontApp" ng-controller="products">
+<body ng-app="frontApp" ng-controller="productType">
 	<div ng-include src="'front/views/include/top.html'"></div>
 	<div ng-include src="'front/views/include/productType.html'"></div>
 	<div id="right">
 		<p class="products_list">产品展示</p>
-
-	
-
-		<div class="product_kind" >
-			<table border="0" cellspacing="0">
-				<th colspan="6">BOB</th>
-				<tr >
-					<td>EE</td>
-					<td>EE</td>
-					<td>EE</td>
-					<td>EE</td>
-					<td>EE</td>
-					<td>EE</td>
-				</tr>
-			</table>
+		<div class="np_products">
+			<div class="products_first" ng-repeat="one in productTypeList" ng-click="goToProductPage(one.id)">
+				<div class="products_img">
+					<img ng-src="{{'/rest/file/'+one.icon}}" style="width:128px;height:105px;" ng-if="one.icon" />
+					<img src="" style="width:128px;height:105px;" ng-if="!one.icon" />
+				</div>
+				<div class="products_intro">{{one.name}}</div>
+			</div>
 		</div>
 	</div>
-	
-	
 	<div ng-include src="'front/views/include/contact.html'"></div>
 	<div ng-include src="'front/views/include/foot.html'"></div>
 </body>
