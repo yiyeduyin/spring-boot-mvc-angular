@@ -84,7 +84,7 @@ angular.module('app').controller('ProductTypeListCtrl', function($rootScope, $sc
 });
 
 // 商品类型编辑
-angular.module('app').controller('ProductTypeEditCtrl', function($rootScope, $scope, $http, $routeParams, $location) {
+angular.module('app').controller('ProductTypeEditCtrl', function($rootScope, $scope, $http, $routeParams, $location, Upload) {
     var id = $routeParams.id;
     $scope.name = "";
 
@@ -97,7 +97,7 @@ angular.module('app').controller('ProductTypeEditCtrl', function($rootScope, $sc
         if (id) {
             $http.get('/admin/rest/productType/' + id, {}).success(function(res) {
                 if (res.errcode == 0 && res.data) {
-                    $scope.productType.name = res.data.name;
+                    $scope.productType = res.data;
                     if(res.data.parentProductType){
                         $scope.productType.parentProductTypeId = res.data.parentProductType.id;
                     }
@@ -110,6 +110,30 @@ angular.module('app').controller('ProductTypeEditCtrl', function($rootScope, $sc
     //跳转到编辑页
     $scope.goBack = function() {
         $location.path("/productType/list");
+    }
+
+    // upload later on form submit or something similar
+    $scope.uploadIcon = function() {
+        if ($scope.icon) {
+            Upload.upload({
+                url: '/admin/rest/fileUpload',
+                data: {
+                    file: $scope.icon
+                }
+            }).then(function(res) {
+                $scope.productType.icon = res.data.data;
+                $scope.upload_image_message = "上传成功";
+            }, function(resp) {
+                $scope.upload_image_message = "上传失败";
+            }, function(evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                $scope.upload_image_message = "上传中 " + progressPercentage + '%';
+            });
+        }
+    };
+
+    $scope.removeIcon = function() {
+        $scope.productType.icon = "";
     }
 
 

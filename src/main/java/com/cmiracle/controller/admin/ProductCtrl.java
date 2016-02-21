@@ -68,8 +68,7 @@ public class ProductCtrl {
 	public @ResponseBody String findById(@PathVariable("id") Long id) {
 		DTO dto = DTO.newDTO();
 		try {
-			Product product = productService.get(id);
-			dto.data = product;
+			dto.data = productService.get(id);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -185,12 +184,14 @@ public class ProductCtrl {
 	public @ResponseBody String list(
 			@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
 			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
+			@RequestParam(value = "productType", required = false) Integer productType,
+			@RequestParam(value = "subProductType", required = false) Integer subProductType,
 			@RequestParam(value = "status",required = false) final Integer status,			
 			@RequestParam(value = "name",required = false) final String name,
 			@RequestParam(value = "isNew", required = false) Integer isNew) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productService.findList(page, size, name, isNew, status);
+			dto.data = productService.findList(page, size, productType, subProductType, name, isNew, status);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

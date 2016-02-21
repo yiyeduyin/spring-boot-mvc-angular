@@ -11,7 +11,7 @@
                 <a href="#/admin">Home</a>
             </li>
             <li>
-                <a href="#/productType/list">产品类型管理</a>
+                <a href="#/certificatesList/list">资质管理</a>
             </li>
             <li class="active">列表</li>
         </ul>
@@ -37,41 +37,24 @@
                                 <tr>
                                     <th>图标</th>
                                     <th>名称</th>
-                                    <th>状态</th>
+                                    <th>序号</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="one in productTypeList">
+                                <tr ng-repeat="one in certificatesList">
                                     <td>
-                                        <img ng-src="{{'/rest/file/'+one.icon}}" style="width:30px;height:30px;" ng-if="one.icon">
+                                        <img ng-src="{{'/rest/file/'+one.picture}}" style="width:30px;height:30px;" ng-if="one.picture">
                                     </td>
                                     <td>{{one.name}}</td>
-                                    <td ng-switch="one.status">
-                                        <span ng-switch-when="0" class="label label-danger">禁用</span>
-                                        <span ng-switch-when="1" class="label label-success">启用</span>
-                                    </td>
+                                    <td>{{one.orderd}}</td>
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
-                                            <button class="btn btn-xs btn-info" ng-click="goToSubList(one.id)">
-                                                <i class="ace-icon fa fa-list bigger-120"></i>
-                                                子类型
-                                            </button>
                                             <button class="btn btn-xs btn-info" ng-click="goToEdit(one.id)">
-                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                编辑
-                                            </button>
-                                            <button class="btn btn-xs btn-danger" ng-click="updateStatus(one.id, 0)" ng-if="one.status == 1">
-                                                <i class="ace-icon fa fa-ban bigger-120"></i>
-                                                禁用
-                                            </button>
-                                            <button class="btn btn-xs btn-success" ng-click="updateStatus(one.id, 1)" ng-if="one.status == 0">
-                                                <i class="ace-icon fa fa-check bigger-120"></i>
-                                                启用
+                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i> 编辑
                                             </button>
                                             <button class="btn btn-xs btn-danger" ng-click="delete(one.id)">
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                删除
+                                                <i class="ace-icon fa fa-trash-o bigger-120"></i> 删除
                                             </button>
                                         </div>
                                     </td>
@@ -84,28 +67,20 @@
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-xs-6">
-                        <a href="#/productType/add">
-                        <div class="ui-pg-div"><span class="ui-icon ace-icon fa fa-plus-circle purple"></span></div>
+                        <a href="#/certificates/add">
+                            <div class="ui-pg-div"><span class="ui-icon ace-icon fa fa-plus-circle purple"></span></div>
                         </a>
                     </div>
                     <div class="col-xs-6">
                         <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
                             <ul class="pagination">
-
                                 <li class="paginate_button previous " aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous" ng-class="{disabled:pageNo === 1}" ng-click="changePageNo(1)"><a href>首页</a></li>
-
                                 <li class="paginate_button previous disabled" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_previous" ng-class="{disabled:pageNo === 1}" ng-click="changePageNo(pageNo - 1)"><a href>前一页</a></li>
-
                                 <li class="paginate_button " aria-controls="dynamic-table" tabindex="0" ng-if="(pageNo - 1) > 0" ng-click="changePageNo(pageNo - 1)"><a href>{{pageNo - 1}}</a></li>
-
                                 <li class="paginate_button active" aria-controls="dynamic-table" tabindex="0"><a href>{{pageNo}}</a></li>
-
                                 <li class="paginate_button " aria-controls="dynamic-table" tabindex="0" ng-if="(pageNo + 1) <= lastPageNo" ng-click="changePageNo(pageNo + 1)"><a href>{{pageNo + 1}}</a></li>
-
                                 <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next" ng-class="{disabled:pageNo === lastPageNo}" ng-click="changePageNo(pageNo + 1)"><a href>后一页</a></li>
-
-                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next"  ng-class="{disabled:pageNo === lastPageNo}" ng-click="changePageNo(lastPageNo)"><a href>尾页</a></li>
-
+                                <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next" ng-class="{disabled:pageNo === lastPageNo}" ng-click="changePageNo(lastPageNo)"><a href>尾页</a></li>
                                 <li class="paginate_button next" aria-controls="dynamic-table" tabindex="0" id="dynamic-table_next"><a href>总数{{total}}</a></li>
                             </ul>
                         </div>

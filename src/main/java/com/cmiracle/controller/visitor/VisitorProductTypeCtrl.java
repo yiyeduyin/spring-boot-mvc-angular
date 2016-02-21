@@ -1,6 +1,7 @@
 package com.cmiracle.controller.visitor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,25 @@ public class VisitorProductTypeCtrl {
 
 	@Autowired
 	private ProductTypeService productTypeService;
+	
+	/**
+	 * 查找
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8)
+	public @ResponseBody String findById(@PathVariable("id") Long id) {
+		DTO dto = DTO.newDTO();
+		try {
+			dto.data = productTypeService.get(id);
+			return dto.toJson();
+		} catch (Exception e) {
+			e.printStackTrace();
+			dto.errMsg = "error";
+			dto.errCode = -1;
+			return dto.toJson();
+		}
+	}
 
 	/**
 	 * 分页查询

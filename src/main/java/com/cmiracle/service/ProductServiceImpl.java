@@ -19,21 +19,23 @@ import org.springframework.stereotype.Service;
 
 import com.cmiracle.comment.CommonPage;
 import com.cmiracle.domain.Product;
+import com.cmiracle.domain.ProductType;
 import com.cmiracle.repository.ProductRepository;
 import com.cmiracle.util.Util;
 
 @Service
-public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long> implements ProductService {
+public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long>implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
 
 	@Override
-	public CommonPage<Product> findList(Integer page, Integer size, String name, Integer isNew, Integer status) {
+	public CommonPage<Product> findList(Integer page, Integer size, Integer productType, Integer subProductType, String name, Integer isNew,
+			Integer status) {
 		// 分页
 		page = page - 1 >= 0 ? page - 1 : 0;
 		List<Order> sortList = new ArrayList<Order>();
-		//排序
+		// 排序
 		sortList.add(new Sort.Order(Direction.DESC, "id"));
 		Sort sort = new Sort(sortList);
 		PageRequest pageRequest = new PageRequest(page, size, sort);
@@ -45,18 +47,26 @@ public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long> i
 				Predicate predicate = cb.conjunction();
 				List<Predicate> predicateList = new ArrayList<Predicate>();
 
+				if (Util.isNotNull(productType)) {
+					predicateList
+							.add(cb.equal(root.<ProductType> get("productType").get("id"), productType));
+				}
+				
+				if (Util.isNotNull(subProductType)) {
+					predicateList
+							.add(cb.equal(root.<ProductType> get("subProductType").get("id"), subProductType));
+				}
+
 				if (Util.isNotNull(name)) {
 					predicateList.add(cb.like(root.<String> get("name"), "%" + name + "%"));
 				}
-				
+
 				if (Util.isNotNull(status)) {
-					predicateList.add(cb.equal(
-							root.<Integer> get("status"), status));
+					predicateList.add(cb.equal(root.<Integer> get("status"), status));
 				}
-				
+
 				if (Util.isNotNull(isNew)) {
-					predicateList.add(cb.equal(
-							root.<Integer> get("isNew"), isNew));
+					predicateList.add(cb.equal(root.<Integer> get("isNew"), isNew));
 				}
 
 				Predicate[] predicates = new Predicate[predicateList.size()];

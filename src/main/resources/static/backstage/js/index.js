@@ -53,6 +53,19 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/productEdit.html',
             controller: 'ProductEditCtrl'
         })
+        //资质管理
+         .when('/certificates/list', {
+            templateUrl: 'backstage/views/certificatesList.html',
+            controller: 'CertificatesListCtrl'
+        })
+        .when('/certificates/add', {
+            templateUrl: 'backstage/views/certificatesEdit.html',
+            controller: 'CertificatesEditCtrl'
+        })
+        .when('/certificates/edit/:id', {
+            templateUrl: 'backstage/views/certificatesEdit.html',
+            controller: 'CertificatesEditCtrl'
+        })
         //管理员
         .when('/admin/edit', {
             templateUrl: 'backstage/views/adminEdit.html',
