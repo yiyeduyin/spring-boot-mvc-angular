@@ -133,9 +133,11 @@ body {
 	-webkit-border-radius: 10px;
 	-o-border-radius: 10px;
 }
-#left .list{
-	height:382px;
+
+#left .list {
+	height: 382px;
 }
+
 #engineerings-left {
 	float: left;
 	width: 208px;
@@ -242,8 +244,7 @@ body {
 	border: 1px solid #E3E3E3;
 }
 
-#right .profile_intro,
-	.about_intro,.message_intro {
+#right .profile_intro, .about_intro, .message_intro {
 	width: 784px;
 	height: 706px;
 	border: 1px solid #E3E3E3;
@@ -252,9 +253,11 @@ body {
 	-webkit-border-radius: 0px 0px 4px 4px;
 	-o-border-radius: 0px 0px 4px 4px;
 }
-#right .certificates_intro{
+
+#right .certificates_intro {
 	width: 784px;
 }
+
 #right .engineerings_intro {
 	text-align: center;
 }
@@ -333,13 +336,15 @@ body {
 	border: 1px solid #fff;
 	background: #39BCFC;
 }
-#right .product_infor:hover{
-	text-decoration:underline;
 
+#right .product_infor:hover {
+	text-decoration: underline;
 }
-#right .product_file{
-	cursor:pointer;
+
+#right .product_file {
+	cursor: pointer;
 }
+
 #right .page {
 	float: left;
 	width: 788px;
@@ -392,7 +397,7 @@ body {
 	cursor: pointer;
 }
 
-#right .certificates_img{
+#right .certificates_img {
 	float: left;
 	width: 336px;
 	height: 568px;
@@ -444,38 +449,62 @@ body {
 	height: 200px;
 }
 /*‘⁄œﬂ¡Ù—‘*/
-#right .message_form{
-	width:720px;
-	height:600px;
-	margin:30px 0px 0px 30px;
+#right .message_form {
+	width: 720px;
+	height: 600px;
+	margin: 0px 0px 0px 30px;
 }
-#right .message_form p{
-	display:inline;
+
+#right .message_form p {
+	display: inline;
 }
-#right .message_form input{
-	width:250px;
-	height:24px;
-	margin:4px 0px 4px 6px;
+
+#right .message_tip {
+	margin: 12px 0px 0px 120px;
+	color: #333;
 }
-#right .message_form .message_p{
-	float:left;
-	display:inline-block;
-	width:84px;
-    height:84px;
-    line-height:30px;
+
+#right .message_form input {
+	width: 250px;
+	height: 24px;
+	margin: 4px 0px 4px 6px;
 }
-#right .message_form  .message_submit{
-	width:100px;
-	height:30px;
-	margin:20px 0px 0px 90px;
-	cursor:pointer;
+
+#right .message_type {
+	width: 255px;
+	height: 29px;
+	margin: 4px 0px 4px 6px;
+	font-size: 14px;
 }
-#right .message_form textarea{
-	width:620px;
-	height:124px;
-	margin:6px 0px 4px 6px;
-	resize:none;
+
+#right .message_form .message_p {
+	float: left;
+	display: inline-block;
+	width: 84px;
+	height: 84px;
+	line-height: 30px;
 }
+
+#right .message_form span {
+	display: inline-block;
+	margin: 0px 0px 0px 4px;
+	color: red;
+}
+
+#right .message_form  .message_submit {
+	width: 100px;
+	height: 30px;
+	margin: 20px 0px 0px 90px;
+	cursor: pointer;
+}
+
+#right .message_form textarea {
+	width: 620px;
+	height: 124px;
+	margin: 6px 0px 4px 6px;
+	resize: none;
+}
+
 #contact {
 	float: left;
 	display: inline;
@@ -502,14 +531,16 @@ body {
 	background-image: url(../images/banner.jpg);
 }
 
-#contact .voice a, .relation a{
-	color:#fff;
+#contact .voice a, .relation a {
+	color: #fff;
 	text-decoration: none;
-	cursor:pointer;
+	cursor: pointer;
 }
-#contact .voice a:hover, .relation a:hover{
+
+#contact .voice a:hover, .relation a:hover {
 	text-decoration: underline;
 }
+
 #contact .address {
 	width: 210px;
 	margin-top: 5px;

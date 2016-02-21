@@ -15,19 +15,32 @@
 	<div id="right">
 		<p class="message_title">在线留言</p>
 		<div class="message_intro">
+			<p class="message_tip">尊敬的客户，请在这里将您们的宝贵建议反馈给我们，我们会及时回复，谢谢 ！</p>
+			<br />
 			<form class="message_form">
+
+				<p>留言主题：</p>
+				<select name="type" class="message_type">
+					<option value="simply">简单的留言</option>
+					<option value="simply">对网站的意见</option>
+					<option value="simply">对公司的建议</option>
+					<option value="simply">具有合作意向</option>
+					<option value="simply">产品投诉</option>
+					<option value="simply">服务投诉</option>
+					<option value="simply">其他</option>
+				</select><span>*</span><br />
 				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</p>
-				<input type="text" name="username"/><br/>
+				<input type="text" name="username" /><br />
 				<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</p>
-				<input type="text" name="tel"/><br/>
+				<input type="text" name="tel" /><span>*</span><br />
 				<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</p>
-				<input type="text" name="address"/><br/>
+				<input type="text" name="address" /><br />
 				<p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</p>
-				<input type="text" name="mail"/><br/>
+				<input type="text" name="mail" /><br />
 				<p class="message_p">留言内容：</p>
-				<textarea></textarea><br/>
-				<input type="submit" value="提交留言" class="message_submit">
-		</form>
+				<textarea></textarea>
+				<br /> <input type="submit" value="提交留言" class="message_submit">
+			</form>
 		</div>
 	</div>
 
