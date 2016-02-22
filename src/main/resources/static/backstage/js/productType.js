@@ -58,23 +58,25 @@ angular.module('app').controller('ProductTypeListCtrl', function($rootScope, $sc
     }
 
     //更新状态
-    $scope.updateStatus = function(id, status) {
-        $http.put('/admin/rest/productType/' + id, {
-            status: status
-        }).success(function(res) {
-            if (res.errcode == 0) {
-                $scope.findList();
-            }
-        });
-    }
+    // $scope.updateStatus = function(id, status) {
+    //     $http.put('/admin/rest/productType/' + id, {
+    //         status: status
+    //     }).success(function(res) {
+    //         if (res.errcode == 0) {
+    //             $scope.findList();
+    //         }
+    //     });
+    // }
 
     $scope.goToEdit = function(id) {
         $location.path("/productType/edit/" + id);
     }
 
     $scope.changePageNo = function(pageNo) {
-        $scope.pageNo = pageNo;
-        $scope.findList();
+        if(pageNo >= 1 && pageNo <= $scope.lastPageNo){
+            $scope.pageNo = pageNo;
+            $scope.findList();
+        }
     }
 
 

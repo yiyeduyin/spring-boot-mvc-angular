@@ -74,8 +74,10 @@ angular.module('app').controller('ProductListCtrl', function($rootScope, $scope,
 
     //更改页码
     $scope.changePageNo = function(pageNo) {
-        $scope.pageNo = pageNo;
-        $scope.findList();
+        if(pageNo >= 1 && pageNo <= $scope.lastPageNo){
+            $scope.pageNo = pageNo;
+            $scope.findList();
+        }
     }
 });
 

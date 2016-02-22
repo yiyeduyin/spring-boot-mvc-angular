@@ -66,6 +66,19 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/certificatesEdit.html',
             controller: 'CertificatesEditCtrl'
         })
+         //工程技术
+         .when('/engineerings/list', {
+            templateUrl: 'backstage/views/engineeringsList.html',
+            controller: 'EngineeringsListCtrl'
+        })
+        .when('/engineerings/add', {
+            templateUrl: 'backstage/views/engineeringsEdit.html',
+            controller: 'EngineeringsEditCtrl'
+        })
+        .when('/engineerings/edit/:id', {
+            templateUrl: 'backstage/views/engineeringsEdit.html',
+            controller: 'EngineeringsEditCtrl'
+        })
         //管理员
         .when('/admin/edit', {
             templateUrl: 'backstage/views/adminEdit.html',

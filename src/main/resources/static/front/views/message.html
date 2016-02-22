@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <link type="text/css" rel="stylesheet" href="front/style/index.css" />
+<link rel="stylesheet" href="assets/css/toast.css" />
 <script src="assets/js/angular/angular.min.js"></script>
+<script src="assets/js/jquery.2.1.1.min.js"></script>
 <script src="front/js/index.js" type="text/javascript"></script>
 
 <title>信詠塑胶工业股份有限公司</title>
 </head>
 
-<body ng-app="frontApp" ng-controller="products">
+<body ng-app="frontApp" ng-controller="message">
 	<div ng-include src="'front/views/include/top.html'"></div>
 	<div ng-include src="'front/views/include/productType.html'"></div>
 	<div id="right">
@@ -20,32 +22,37 @@
 			<form class="message_form">
 
 				<p>留言主题：</p>
-				<select name="type" class="message_type">
-					<option value="simply">简单的留言</option>
-					<option value="simply">对网站的意见</option>
-					<option value="simply">对公司的建议</option>
-					<option value="simply">具有合作意向</option>
-					<option value="simply">产品投诉</option>
-					<option value="simply">服务投诉</option>
-					<option value="simply">其他</option>
+				<select name="type" class="message_type" ng-model="message.type">
+					<option value="0">简单的留言</option>
+					<option value="1">对网站的意见</option>
+					<option value="2">对公司的建议</option>
+					<option value="3">具有合作意向</option>
+					<option value="4">产品投诉</option>
+					<option value="5">服务投诉</option>
+					<option value="6">其他</option>
 				</select><span>*</span><br />
 				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</p>
-				<input type="text" name="username" /><br />
+				<input type="text" name="username" ng-model="message.username"/><br/>
+
 				<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</p>
-				<input type="text" name="tel" /><span>*</span><br />
+				<input type="text" name="mobile" ng-model="message.mobile"/><br/>
+
 				<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</p>
-				<input type="text" name="address" /><br />
+				<input type="text" name="address" ng-model="message.address"/><br/>
+
 				<p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</p>
-				<input type="text" name="mail" /><br />
+				<input type="text" name="email" ng-model="message.email"/><br/>
+
 				<p class="message_p">留言内容：</p>
-				<textarea></textarea>
-				<br /> <input type="submit" value="提交留言" class="message_submit">
+				<textarea ng-model="message.content"></textarea><br/>
+				<input type="submit" value="提交留言" class="message_submit" ng-click="submit()">
 			</form>
 		</div>
 	</div>
 
 	<div ng-include src="'front/views/include/contact.html'"></div>
 	<div ng-include src="'front/views/include/foot.html'"></div>
+	<div ng-include src="'front/views/include/toast.html'"></div>
 </body>
 </html>
 

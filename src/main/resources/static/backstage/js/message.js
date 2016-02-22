@@ -59,8 +59,10 @@ angular.module('app').controller('MessageListCtrl', function($rootScope, $scope,
     }
 
     $scope.changePageNo = function(pageNo) {
-        $scope.pageNo = pageNo;
-        $scope.findList();
+        if(pageNo >= 1 && pageNo <= $scope.lastPageNo){
+            $scope.pageNo = pageNo;
+            $scope.findList();
+        }
     }
 });
 

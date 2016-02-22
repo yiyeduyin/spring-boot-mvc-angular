@@ -42,7 +42,7 @@ public class Product implements Serializable {
 	/**
 	 * 名称
 	 */
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", nullable = true)
 	public String name;
 
 	/**

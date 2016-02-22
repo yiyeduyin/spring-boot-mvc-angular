@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>图标</th>
                                     <th>名称</th>
-                                    <th>状态</th>
+                                    <!-- <th>状态</th> -->
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -47,10 +47,10 @@
                                         <img ng-src="{{'/rest/file/'+one.icon}}" style="width:30px;height:30px;" ng-if="one.icon">
                                     </td>
                                     <td>{{one.name}}</td>
-                                    <td ng-switch="one.status">
+                                 <!--    <td ng-switch="one.status">
                                         <span ng-switch-when="0" class="label label-danger">禁用</span>
                                         <span ng-switch-when="1" class="label label-success">启用</span>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-info" ng-click="goToSubList(one.id)">
@@ -61,14 +61,14 @@
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                                 编辑
                                             </button>
-                                            <button class="btn btn-xs btn-danger" ng-click="updateStatus(one.id, 0)" ng-if="one.status == 1">
+                                            <!-- <button class="btn btn-xs btn-danger" ng-click="updateStatus(one.id, 0)" ng-if="one.status == 1">
                                                 <i class="ace-icon fa fa-ban bigger-120"></i>
                                                 禁用
                                             </button>
                                             <button class="btn btn-xs btn-success" ng-click="updateStatus(one.id, 1)" ng-if="one.status == 0">
                                                 <i class="ace-icon fa fa-check bigger-120"></i>
                                                 启用
-                                            </button>
+                                            </button> -->
                                             <button class="btn btn-xs btn-danger" ng-click="delete(one.id)">
                                                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                                 删除
