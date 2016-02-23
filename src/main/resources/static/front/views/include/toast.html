@@ -4,37 +4,3 @@
 <div class="formtemplate">
 	<div id="resultalert" class="resultalert" ng-class="active" style="display: none;"></div>
 </div>
-
-<script>
-	(function(){
-		window.GlobalToast = {
-			show : function(msg, timeout){
-				if(msg !== null && msg !== undefined && msg !== ""){
-					$("#myCommonToastModelText").html(msg);
-				} else {
-					return false;
-				}
-				timeout = timeout || 3000;
-				$('#myCommonToastModel').show();
-				setTimeout(function(){
-					$('#myCommonToastModel').hide();
-				},timeout);
-			},
-			tips : function(msg, timeout,callback){
-				if(msg !== null && msg !== undefined && msg !== ""){
-					$("#resultalert").html(msg);
-				} else {
-					return false;
-				}
-				timeout = timeout || 3000;
-				$('#resultalert').show();
-				setTimeout(function(){
-					$('#resultalert').hide();
-					if(callback){
-						callback();
-					}
-				},timeout);
-			}
-		};
-	})();
-</script>

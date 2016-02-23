@@ -1,7 +1,7 @@
 var app = angular.module("frontApp", []);
 
 //获取产品类别
-app.service('getProductTypeList', function($rootScope, $http) {
+app.service('e_getProductTypeList', function($rootScope, $http) {
     if (!$rootScope.leftProductTypeList) {
         $http.get('/rest/productType/list', {
             params: {
@@ -18,12 +18,12 @@ app.service('getProductTypeList', function($rootScope, $http) {
 
     $rootScope.searchName = "";
     $rootScope.searchProduct = function() {
-        window.location.href = "/search?searchName=" + $rootScope.searchName;
+        window.location.href = "/e_search?searchName=" + $rootScope.searchName;
     }
 });
 
 
-app.controller('index', function($rootScope, $scope, $http, $location, $window, getProductTypeList) {
+app.controller('e_index', function($rootScope, $scope, $http, $location, $window, e_getProductTypeList) {
     //获取新产品
     $scope.getProducts = function() {
         $http.get('/rest/product/list', {
@@ -47,7 +47,7 @@ app.controller('index', function($rootScope, $scope, $http, $location, $window, 
 
 });
 
-app.controller('certificates', function($rootScope, $scope, $http, $location, getProductTypeList) {
+app.controller('e_certificates', function($rootScope, $scope, $http, $location, e_getProductTypeList) {
     $scope.certificatesList = [];
     $scope.findList = function() {
         $http.get('/rest/certificates/list', {}).success(function(res) {
@@ -59,7 +59,7 @@ app.controller('certificates', function($rootScope, $scope, $http, $location, ge
     $scope.findList();
 });
 
-app.controller('engineerings', function($rootScope, $scope, $http, $location, getProductTypeList) {
+app.controller('e_engineerings', function($rootScope, $scope, $http, $location, e_getProductTypeList) {
     //显示的工程技术
     $scope.engineerings = {};
     //工程技术列表
@@ -81,7 +81,7 @@ app.controller('engineerings', function($rootScope, $scope, $http, $location, ge
     }
 });
 
-app.controller('productType', function($rootScope, $scope, $http, $location, $window, getProductTypeList) {
+app.controller('e_productType', function($rootScope, $scope, $http, $location, $window, e_getProductTypeList) {
     $http.get('/rest/productType/list', {
         params: {
             pageNo: 1,
@@ -95,11 +95,11 @@ app.controller('productType', function($rootScope, $scope, $http, $location, $wi
     });
 
     $scope.goToProductPage = function(id) {
-        window.location.href = "/products?type=" + id;
+        window.location.href = "/e_products?type=" + id;
     }
 });
 
-app.controller('products', function($rootScope, $scope, $http, $location, $window, getProductTypeList) {
+app.controller('e_products', function($rootScope, $scope, $http, $location, $window, e_getProductTypeList) {
     //获取URL参数
     function parse(val) {
         var result = "",
@@ -186,7 +186,7 @@ app.controller('products', function($rootScope, $scope, $http, $location, $windo
     $scope.init();
 
     $scope.goToSubProductPage = function(id) {
-        window.location.href = "/products?subType=" + id;
+        window.location.href = "/e_products?subType=" + id;
     }
 
     //更改页码
@@ -203,7 +203,7 @@ app.controller('products', function($rootScope, $scope, $http, $location, $windo
     }
 });
 
-app.controller('message', function($rootScope, $scope, $http, $location, getProductTypeList) {
+app.controller('e_message', function($rootScope, $scope, $http, $location, e_getProductTypeList) {
     $scope.message = {
         type: "0"
     };
@@ -248,7 +248,7 @@ app.controller('message', function($rootScope, $scope, $http, $location, getProd
             $http.post('/rest/message', $scope.message).success(function(res) {
                 if (res.errcode == 0) {
                     tips("感谢您的留言！请耐心等待管理员的审核和回复！", 3000, function() {
-                        window.location.href = "/";
+                        window.location.href = "/e_";
                     });
                 }
             });
@@ -256,7 +256,7 @@ app.controller('message', function($rootScope, $scope, $http, $location, getProd
     }
 });
 
-app.controller('search', function($rootScope, $scope, $http, $location, $window, getProductTypeList) {
+app.controller('e_search', function($rootScope, $scope, $http, $location, $window, e_getProductTypeList) {
     //获取URL参数
     function parse(val) {
         var result = "",
@@ -311,11 +311,11 @@ app.controller('search', function($rootScope, $scope, $http, $location, $window,
     }
 });
 
-app.controller('about', function($rootScope, $scope, $http, $location, getProductTypeList) {
+app.controller('e_about', function($rootScope, $scope, $http, $location, e_getProductTypeList) {
    
 });
 
-app.controller('profile', function($rootScope, $scope, $http, $location, getProductTypeList) {
+app.controller('e_profile', function($rootScope, $scope, $http, $location, e_getProductTypeList) {
    
 });
 
