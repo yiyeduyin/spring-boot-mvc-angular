@@ -9,16 +9,16 @@
 <title>信詠塑胶工业股份有限公司</title>
 </head>
 
-<body ng-app="frontApp" ng-controller="products">
+<body ng-app="frontApp" ng-controller="search">
 	<div ng-include src="'front/views/include/top.html'"></div>
 	<div ng-include src="'front/views/include/productType.html'"></div>
 	<div id="right">
 		<p class="products_list">产品展示</p>
-
 		<div class="products_detail">
 		<div class="product_detail_kind">
+			<!-- 产品 -->
 			<table border="0" cellspacing="0">
-				<th colspan="9">BOB(EE)</th>
+				<th colspan="9">{{productType.name}}</th>
 				<tr class="product_kind_tr">
 					<td>Drawing No</td>
 					<td>Core Type</td>
@@ -30,37 +30,36 @@
 					<td>Sec</td>
 					<td>File</td>
 				</tr>
-				<tr class="product_infor">
-					<td>JJ-D001</td>
-					<td>T11.2*8.0*1.6 </td>
-					<td>16.55 </td>
-					<td>3.8</td>
-					<td>8</td>
-					<td>V</td>
-					<td>PHENOLIC </td>
-					<td>1</td>
-					<td class="product_file">File</td>
+
+				<tr class="product_infor" ng-repeat="one in productList">
+					<td>{{one.drawingNo}}</td>
+					<td>{{one.coreType}}</td>
+					<td>{{one.row}}</td>
+					<td>{{one.pitch}}</td>
+					<td>{{one.pins}}</td>
+					<td>{{one.style}}</td>
+					<td>{{one.ml}}</td>
+					<td>{{one.sec}}</td>
+					<td class="product_file" ng-click="openProductFile(one.fileName)">File</td>
 				</tr>
 			</table>
 		</div>
 		</div>
 		<div class="page">
-		
 			<ul>
-				<li><a href="#">[首页]</a></li>
-				<li><a href="#">[上一页]</a></li>
-				<li><a href="#">[下一页]</a></li>
-				<li><a href="#">[尾页]</a></li>
-				<li>[页次:_/_]</li>
-				<li>[共_条  _条/页]</li>
-				<li>转到<a href="#"><input type="text"  class="page_text"></a>页</li>
-				<li><input type="submit" value="go" class="page_search"></li>
+				<li><a href ng-click="changePageNo(1)">[首页]</a></li>
+				<li><a href ng-click="changePageNo(pageNo - 1)">[上一页]</a></li>
+				<li><a href ng-click="changePageNo(pageNo + 1)">[下一页]</a></li>
+				<li><a href ng-click="changePageNo(lastPageNo)">[尾页]</a></li>
+				<li>[页次:{{pageNo}}/{{lastPageNo}}]</li>
+				<li>[共{{total}}条  {{pageSize}}条/页]</li>
+				<li>转到<a href="#"><input type="text"  class="page_text" ng-model="pageNo"></a>页</li>
+				<li><input type="submit" value="go" class="page_search" ng-click="changePageNo(pageNo)"></li>
 			</ul>
-			
 		</div>
 	</div>
-
-
+	
+	
 	<div ng-include src="'front/views/include/contact.html'"></div>
 	<div ng-include src="'front/views/include/foot.html'"></div>
 </body>

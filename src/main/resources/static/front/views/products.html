@@ -47,7 +47,7 @@
 				</tr>
 
 				<tr class="product_infor" ng-repeat="one in productList">
-					<td>J{{one.drawingNo}}</td>
+					<td>{{one.drawingNo}}</td>
 					<td>{{one.coreType}}</td>
 					<td>{{one.row}}</td>
 					<td>{{one.pitch}}</td>
@@ -61,18 +61,16 @@
 		</div>
 		</div>
 		<div class="page">
-		
 			<ul>
-				<li><a href="#">[首页]</a></li>
-				<li><a href="#">[上一页]</a></li>
-				<li><a href="#">[下一页]</a></li>
-				<li><a href="#">[尾页]</a></li>
-				<li>[页次:_/_]</li>
-				<li>[共_条  _条/页]</li>
-				<li>转到<a href="#"><input type="text"  class="page_text"></a>页</li>
-				<li><input type="submit" value="go" class="page_search"></li>
+				<li><a href ng-click="changePageNo(1)">[首页]</a></li>
+				<li><a href ng-click="changePageNo(pageNo - 1)">[上一页]</a></li>
+				<li><a href ng-click="changePageNo(pageNo + 1)">[下一页]</a></li>
+				<li><a href ng-click="changePageNo(lastPageNo)">[尾页]</a></li>
+				<li>[页次:{{pageNo}}/{{lastPageNo}}]</li>
+				<li>[共{{total}}条  {{pageSize}}条/页]</li>
+				<li>转到<a href="#"><input type="text"  class="page_text" ng-model="pageNo"></a>页</li>
+				<li><input type="submit" value="go" class="page_search" ng-click="changePageNo(pageNo)"></li>
 			</ul>
-			
 		</div>
 	</div>
 	

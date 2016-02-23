@@ -16,12 +16,12 @@ public class PasswordEncoderGenerate {
 
 	private static final String MAC_NAME = "hmacSHA1";
 	private static final String ENCODING = "UTF-8";
-	private static final String salt = "encryptKey";
-
-	public static void main(String[] args) throws Exception {
-		String password = "123456";
-		System.out.println(HmacSHA1Encrypt(password, salt));
-	}
+//	private static final String salt = "encryptKey";
+//
+//	public static void main(String[] args) throws Exception {
+//		String password = "123456";
+//		System.out.println(HmacSHA1Encrypt(password, salt));
+//	}
 
 	/**
 	 * 使用 HMAC-SHA1 签名方法对对encryptText进行签名

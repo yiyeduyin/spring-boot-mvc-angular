@@ -30,8 +30,8 @@ public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long>im
 	private ProductRepository productRepository;
 
 	@Override
-	public CommonPage<Product> findList(Integer page, Integer size, Integer productType, Integer subProductType, String name, Integer isNew,
-			Integer status) {
+	public CommonPage<Product> findList(Integer page, Integer size, Integer productType, Integer subProductType,
+			String name, String drawingNo, Integer isNew, Integer status) {
 		// 分页
 		page = page - 1 >= 0 ? page - 1 : 0;
 		List<Order> sortList = new ArrayList<Order>();
@@ -48,17 +48,19 @@ public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long>im
 				List<Predicate> predicateList = new ArrayList<Predicate>();
 
 				if (Util.isNotNull(productType)) {
-					predicateList
-							.add(cb.equal(root.<ProductType> get("productType").get("id"), productType));
+					predicateList.add(cb.equal(root.<ProductType> get("productType").get("id"), productType));
 				}
-				
+
 				if (Util.isNotNull(subProductType)) {
-					predicateList
-							.add(cb.equal(root.<ProductType> get("subProductType").get("id"), subProductType));
+					predicateList.add(cb.equal(root.<ProductType> get("subProductType").get("id"), subProductType));
 				}
 
 				if (Util.isNotNull(name)) {
 					predicateList.add(cb.like(root.<String> get("name"), "%" + name + "%"));
+				}
+
+				if (Util.isNotNull(drawingNo)) {
+					predicateList.add(cb.like(root.<String> get("drawingNo"), "%" + drawingNo + "%"));
 				}
 
 				if (Util.isNotNull(status)) {

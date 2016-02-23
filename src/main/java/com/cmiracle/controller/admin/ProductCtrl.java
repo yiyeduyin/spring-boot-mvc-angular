@@ -188,10 +188,11 @@ public class ProductCtrl {
 			@RequestParam(value = "subProductType", required = false) Integer subProductType,
 			@RequestParam(value = "status",required = false) final Integer status,			
 			@RequestParam(value = "name",required = false) final String name,
+			@RequestParam(value = "drawingNo", required = false) final String drawingNo,
 			@RequestParam(value = "isNew", required = false) Integer isNew) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = productService.findList(page, size, productType, subProductType, name, isNew, status);
+			dto.data = productService.findList(page, size, productType, subProductType, name, drawingNo, isNew, status);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

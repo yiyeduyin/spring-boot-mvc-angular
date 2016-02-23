@@ -13,8 +13,9 @@
 		<li><a href="/engineerings">工程技术</a></li>
 		<li><a href="/certificates">资质荣誉</a></li>
 		<li><a href="/about" class="last">联系我们</a></li>
-
-		<li><input type="text" class="search" />
-			<p class="search_icon">Search</p></li>
+		<li>
+			<input type="text" class="search" ng-model="$parent.$parent.searchName" />
+			<p class="search_icon" ng-click="searchProduct()">Search</p>
+		</li>
 	</ul>
 </div>
