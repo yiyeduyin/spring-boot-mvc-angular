@@ -8,42 +8,42 @@
 <script src="assets/js/jquery.2.1.1.min.js"></script>
 <script src="front/js/e_index.js" type="text/javascript"></script>
 
-<title>信詠塑胶工业股份有限公司</title>
+<title>BOBBIN BASE CASE SMD series,Hsinyung Plastic Industrial Co. Ltd.</title>
 </head>
 
 <body ng-app="frontApp" ng-controller="e_message">
 	<div ng-include src="'front/views/include/e_top.html'"></div>
 	<div ng-include src="'front/views/include/e_productType.html'"></div>
 	<div id="right">
-		<p class="message_title">在线留言</p>
+		<p class="message_title">MESSAGE</p>
 		<div class="message_intro">
-			<p class="message_tip">尊敬的客户，请在这里将您们的宝贵建议反馈给我们，我们会及时回复，谢谢 ！</p>
+			<p class="message_tip">Valued customer,we are ready to receive your recommendations,we'll reply in time.Thanks!</p>
 			<br/>
 			<form class="message_form">
 
-				<p>留言主题：</p>
+				<p>Title：</p>
 				<select name="type" class="message_type" ng-model="message.type">
-					<option value="0">简单的留言</option>
-					<option value="1">对网站的意见</option>
-					<option value="2">对公司的建议</option>
-					<option value="3">具有合作意向</option>
-					<option value="4">产品投诉</option>
-					<option value="5">服务投诉</option>
-					<option value="6">其他</option>
+					<option value="0">Simple</option>
+					<option value="1">To website opinion</option>
+					<option value="2">To company's suggestion</option>
+					<option value="3">Has the cooperation intertion</option>
+					<option value="4">Products suit</option>
+					<option value="5">Service Suit</option>
+					<option value="6">Other</option>
 				</select><span>*</span><br />
-				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</p>
+				<p>Name：</p>
 				<input type="text" name="username" ng-model="message.username"/><br/>
 
-				<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</p>
+				<p>Tel：</p>
 				<input type="text" name="mobile" ng-model="message.mobile"/><br/>
 
-				<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</p>
+				<p>Address：</p>
 				<input type="text" name="address" ng-model="message.address"/><br/>
 
-				<p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</p>
+				<p>E-mail：</p>
 				<input type="text" name="email" ng-model="message.email"/><br/>
 
-				<p class="message_p">留言内容：</p>
+				<p class="message_p">Content：</p>
 				<textarea ng-model="message.content"></textarea><br/>
 				<input type="submit" value="提交留言" class="message_submit" ng-click="submit()">
 			</form>

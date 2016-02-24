@@ -5,7 +5,8 @@
 
 body {
 	width: 1005px;
-	font-family: Arial, "Microsoft Yahei", Tahoma, Helvetica, STHeiti,"Hiragino Sans GB";
+	font-family: Arial, "Microsoft Yahei", Tahoma, Helvetica, STHeiti,
+		"Hiragino Sans GB";
 }
 
 #head {
@@ -426,11 +427,10 @@ body {
 /*联系我们*/
 #right .about_ul {
 	float: left;
-	width: 420px;
+	width: 490px;
 }
 
 #right .about_intro ul {
-	width: 350px;
 	margin: 30px 0px 30px 28px;
 }
 
@@ -442,7 +442,7 @@ body {
 }
 
 #right .about_intro img {
-	margin: 30px 0px 0px 58px;
+	margin: 30px 0px 0px 0px;
 	float: left;
 	width: 250px;
 	height: 200px;
@@ -455,7 +455,9 @@ body {
 }
 
 #right .message_form p {
-	display: inline;
+	display: inline-block;
+	width: 80px;
+	text-align: right;
 }
 
 #right .message_tip {
@@ -479,7 +481,7 @@ body {
 #right .message_form .message_p {
 	float: left;
 	display: inline-block;
-	width: 84px;
+	width: 80px;
 	height: 84px;
 	line-height: 30px;
 }
@@ -500,7 +502,7 @@ body {
 #right .message_form textarea {
 	width: 620px;
 	height: 124px;
-	margin: 6px 0px 4px 6px;
+	margin: 6px 0px 4px 10px;
 	resize: none;
 }
 
