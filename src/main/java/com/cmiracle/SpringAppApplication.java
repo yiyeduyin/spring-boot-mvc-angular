@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-@PropertySource("application.properties")
+@PropertySource("classpath:/application.properties")
 public class SpringAppApplication {
 
 	public static void main(String[] args) {
