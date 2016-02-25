@@ -16,12 +16,12 @@ body {
 	background-image: url(../images/head.jpg);
 }
 
-#head .day {
+#head .day,#e-head .day {
 	height: 30px;
 	line-height: 30px;
 }
 
-#head .day p {
+#head .day p,#e-head .day p {
 	display: inline;
 	float: right;
 	font-size: 14px;
@@ -29,19 +29,25 @@ body {
 	color: #0066CC;
 }
 
-#head .day p a {
+#head .day p a,#e-head .day p a {
 	text-decoration: none;
 	color: #666;
 }
 
-#head .day p a:hover {
+#head .day p a:hover,#e-head .day p a:hover {
 	text-decoration: underline;
 }
 
-#head .lang_change {
+#head .lang_change,#e-head .lang_change {
 	cursor: pointer;
 }
-
+/*english*/
+#e-head {
+	height: 125px;
+	color: #336699;
+	border-bottom: 1px solid #FFF;
+	background-image: url(../images/e-head.jpg);
+}
 #nav {
 	width: 1003px;
 	height: 40px;
