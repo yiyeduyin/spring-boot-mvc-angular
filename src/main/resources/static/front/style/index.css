@@ -16,12 +16,12 @@ body {
 	background-image: url(../images/head.jpg);
 }
 
-#head .day,#e-head .day {
+#head .day, #e-head .day {
 	height: 30px;
 	line-height: 30px;
 }
 
-#head .day p,#e-head .day p {
+#head .day p, #e-head .day p {
 	display: inline;
 	float: right;
 	font-size: 14px;
@@ -29,16 +29,16 @@ body {
 	color: #0066CC;
 }
 
-#head .day p a,#e-head .day p a {
+#head .day p a, #e-head .day p a {
 	text-decoration: none;
 	color: #666;
 }
 
-#head .day p a:hover,#e-head .day p a:hover {
+#head .day p a:hover, #e-head .day p a:hover {
 	text-decoration: underline;
 }
 
-#head .lang_change,#e-head .lang_change {
+#head .lang_change, #e-head .lang_change {
 	cursor: pointer;
 }
 /*english*/
@@ -48,6 +48,7 @@ body {
 	border-bottom: 1px solid #FFF;
 	background-image: url(../images/e-head.jpg);
 }
+
 #nav {
 	width: 1003px;
 	height: 40px;
@@ -587,9 +588,9 @@ body {
 
 #con {
 	float: left;
-	width: 778px;
+	width: 788px;
 	height: 366px;
-	margin-left: 8px;
+	margin-left: 6px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -620,8 +621,19 @@ body {
 	font-size: 14px;
 }
 
-.pro_first, .pro_last, .products_first, .products_last {
-	margin: 6px 12px 6px 8px;
+#con .pro_first, .pro_last, .products_first, .products_last {
+	margin: 9px 8px 6px 14px;
+	float: left;
+	width: 172px;
+	height: 145px;
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 2px 2px 5px 1px #E0E7EF;
+	cursor: pointer;
+}
+
+#right .pro_first, .pro_last, .products_first, .products_last {
+	margin: 6px 12px 6px 11px;
 	float: left;
 	width: 172px;
 	height: 145px;
