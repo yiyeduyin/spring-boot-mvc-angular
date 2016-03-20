@@ -44,6 +44,7 @@ public class ProductTypeCtrl {
 			}
 			productType.status = 1;
 			productTypeService.save(productType);
+			productTypeService.reloadCache();
 			return dto.toJson();
 		} catch (Exception e) {
 			dto.errMsg = "error";
@@ -99,6 +100,7 @@ public class ProductTypeCtrl {
 			oldProductType.icon = newProductType.icon;
 			
 			productTypeService.update(oldProductType);
+			productTypeService.reloadCache();
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -127,6 +129,7 @@ public class ProductTypeCtrl {
 				productTypeService.delete(t.id);
 			});
 			productTypeService.delete(id);
+			productTypeService.reloadCache();
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

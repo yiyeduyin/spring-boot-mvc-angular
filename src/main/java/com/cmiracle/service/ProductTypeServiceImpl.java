@@ -1,5 +1,6 @@
 package com.cmiracle.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -25,10 +30,14 @@ import com.cmiracle.util.Util;
 @Service
 public class ProductTypeServiceImpl extends AbstractBaseServiceImpl<ProductType, Long>implements ProductTypeService {
 
+	private static final Logger logger = LoggerFactory.getLogger(ProductTypeServiceImpl.class);
+
+	
 	@Autowired
 	private ProductTypeRepository productTypeRepository;
 
 	@Override
+	@Cacheable("productTypes")
 	public CommonPage<ProductType> findList(Integer page, Integer size, String name, Integer status, Integer type,
 			Integer parentProductTypeId) {
 		// 分页
@@ -77,10 +86,19 @@ public class ProductTypeServiceImpl extends AbstractBaseServiceImpl<ProductType,
 		CommonPage<ProductType> commonPage = new CommonPage<ProductType>(result);
 		return commonPage;
 	}
-
+	
 	@Override
 	public List<ProductType> findByParentProductType(Long pid) {
 		return productTypeRepository.findByParentProductType(pid);
 	}
 
+	@Override
+	@CacheEvict(value="productTypes",allEntries=true)// 清空缓存
+	public void reloadCache() {
+		logger.info("the productTypes cache reload: " + LocalDateTime.now());
+	}
+
+	
+	
+	
 }
