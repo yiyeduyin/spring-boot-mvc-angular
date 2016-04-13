@@ -14,7 +14,7 @@
 	<div ng-include src="'front/views/include/productType.html'"></div>
 	<div id="right">
 		<p class="company_title">公司简介</p>
-		<div class="profile_intro">
+		<!-- <div class="profile_intro">
 			<img alt="公司" src="front/images/intro.jpg" />
 			<p>信咏塑胶工业有限公司（信咏塑胶电子工业）是一家专业从事塑胶、酚醛模具和R/D制造
 				业的公司。我们致力于bobbin开发和生产已20多年,赢得了200多客户的评估和支持。我们通
@@ -26,6 +26,11 @@
 				有限公司建于1998年。我们公司一开始是用原材料制造OEM电子元件但渐渐地我们投入产品开发
 				并转型成一个有创新设计能力的公司,生产订制产品仍然是我们的核心业务。信咏越来越高效做各
 				种不同的塑料制品,我们为来自各行各业的客户提供最好的产品。</p>
+		</div> -->
+
+		<div class="profile_intro">
+			<img alt="公司" ng-src="{{'/rest/file/'+profile.icon}}" style="width:180px;height:180px;" ng-if="profile.icon" />
+			<p ng-bind="profile.value"></p>
 		</div>
 	</div>
 	<div ng-include src="'front/views/include/foot.html'"></div>

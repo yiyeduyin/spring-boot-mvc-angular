@@ -40,6 +40,16 @@ app.controller('index', function($rootScope, $scope, $http, $location, $window, 
     }
     $scope.getProducts();
 
+    $scope.profile = {};
+    $scope.find = function() {
+        $http.get('/rest/profile', {}).success(function(res) {
+            if (res.errcode == 0) {
+                $scope.profile = res.data;
+            }
+        });
+    }
+    $scope.find();
+
     //打开文件
     $scope.openProductFile = function(fileName) {
         $window.open('/rest/file/' + fileName);
@@ -191,7 +201,7 @@ app.controller('products', function($rootScope, $scope, $http, $location, $windo
 
     //更改页码
     $scope.changePageNo = function(pageNo) {
-        if(pageNo >= 1 && pageNo <= $scope.lastPageNo){
+        if (pageNo >= 1 && pageNo <= $scope.lastPageNo) {
             $scope.pageNo = pageNo;
             $scope.getProducts();
         }
@@ -215,8 +225,7 @@ app.controller('message', function($rootScope, $scope, $http, $location, getProd
         } else if (!$scope.message.mobile) {
             tips("请填写电话", 1000, function() {});
             return false;
-        }
-        else if (!$scope.message.content) {
+        } else if (!$scope.message.content) {
             tips("请填写内容", 1000, function() {});
             return false;
         } else if ($scope.message.content.length < 10) {
@@ -267,7 +276,7 @@ app.controller('search', function($rootScope, $scope, $http, $location, $window,
         });
         return result;
     }
-    var searchName = parse("searchName");
+    var name = parse("searchName");
 
     $scope.lastPageNo = 1;
     $scope.pageNo = 1;
@@ -277,11 +286,11 @@ app.controller('search', function($rootScope, $scope, $http, $location, $window,
 
     //获取产品
     $scope.getProducts = function() {
-        $http.get('/rest/product/list', {
+        $http.get('/rest/product/searchList', {
             params: {
                 pageNo: $scope.pageNo,
                 pageSize: $scope.pageSize,
-                drawingNo: searchName
+                name: name
             }
         }).success(function(res) {
             if (res.errcode == 0) {
@@ -299,7 +308,7 @@ app.controller('search', function($rootScope, $scope, $http, $location, $window,
 
     //更改页码
     $scope.changePageNo = function(pageNo) {
-        if(pageNo >= 1 && pageNo <= $scope.lastPageNo){
+        if (pageNo >= 1 && pageNo <= $scope.lastPageNo) {
             $scope.pageNo = pageNo;
             $scope.getProducts();
         }
@@ -312,10 +321,17 @@ app.controller('search', function($rootScope, $scope, $http, $location, $window,
 });
 
 app.controller('about', function($rootScope, $scope, $http, $location, getProductTypeList) {
-   
+
 });
 
 app.controller('profile', function($rootScope, $scope, $http, $location, getProductTypeList) {
-   
+    $scope.profile = {};
+    $scope.find = function() {
+        $http.get('/rest/profile', {}).success(function(res) {
+            if (res.errcode == 0) {
+                $scope.profile = res.data;
+            }
+        });
+    }
+    $scope.find();
 });
-

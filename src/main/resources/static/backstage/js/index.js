@@ -84,6 +84,11 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/adminEdit.html',
             controller: 'AdminEditCtrl'
         })
+        //公司简介
+        .when('/profile/detail', {
+            templateUrl: 'backstage/views/profile.html',
+            controller: 'ProfileCtrl'
+        })
         .when('/test', {
             templateUrl: 'backstage/views/test.html',
             controller: 'test'

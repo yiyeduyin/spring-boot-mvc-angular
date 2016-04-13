@@ -1,0 +1,125 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+        </script>
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="#/admin">Home</a>
+            </li>
+            <li>
+                <a href="#">简介管理</a>
+            </li>
+            <li class="active">简介详情</li>
+        </ul>
+        <!-- /.breadcrumb -->
+        <div class="nav-search" id="nav-search">
+        </div>
+        <!-- /.nav-search -->
+    </div>
+    <div class="page-content">
+        <!-- /.ace-settings-container -->
+        <div class="page-header">
+        </div>
+        <!-- /.page-header -->
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <form class="form-horizontal" role="form" ng-if="!isEdit">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 图标 </label>
+                        <!-- <div class="col-sm-9" ng-show="!profile.icon">
+                            <label class="ace-file-input ace-file-multiple">
+                                <input type="file" ngf-select ng-model="icon" name="icon" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ng-change="uploadIcon()" id="id-input-file-3">
+                                <span class="ace-file-container" style="width:140px;height:115px;" data-title="上传图标">
+                                    <span class="ace-file-name">
+                                    <i class=" ace-icon ace-icon fa fa-picture-o"></i>
+                                    </span>
+                                </span>
+                            </label>
+                        </div> -->
+
+                        <div class="col-sm-9" ng-show="profile.icon">
+                            <div ng-if="profile.icon"><img ng-src="{{'/rest/file/'+profile.icon}}" style="width:300px;height:300px;">
+                            </div>
+                            <!-- <button class="btn btn-app btn-danger btn-sm" style="width: 300px" ng-click="removeIcon()">
+                                <i class="ace-icon fa fa-trash-o bigger-10"></i>
+                            </button> -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 简介： </label>
+                        <div class="col-sm-9">
+                           <textarea ng-bind="profile.value" rows="15" cols="100" placeholder="简介"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" type="button" ng-click="edit()" ng-disabled="!profile.value">
+                                <i class="ace-icon fa fa-pencil-square-o bigger-110"></i> 编辑
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hr hr-24"></div>
+                    
+                </form>
+
+
+                <form class="form-horizontal" role="form" ng-if="isEdit">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 图标 </label>
+                        <div class="col-sm-9" ng-show="!profile.icon">
+                            <label class="ace-file-input ace-file-multiple">
+                                <input type="file" ngf-select ng-model="icon" name="icon" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ng-change="uploadIcon()" id="id-input-file-3">
+                                <span class="ace-file-container" style="width:140px;height:115px;" data-title="上传图标">
+                                    <span class="ace-file-name">
+                                    <i class=" ace-icon ace-icon fa fa-picture-o"></i>
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-9" ng-show="profile.icon">
+                            <div ng-if="profile.icon"><img ng-src="{{'/rest/file/'+profile.icon}}" style="width:300px;height:300px;">
+                            </div>
+                            <button class="btn btn-app btn-danger btn-sm" style="width: 300px" ng-click="removeIcon()">
+                                <i class="ace-icon fa fa-trash-o bigger-10"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 简介： </label>
+                        <div class="col-sm-9">
+                           <textarea ng-model="profile.value" rows="15" cols="100" placeholder="简介"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" type="button" ng-click="submit()" ng-disabled="!profile.value">
+                                <i class="ace-icon fa fa-check bigger-110"></i> 提交
+                            </button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="reset" ng-click="cancleEdit()">
+                                <i class="ace-icon fa fa-reply bigger-110"></i> 返回
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hr hr-24"></div>
+                    
+                </form>
+                
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.page-content -->
+</div>
