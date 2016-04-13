@@ -91,4 +91,53 @@ public class ProductServiceImpl extends AbstractBaseServiceImpl<Product, Long>im
 		return productRepository.findByProductType(tid);
 	}
 
+	@Override
+	public CommonPage<Product> findList(Integer page, Integer size, String name, Integer status) {
+		// 分页
+				page = page - 1 >= 0 ? page - 1 : 0;
+				List<Order> sortList = new ArrayList<Order>();
+				// 排序
+				sortList.add(new Sort.Order(Direction.DESC, "id"));
+				Sort sort = new Sort(sortList);
+				PageRequest pageRequest = new PageRequest(page, size, sort);
+
+				// 查询条件
+				Specification<Product> spec = new Specification<Product>() {
+					@Override
+					public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+						Predicate predicate = cb.conjunction();
+						List<Predicate> predicateList = new ArrayList<Predicate>();
+
+						if (Util.isNotNull(name)) {
+							predicateList.add(cb.like(root.<String> get("drawingNo"), "%" + name + "%"));
+							predicateList.add(cb.like(root.<String> get("coreType"), "%" + name + "%"));
+							predicateList.add(cb.like(root.<String> get("row"), "%" + name + "%")); 
+							predicateList.add(cb.like(root.<String> get("pitch"), "%" + name + "%"));
+							predicateList.add(cb.like(root.<String> get("pins"), "%" + name + "%"));
+							predicateList.add(cb.like(root.<String> get("style"), "%" + name + "%"));
+							predicateList.add(cb.like(root.<String> get("ml"), "%" + name + "%"));
+							predicateList.add(cb.like(root.<String> get("sec"), "%" + name + "%"));
+							Predicate[] predicates = new Predicate[predicateList.size()];
+							for (int i = 0; i < predicateList.size(); i++) {
+								predicates[i] = predicateList.get(i);
+							}
+							cb.and(predicates);
+							predicate = cb.or(predicates);
+						}else{
+							Predicate[] predicates = new Predicate[predicateList.size()];
+							for (int i = 0; i < predicateList.size(); i++) {
+								predicates[i] = predicateList.get(i);
+							}
+							predicate = cb.and(predicates);
+						}
+						
+						return predicate;
+					}
+
+				};
+				Page<Product> result = productRepository.findAll(spec, pageRequest);
+				CommonPage<Product> commonPage = new CommonPage<Product>(result);
+				return commonPage;
+	}
+
 }

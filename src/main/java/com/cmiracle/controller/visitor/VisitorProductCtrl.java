@@ -69,4 +69,29 @@ public class VisitorProductCtrl {
 			return dto.toJson();
 		}
 	}
+	
+	/**
+	 * 分页查询
+	 * 
+	 * @param page
+	 * @param size
+	 * @param status
+	 * @param typeName
+	 * @return
+	 */
+	@RequestMapping(value = "/searchList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8)
+	public @ResponseBody String searchList(@RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer page,
+			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer size,
+			@RequestParam(value = "name", required = false) final String name) {
+		DTO dto = DTO.newDTO();
+		try {
+			dto.data = productService.findList(page, size, name, 1);
+			return dto.toJson();
+		} catch (Exception e) {
+			e.printStackTrace();
+			dto.errMsg = "error";
+			dto.errCode = -1;
+			return dto.toJson();
+		}
+	}
 }

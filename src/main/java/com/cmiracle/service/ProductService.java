@@ -9,6 +9,10 @@ public interface ProductService extends BaseService<Product, Long> {
 
 	public CommonPage<Product> findList(Integer page, Integer size, Integer productType, Integer subProductType, String name, String drawingNo, Integer isNew, Integer status);
 	
+	
+	public CommonPage<Product> findList(Integer page, Integer size, String name, Integer status);
+	
+	
 	public List<Product> findByProductType(Long tid);
 
 }
