@@ -44,7 +44,7 @@ public class ProductTypeServiceImpl extends AbstractBaseServiceImpl<ProductType,
 		page = page - 1 >= 0 ? page - 1 : 0;
 		List<Order> sortList = new ArrayList<Order>();
 		// 排序
-		sortList.add(new Sort.Order(Direction.ASC, "id"));
+		sortList.add(new Sort.Order(Direction.DESC, "id"));
 		Sort sort = new Sort(sortList);
 		PageRequest pageRequest = new PageRequest(page, size, sort);
 
