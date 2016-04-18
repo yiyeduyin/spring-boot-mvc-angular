@@ -89,6 +89,19 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/profile.html',
             controller: 'ProfileCtrl'
         })
+        //联系我们
+        .when('/contact/list', {
+            templateUrl: 'backstage/views/contactList.html',
+            controller: 'ContactsListCtrl'
+        })
+        .when('/contact/add', {
+            templateUrl: 'backstage/views/contactEdit.html',
+            controller: 'ContactEditCtrl'
+        })
+        .when('/contact/edit/:id', {
+            templateUrl: 'backstage/views/contactEdit.html',
+            controller: 'ContactEditCtrl'
+        })
         .when('/test', {
             templateUrl: 'backstage/views/test.html',
             controller: 'test'

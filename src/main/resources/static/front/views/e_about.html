@@ -1,51 +1,47 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8" />
-<link type="text/css" rel="stylesheet" href="front/style/index.css" />
-<script src="assets/js/angular/angular.min.js"></script>
-<script src="front/js/e_index.js" type="text/javascript"></script>
 
-<title>BOBBIN BASE CASE SMD series,Hsinyung Plastic Industrial
-	Co. Ltd.</title>
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="front/style/index.css" />
+    <script src="assets/js/angular/angular.min.js"></script>
+    <script src="front/js/e_index.js" type="text/javascript"></script>
+    <title>BOBBIN BASE CASE SMD series,Hsinyung Plastic Industrial Co. Ltd.</title>
 </head>
 
 <body ng-app="frontApp" ng-controller="e_about">
-	<div ng-include src="'front/views/include/e_top.html'"></div>
-	<div ng-include src="'front/views/include/e_productType.html'"></div>
-	<div id="right">
-		<p class="about_title">CONTACT US</p>
-		<div class="about_intro">
-			<div class="about_ul">
-				<ul>
-					<li>Taiwan:Hsin Yung Plastic Industry Company Limited</li>
-					<li>Add:No. 126, Sec.1, Guang Fu Rd., Sanchung City,
-						Taipei</li>
-					<li>TEL:(886-2)29953711(operator)</li>
-					<li>FAX:(886-2)29990010</li>
-					<li>MAIL:sales@hsin-yung.com</li>
-					<li>Web:www.hsin-yung.com</li>
-				</ul>
-				<ul>
-					<li>DongGuang:Hsin Yung Plastic Electronics Factory</li>
-					<li>Add: Block 5, Shin-Je Electronic, Dongguan, GuangDong, China</li>
-					<li>Tel:(86-769)86632011, 86311736</li>
-					<li>Fax:(86-769)86635843, 86302251</li>
-					<li>E-mail:hsinyung@sinyung.kmip.net</li>
-					<li>Web:Http://www.hsinyung.com</li>
-				</ul>
-				<ul>
-					<li>Suzhou: Zhengjie Plastic & Elec., Co.,Ltd.</li>
-					<li style="height:60px;line-height:26px;">Add:1121, Jianlin West Rd,Economic DevelopingZone,Wujiang City,Jiangsu Province</li>
-					<li>Tel:(86-512)63457130, 63457131</li>
-					<li>Fax:(86-512)63457132</li>
-					<li>E-mail:jenq_jye@sina.com</li>
-					<li>Web:www.jenqjye.com</li>
-				</ul>
-			</div>
-			<img src="front/images/DG.jpg" />
-		</div>
-	</div>
-	<div ng-include src="'front/views/include/e_foot.html'"></div>
+    <div ng-include src="'front/views/include/e_top.html'"></div>
+    <div ng-include src="'front/views/include/e_productType.html'"></div>
+    <div id="right">
+        <p class="about_title">CONTACT US</p>
+        <div class="about_intro">
+           <!--  <div class="about_ul">
+                <ul>
+                    <li>Taiwan:Hsin Yung Plastic Industry Company Limited</li>
+                    <li>Add:No. 126, Sec.1, Guang Fu Rd., Sanchung City, Taipei
+                    </li>
+                    <li>TEL:(886-2)29953711(operator)</li>
+                    <li>FAX:(886-2)29990010</li>
+                    <li>MAIL:sales@hsin-yung.com</li>
+                    <li>Web:www.hsin-yung.com</li>
+                </ul>
+                <img src="front/images/DG.jpg" />
+            </div> -->
+
+            <div class="about_ul" ng-repeat="one in contactList">
+                <ul>
+                    <li>{{one.name}}：{{one.detailName}}</li>
+                    <li>Add：{{one.address}}</li>
+                    <li>TEL：{{one.mobile}}</li>
+                    <li>FAX：{{one.fax}}</li>
+                    <li>MAIL:{{one.email}}</li>
+                    <li>Web：{{one.website}}</li>
+                </ul>
+                <img ng-src="{{'/rest/file/'+one.icon}}" ng-if="one.icon" />
+            </div>
+        </div>
+    </div>
+    <div ng-include src="'front/views/include/e_foot.html'"></div>
 </body>
+
 </html>

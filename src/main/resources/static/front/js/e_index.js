@@ -312,7 +312,15 @@ app.controller('e_search', function($rootScope, $scope, $http, $location, $windo
 });
 
 app.controller('e_about', function($rootScope, $scope, $http, $location, e_getProductTypeList) {
-   
+    $scope.contactList = {};
+    $scope.find = function() {
+        $http.get('/rest/contact/list', {}).success(function(res) {
+            if (res.errcode == 0) {
+                $scope.contactList = res.data.content;
+            }
+        });
+    }
+    $scope.find();
 });
 
 app.controller('e_profile', function($rootScope, $scope, $http, $location, e_getProductTypeList) {

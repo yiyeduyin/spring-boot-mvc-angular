@@ -1,0 +1,124 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+        </script>
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="#/admin">Home</a>
+            </li>
+            <li>
+                <a href="#">联系我们</a>
+            </li>
+            <li class="active">联系编辑</li>
+        </ul>
+        <!-- /.breadcrumb -->
+        <div class="nav-search" id="nav-search">
+           
+        </div>
+        <!-- /.nav-search -->
+    </div>
+    <div class="page-content">
+        <!-- /.ace-settings-container -->
+        <div class="page-header">
+           
+        </div>
+        <!-- /.page-header -->
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 公司简称 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="公司简称" class="col-xs-10 col-sm-5" ng-model="contact.name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 公司全称 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="公司全称" class="col-xs-10 col-sm-5" ng-model="contact.detailName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 地址 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="地址" class="col-xs-10 col-sm-5" ng-model="contact.address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 电话 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="电话" class="col-xs-10 col-sm-5" ng-model="contact.mobile" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 传真 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="传真" class="col-xs-10 col-sm-5" ng-model="contact.fax" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 邮箱 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="邮箱" class="col-xs-10 col-sm-5" ng-model="contact.email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 网站 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="网站" class="col-xs-10 col-sm-5" ng-model="contact.website" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 排序 </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="排序" class="col-xs-10 col-sm-5" ng-model="contact.orderIndex" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 图标 </label>
+                        <div class="col-sm-9" ng-show="!contact.icon">
+                            <label class="ace-file-input ace-file-multiple">
+                                <input type="file" ngf-select ng-model="icon" name="icon" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ng-change="uploadIcon()" id="id-input-file-3">
+                                <span class="ace-file-container" style="width:140px;height:115px;" data-title="上传图标">
+                                    <span class="ace-file-name">
+                                    <i class=" ace-icon ace-icon fa fa-picture-o"></i>
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-9" ng-show="contact.icon">
+                            <div ng-if="contact.icon"><img ng-src="{{'/rest/file/'+contact.icon}}" style="width:300px;height:300px;">
+                            </div>
+                            <button class="btn btn-app btn-danger btn-sm" style="width: 300px" ng-click="removeIcon()">
+                                <i class="ace-icon fa fa-trash-o bigger-10"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" type="button" ng-click="submit()">
+                                <i class="ace-icon fa fa-check bigger-110"></i> 提交
+                            </button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="reset" ng-click="goBack()">
+                                <i class="ace-icon fa fa-reply bigger-110"></i> 返回
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hr hr-24"></div>
+                </form>
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.page-content -->
+</div>
