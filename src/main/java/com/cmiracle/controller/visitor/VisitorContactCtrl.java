@@ -3,6 +3,7 @@ package com.cmiracle.controller.visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,13 +17,13 @@ public class VisitorContactCtrl {
 
 	@Autowired
 	private ContactService contactService;
-	
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8)
-	public @ResponseBody String list() {
+	public @ResponseBody String list(
+			@RequestParam(value = "type",required = false) Integer type) {
 		DTO dto = DTO.newDTO();
 		try {
-			dto.data = contactService.findList(1,999);
+			dto.data = contactService.findByType(type);
 			return dto.toJson();
 		} catch (Exception e) {
 			e.printStackTrace();

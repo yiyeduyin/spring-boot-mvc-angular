@@ -26,6 +26,7 @@
                             <thead>
                                 <tr>
                                     <th>图标</th>
+                                    <th>类型</th>
                                     <th>公司简称</th>
                                     <th>公司全称</th>
                                     <th>地址</th>
@@ -41,6 +42,10 @@
                                 <tr ng-repeat="one in contactList">
                                     <td>
                                         <img ng-src="{{'/rest/file/'+one.icon}}" style="width:30px;height:30px;" ng-if="one.icon">
+                                    </td>
+                                    <td ng-switch="one.type">
+                                        <span ng-switch-when=1>中文</span>
+                                        <span ng-switch-when=2>英文</span>
                                     </td>
                                     <td>{{one.name}}</td>
                                     <td>{{one.detailName}}</td>

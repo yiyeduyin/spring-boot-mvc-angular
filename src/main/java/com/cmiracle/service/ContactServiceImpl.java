@@ -64,4 +64,9 @@ public class ContactServiceImpl extends AbstractBaseServiceImpl<Contact, Long>im
 		return contactRepository.findAll();
 	}
 
+	@Override
+	public List<Contact> findByType(Integer type) {
+		return contactRepository.findByTypeOrderByOrderIndexAsc(type);
+	}
+
 }

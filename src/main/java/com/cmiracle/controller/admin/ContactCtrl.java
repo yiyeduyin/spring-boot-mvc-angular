@@ -80,6 +80,7 @@ public class ContactCtrl {
 			oldContact.fax = newContact.fax;
 			oldContact.website = newContact.website;
 			oldContact.orderIndex = newContact.orderIndex;
+			oldContact.type = newContact.type;
 			contactService.update(oldContact);
 			return dto.toJson();
 		} catch (Exception e) {

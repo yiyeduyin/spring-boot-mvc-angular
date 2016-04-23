@@ -11,4 +11,6 @@ public interface ContactService extends BaseService<Contact, Long> {
 	
 	public List<Contact> findAll();
 	
+	public List<Contact> findByType(Integer type);
+	
 }

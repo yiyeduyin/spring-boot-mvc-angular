@@ -32,6 +32,15 @@
                 <!-- PAGE CONTENT BEGINS -->
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 联系类型 </label>
+                        <div class="col-sm-9">
+                            <select class="col-xs-10 col-sm-5" id="form-field-select-1" ng-model="contact.type" ng-options="type.type as type.name for type in typeList">
+                                <option value="">请选择类型</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 公司简称 </label>
                         <div class="col-sm-9">
                             <input type="text" id="form-field-1" placeholder="公司简称" class="col-xs-10 col-sm-5" ng-model="contact.name" />

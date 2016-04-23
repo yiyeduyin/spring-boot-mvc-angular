@@ -323,9 +323,13 @@ app.controller('search', function($rootScope, $scope, $http, $location, $window,
 app.controller('about', function($rootScope, $scope, $http, $location, getProductTypeList) {
     $scope.contactList = {};
     $scope.find = function() {
-        $http.get('/rest/contact/list', {}).success(function(res) {
+        $http.get('/rest/contact/list', {
+            params: {
+                type: 1
+            }
+        }).success(function(res) {
             if (res.errcode == 0) {
-                $scope.contactList = res.data.content;
+                $scope.contactList = res.data;
             }
         });
     }

@@ -83,6 +83,12 @@ public class Contact implements Serializable {
 	 */
 	@Column(name = "orderIndex", nullable = true)
 	public String orderIndex;
+	
+	/**
+	 * 类型 (1中文，2英文)
+	 */
+	@Column(name = "type", nullable = true)
+	public Integer type;
 
 	
 

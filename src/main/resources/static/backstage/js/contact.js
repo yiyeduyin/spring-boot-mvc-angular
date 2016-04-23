@@ -84,6 +84,14 @@ angular.module('app').controller('ContactEditCtrl', function($rootScope, $scope,
     var id = $routeParams.id;
     $scope.contact = {};
 
+    $scope.typeList = [{
+        type:1,
+        name:'中文'
+    },{
+        type:2,
+        name:'英文'
+    }]
+
     $scope.upload_image_message = "";
 
     $scope.init = function() {
