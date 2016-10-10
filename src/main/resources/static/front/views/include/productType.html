@@ -1,7 +1,7 @@
 <div id="left">
 	<div class="list">
 		<ul id="leftnavtype">
-			<li class="list_title">产品类别</li>
+			<li class="list_title">産品類別</li>
 			<li ng-repeat="one in leftProductTypeList">
 				<a href="/products?type={{one.id}}"> >&nbsp;&nbsp;{{one.name}} </a>
 			</li>
@@ -9,18 +9,18 @@
 	</div>
 	<div id="contact">
 		<div class="voice">
-			<a href="/certificates">资质荣誉</a>
+			<a href="/certificates">資質榮譽</a>
 		</div>
 		<div class="relation">
-			<a href="/message">在线留言</a>
+			<a href="/message">在線留言</a>
 		</div>
 		<div class="address">
-			<img src="front/images/banner4.jpg" height="55" />
+			<img ng-src="{{'/rest/file/'+contact.icon}}" ng-if="contact.icon" height="55" />
 			<ul>
-				<li>信咏塑胶工业股份有限公司</li>
-				<li>电话：0512-63457130</li>
-				<li>传真：0512-63457132</li>
-				<li>Email:jenqjye@jenqjye.com</li>
+				<li>{{contact.detailName}}</li>
+				<li>電话：{{contact.mobile}}</li>
+				<li>傳真：{{contact.fax}}</li>
+				<li>Email:{{contact.email}}</li>
 			</ul>
 		</div>
 	</div>

@@ -89,6 +89,15 @@ angular.module('app', ['ngRoute', 'ngResource', 'ngFileUpload']).config(function
             templateUrl: 'backstage/views/profile.html',
             controller: 'ProfileCtrl'
         })
+        //公司标题
+        .when('/system/title/:type', {
+            templateUrl: 'backstage/views/title.html',
+            controller: 'TitleCtrl'
+        })
+        // .when('/system/title/e', {
+        //     templateUrl: 'backstage/views/titleE.html',
+        //     controller: 'TitleECtrl'
+        // })
         //联系我们
         .when('/contact/list', {
             templateUrl: 'backstage/views/contactList.html',

@@ -8,39 +8,39 @@
 <script src="assets/js/jquery.2.1.1.min.js"></script>
 <script src="front/js/index.js" type="text/javascript"></script>
 
-<title>信詠塑胶工业股份有限公司</title>
+<title>信詠塑膠工業股份有限公司</title>
 </head>
 
 <body ng-app="frontApp" ng-controller="message">
 	<div ng-include src="'front/views/include/top.html'"></div>
 	<div ng-include src="'front/views/include/productType.html'"></div>
 	<div id="right">
-		<p class="message_title">在线留言</p>
+		<p class="message_title">在線留言</p>
 		<div class="message_intro">
-			<p class="message_tip">尊敬的客户，请在这里将您们的宝贵建议反馈给我们，我们会及时回复，谢谢 ！</p>
+			<p class="message_tip">尊敬的客戶，請在這裏將您們的寶貴建議反饋給我們，我們會及時回複，謝謝 ！</p>
 			<br/>
 			<form class="message_form">
 
 				<p>留言主题：</p>
 				<select name="type" class="message_type" ng-model="message.type">
-					<option value="0">简单的留言</option>
-					<option value="1">对网站的意见</option>
-					<option value="2">对公司的建议</option>
+					<option value="0">簡單的留言</option>
+					<option value="1">對網站的意見</option>
+					<option value="2">對公司的建議</option>
 					<option value="3">具有合作意向</option>
-					<option value="4">产品投诉</option>
-					<option value="5">服务投诉</option>
+					<option value="4">産品投訴</option>
+					<option value="5">服務投訴</option>
 					<option value="6">其他</option>
 				</select><span>*</span><br />
 				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</p>
 				<input type="text" name="username" ng-model="message.username"/><br/>
 
-				<p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</p>
+				<p>電&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</p>
 				<input type="text" name="mobile" ng-model="message.mobile"/><br/>
 
 				<p>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</p>
 				<input type="text" name="address" ng-model="message.address"/><br/>
 
-				<p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</p>
+				<p>郵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</p>
 				<input type="text" name="email" ng-model="message.email"/><br/>
 
 				<p class="message_p">留言内容：</p>

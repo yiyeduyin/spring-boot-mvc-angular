@@ -20,6 +20,33 @@ app.service('getProductTypeList', function($rootScope, $http) {
     $rootScope.searchProduct = function() {
         window.location.href = "/search?searchName=" + $rootScope.searchName;
     }
+
+    $rootScope.contact = {};
+    $rootScope.findContact = function() {
+        $http.get('/rest/contact/list', {
+            params: {
+                type: 1
+            }
+        }).success(function(res) {
+            if (res.errcode == 0) {
+                $rootScope.contact = res.data[0];
+            }
+        });
+    }
+    $rootScope.findContact();
+
+
+    $rootScope.title = {};
+    $rootScope.findTitle = function() {
+        $http.get('/rest/system/titlec', {}).success(function(res) {
+            if (res.errcode == 0) {
+                if(res.data){
+                    $rootScope.title = res.data;
+                }
+            }
+        });
+    }
+    $rootScope.findTitle();
 });
 
 
@@ -42,7 +69,7 @@ app.controller('index', function($rootScope, $scope, $http, $location, $window, 
 
     $scope.profile = {};
     $scope.find = function() {
-        $http.get('/rest/profile', {}).success(function(res) {
+        $http.get('/rest/system/profile', {}).success(function(res) {
             if (res.errcode == 0) {
                 $scope.profile = res.data;
             }
@@ -339,9 +366,10 @@ app.controller('about', function($rootScope, $scope, $http, $location, getProduc
 app.controller('profile', function($rootScope, $scope, $http, $location, getProductTypeList) {
     $scope.profile = {};
     $scope.find = function() {
-        $http.get('/rest/profile', {}).success(function(res) {
+        $http.get('/rest/system/profile', {}).success(function(res) {
             if (res.errcode == 0) {
                 $scope.profile = res.data;
+                console.log($scope.profile);
             }
         });
     }

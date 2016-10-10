@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cmiracle.comment.DTO;
 import com.cmiracle.comment.MediaType;
 import com.cmiracle.service.CertificatesService;
@@ -32,6 +33,22 @@ public class VisitorCertificatesCtrl {
 			dto.errMsg = "error";
 			dto.errCode = -1;
 			return dto.toJson();
+		}
+	}
+	
+	/**
+	 * 分页查询
+	 * @return
+	 */
+	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8)
+	public @ResponseBody String test() {
+		try {
+			JSONObject object = new JSONObject();
+			object.put("key", "test");
+			return object.toJSONString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
 		}
 	}
 }

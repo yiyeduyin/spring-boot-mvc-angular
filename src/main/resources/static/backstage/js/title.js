@@ -1,14 +1,19 @@
 // 商品类型列表
-angular.module('app').controller('ProfileCtrl', function($rootScope, $scope, $http, $location, Upload) {
-    $scope.profile = {};
+angular.module('app').controller('TitleCtrl', function($rootScope, $scope, $http, $routeParams, $location, Upload) {
+    var type = $routeParams.type;
+
+    var code = 'title' + type;
+
+
+    $scope.title = {};
 
     $scope.isEdit = false;
 
     $scope.find = function() {
-        $http.get('/admin/rest/system/profile', {}).success(function(res) {
+        $http.get('/admin/rest/system/' + code, {}).success(function(res) {
             if (res.errcode == 0) {
                 if(res.data){
-                    $scope.profile = res.data;
+                    $scope.title = res.data;
                 }
             }
         });
@@ -32,7 +37,7 @@ angular.module('app').controller('ProfileCtrl', function($rootScope, $scope, $ht
                     file: $scope.icon
                 }
             }).then(function(res) {
-                $scope.profile.icon = res.data.data;
+                $scope.title.icon = res.data.data;
                 $scope.upload_image_message = "上传成功";
             }, function(resp) {
                 $scope.upload_image_message = "上传失败";
@@ -44,12 +49,12 @@ angular.module('app').controller('ProfileCtrl', function($rootScope, $scope, $ht
     };
 
     $scope.removeIcon = function() {
-        $scope.profile.icon = "";
+        $scope.title.icon = "";
     }
 
 
     $scope.submit = function() {
-        $http.post('/admin/rest/system/profile', $scope.profile).success(function(res) {
+        $http.post('/admin/rest/system/' + code, $scope.title).success(function(res) {
             if (res.errcode == 0) {
                 $scope.isEdit = false;
             }

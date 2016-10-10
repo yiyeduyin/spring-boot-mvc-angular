@@ -16,11 +16,18 @@
 			<a href="/e_message">MESSAGE</a>
 		</div>
 		<div class="address">
-			<img src="front/images/e-banner.jpg" height="55" />
+			<!-- <img src="front/images/e-banner.jpg" height="55" />
 			<ul>
 				<li>Tel:0512-63457130</li>
 				<li>Fax:0512-63457132</li>
 				<li>Email:jenqjye@jenqjye.com</li>
+			</ul> -->
+			<img ng-src="{{'/rest/file/'+contact.icon}}" ng-if="contact.icon" height="55" />
+			<ul>
+				<li>{{contact.detailName}}</li>
+				<li>Tel：{{contact.mobile}}</li>
+				<li>Fax：{{contact.fax}}</li>
+				<li>Email:{{contact.email}}</li>
 			</ul>
 		</div>
 	</div>

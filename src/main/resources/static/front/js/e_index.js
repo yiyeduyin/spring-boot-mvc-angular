@@ -20,6 +20,32 @@ app.service('e_getProductTypeList', function($rootScope, $http) {
     $rootScope.searchProduct = function() {
         window.location.href = "/e_search?searchName=" + $rootScope.searchName;
     }
+
+    $rootScope.contact = {};
+    $rootScope.findContact = function() {
+        $http.get('/rest/contact/list', {
+            params: {
+                type: 2
+            }
+        }).success(function(res) {
+            if (res.errcode == 0) {
+                $rootScope.contact = res.data[0];
+            }
+        });
+    }
+    $rootScope.findContact();
+
+    $rootScope.title = {};
+    $rootScope.findTitle = function() {
+        $http.get('/rest/system/titlee', {}).success(function(res) {
+            if (res.errcode == 0) {
+                if(res.data){
+                    $rootScope.title = res.data;
+                }
+            }
+        });
+    }
+    $rootScope.findTitle();
 });
 
 

@@ -8,15 +8,20 @@ body {
 	font-family: Arial, "Microsoft Yahei", Tahoma, Helvetica, STHeiti,
 		"Hiragino Sans GB";
 }
+.top{
+	float:left;
+}
 
 #head {
 	height: 125px;
 	color: #336699;
 	border-bottom: 1px solid #FFF;
-	background-image: url(../images/head.jpg);
 }
-
+#head img{
+	position:absolute;
+}
 #head .day, #e-head .day {
+	position:relative;
 	height: 30px;
 	line-height: 30px;
 }
@@ -46,9 +51,10 @@ body {
 	height: 125px;
 	color: #336699;
 	border-bottom: 1px solid #FFF;
-	background-image: url(../images/e-head.jpg);
 }
-
+#e-head img{
+	position:absolute;
+}
 #nav {
 	width: 1003px;
 	height: 40px;
@@ -134,7 +140,7 @@ body {
 	float: left;
 	width: 208px;
 	border: 1px solid #DCDCDC;
-	margin-top: 6px;
+	margin-top:6px;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -142,7 +148,7 @@ body {
 }
 
 #left .list {
-	height: 382px;
+	height: 359px;
 }
 
 #engineerings-left {
@@ -224,8 +230,8 @@ body {
 #right {
 	float: left;
 	width: 788px;
-	margin-top: 6px;
-	margin-left: 6px;
+	margin-top:6px;
+	margin-left:6px;
 }
 /*右部分标题*/
 #right .company_title, .products_list, .engineerings_title,
@@ -253,8 +259,6 @@ body {
 
 #right .profile_intro, .about_intro, .message_intro {
 	width: 784px;
-	height: 706px;
-	border: 1px solid #E3E3E3;
 	border-radius: 0px 0px 4px 4px;
 	-moz-border-radius: 0px 0px 4px 4px;
 	-webkit-border-radius: 0px 0px 4px 4px;
@@ -663,6 +667,7 @@ body {
 }
 
 #bottom {
+	bottom:0;
 	float: left;
 	width: 1005px;
 	height: 40px;
