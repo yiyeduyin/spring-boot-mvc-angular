@@ -46,6 +46,9 @@ body {
 #head .lang_change, #e-head .lang_change {
 	cursor: pointer;
 }
+.poss{
+	position:static !important;
+}
 /*english*/
 #e-head {
 	height: 125px;
@@ -233,7 +236,7 @@ body {
 	margin-top:6px;
 	margin-left:6px;
 }
-/*å³éƒ¨åˆ†æ ‡é¢˜*/
+/*ÓÒ²¿·Ö±êÌâ*/
 #right .company_title, .products_list, .engineerings_title,
 	.certificates_title, .about_title, .message_title {
 	width: 786px;
@@ -284,7 +287,7 @@ body {
 	line-height: 28px;
 	padding: 8px 12px 8px 10px;
 }
-/*å…¬å¸ç®€ä»‹*/
+/*¹«Ë¾¼ò½é*/
 #right .profile_intro img {
 	float: left;
 	margin: 18px 12px 0px 10px;
@@ -296,7 +299,7 @@ body {
 	line-height: 28px;
 	padding: 8px 12px 8px 10px;
 }
-/*äº§å“å±•ç¤º*/
+/*²úÆ·Õ¹Ê¾*/
 #right .products_detail {
 	height: 642px;
 }
@@ -308,6 +311,7 @@ body {
 #right .product_kind table th, #right .product_kind table tr td, #right .product_detail_kind table th,
 	#right .product_detail_kind table tr td {
 	height: 32px;
+	line-height: 32px;
 	text-align: center;
 }
 
@@ -327,6 +331,7 @@ body {
 }
 
 #right .product_kind table tr td {
+	float:left;
 	width: 100px;
 	border: 1px solid #fff;
 	background: #6AD1FF;
@@ -428,14 +433,14 @@ body {
 #right .certificates_name {
 	margin: 15px;
 }
-/*å·¥ç¨‹æŠ€æœ¯*/
+/*¹¤³Ì¼¼Êõ*/
 #right .engineerings_intro img {
 	margin-top: 28px;
 	width: 436px;
 	height: 672px;
 	width: 436px;
 }
-/*è”ç³»æˆ‘ä»¬*/
+/*ÁªÏµÎÒÃÇ*/
 #right .about_ul {
 	float: left;
 	width: 100%;
@@ -460,7 +465,7 @@ body {
 	width: 250px;
 	height: 180px;
 }
-/*åœ¨çº¿ç•™è¨€*/
+/*ÔÚÏßÁôÑÔ*/
 #right .message_form {
 	width: 720px;
 	height: 600px;
